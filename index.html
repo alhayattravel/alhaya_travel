@@ -3,171 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الحياة للسياحة والسفريات</title>
-    <!-- Google Fonts & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>شركة الحياة للسياحة والسفريات | Al-Haya Travel & Tourism</title>
     
+    <!-- Tailwind CSS للتصميم العصري والسريع -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- خط الخطوط العربية والأجنبية الاحترافي (Cairo & Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        :root {
-            --primary-color: #0f4c81;
-            --accent-color: #d4af37;
-            --bg-color: #f8f9fa;
-            --text-color: #2b2b2b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background: linear-gradient(135deg, #0a365c, var(--primary-color));
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: #e0e0e0;
-        }
-
-        main {
-            flex: 1;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-
-        .hero-card {
-            background: white;
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        .hero-card h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-
-        .hero-card p {
-            line-height: 1.8;
-            color: #555;
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: #25D366;
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 2rem;
-        }
-
-        .social-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        footer {
-            background-color: #1a1a1a;
-            color: #888;
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
-
-        footer strong {
-            color: var(--accent-color);
+        body { font-family: 'Cairo', sans-serif; }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <header>
-        <h1>شركة الحياة للسياحة والسفريات</h1>
-        <p>بوابتك لعالم من الرحلات وتجارب السفر الفريدة</p>
+    <!-- Header / شريط الملاحة -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- الشعار -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid =>fa-plane-departure"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-slate-900 block leading-tight">الحياة للسياحة</span>
+                    <span class="text-xs text-indigo-600 font-semibold tracking-wider uppercase">Al-Haya Travel</span>
+                </div>
+            </div>
+
+            <!-- روابط الملاحة -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                <a href="#search" class="hover:text-indigo-600 transition">الرئيسية</a>
+                <a href="#services" class="hover:text-indigo-600 transition">خدماتنا</a>
+                <a href="#why-us" class="hover:text-indigo-600 transition">لماذا نحن</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">تواصل معنا</a>
+            </nav>
+
+            <!-- زر التواصل المباشر -->
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-full font-semibold shadow-sm transition flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">واتساب مباشر</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <div class="hero-card">
-            <h2>مرحباً بكم في موقعنا الإلكتروني</h2>
-            <p>نعمل حالياً على إطلاق نظام الحجز المباشر للرحلات والطيران بأفضل الأسعار. يمكنك التواصل معنا مباشرة للاستفسارات والحجوزات الفورية.</p>
-            
-            <a href="https://wa.me/message/IIVGBQM3AL7SF1" class="btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> تواصل معنا عبر الواتساب
-            </a>
-        </div>
+    <!-- Hero Section / قسم البحث الرئيسي -->
+    <section id="search" class="hero-bg min-h-screen pt-28 pb-16 flex items-center justify-center px-4">
+        <div class="max-w-5xl w-full text-center">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+                وجهتك القادمة تبدأ من هنا
+            </h1>
+            <p class="text-slate-200 text-base md:text-xl mb-8 max-w-2xl mx-auto">
+                أفضل عروض رحلات الطيران والفنادق عالمياً بأسعار تنافسية وحجز فورى.
+            </p>
 
-        <div class="social-links">
-            <a href="https://www.facebook.com/share/1RgnZW5DFa/" class="social-icon" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/alhaya_ttravel" class="social-icon" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@alhaya_ttravel" class="social-icon" target="_blank" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+            <!-- كود محرك البحث الخاص بـ Travelpayouts / White Label -->
+            <div class="bg-white p-4 md:p-6 rounded-2xl shadow-2xl border border-slate-100 text-slate-800">
+                <!-- مكان وضع كود السكريبت من Travelpayouts -->
+                <div id="tp-widget-container">
+                    <p class="text-slate-400 py-8">
+                        <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600 mb-2 block"></i>
+                        يتم تحميل محرك البحث... (ضع كود السكريبت الخاص بـ White Label هنا)
+                    </p>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
-        جميع الحقوق محفوظة &copy; 2026 <strong>شركة الحياة للسياحة والسفريات</strong>
+    <!-- المميزات / Why Us -->
+    <section id="why-us" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">لماذا تختار منصة الحياة؟</h2>
+                <p class="text-slate-500">نقدم تجربة حجز متكاملة وآمنة لجميع المسافرين حول العالم.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">أسعار تنافسية</h3>
+                    <p class="text-slate-600 text-sm">مقارنة آلية لآلاف شركات الطيران والفنادق لضمان الحصول على أفضل سعر.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">حجز آمن 100%</h3>
+                    <p class="text-slate-600 text-sm">عمليات دفع مشفرة ومضمونة عبر أكبر موفري خدمات السفر عالمياً.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">دعم فني مباشر</h3>
+                    <p class="text-slate-600 text-sm">فريق متخصص لمساعدتك طوال أيام الأسبوع لضمان رحلة مريحة بدون متاعب.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / أسفل الصفحة وروابط التواصل الاجتماعي -->
+    <footer id="contact" class="bg-slate-900 text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8">
+                <div>
+                    <h3 class="text-xl font-bold">شركة الحياة للسياحة والسفريات</h3>
+                    <p class="text-slate-400 text-sm mt-1">شريكك الموثوق لتنظيم أسهل الرحلات بأسعار مثالية.</p>
+                </div>
+
+                <!-- حسابات التواصل الاجتماعي -->
+                <div class="flex items-center gap-4 text-lg">
+                    <a href="https://www.facebook.com/share/1RgnZW5DFa/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/alhaya_ttravel" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@alhaya_ttravel" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="text-center text-slate-500 text-xs mt-8">
+                &copy; جميع الحقوق محفوظة لشركة الحياة للسياحة والسفريات.
+            </div>
+        </div>
     </footer>
 
 </body>
