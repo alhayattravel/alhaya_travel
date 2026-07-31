@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الحياة للسياحة والسفريات</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0f4c81;
+            --accent-color: #d4af37;
+            --bg-color: #f8f9fa;
+            --text-color: #2b2b2b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0a365c, var(--primary-color));
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .hero-card {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .hero-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .hero-card p {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        footer strong {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>شركة الحياة للسياحة والسفريات</h1>
+        <p>بوابتك لعالم من الرحلات وتجارب السفر الفريدة</p>
+    </header>
+
+    <main>
+        <div class="hero-card">
+            <h2>مرحباً بكم في موقعنا الإلكتروني</h2>
+            <p>نعمل حالياً على إطلاق نظام الحجز المباشر للرحلات والطيران بأفضل الأسعار. يمكنك التواصل معنا مباشرة للاستفسارات والحجوزات الفورية.</p>
+            
+            <a href="https://wa.me/message/IIVGBQM3AL7SF1" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> تواصل معنا عبر الواتساب
+            </a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1RgnZW5DFa/" class="social-icon" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/alhaya_ttravel" class="social-icon" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@alhaya_ttravel" class="social-icon" target="_blank" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </main>
+
+    <footer>
+        جميع الحقوق محفوظة &copy; 2026 <strong>شركة الحياة للسياحة والسفريات</strong>
+    </footer>
+
+</body>
+</html>
