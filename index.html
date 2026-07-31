@@ -33,6 +33,23 @@
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #070D1E; color: #F1F5F9; }
         .active-tab { background-color: #00B4D8 !important; color: #FFFFFF !important; }
+
+        /* تعديل ألوان النصوص داخل محرك البحث لتكون واضحة 100% */
+        #tpwl-search input, 
+        #tpwl-search span, 
+        #tpwl-search button, 
+        #tpwl-search div,
+        .tpwl-widget input,
+        .tpwl-widget span {
+            color: #0F172A !important; /* لون داكن جداً واضح */
+            font-weight: 700 !important;
+        }
+
+        /* إصلاح نصوص الخانات والأماكن المحددة */
+        #tpwl-search ::placeholder {
+            color: #64748B !important;
+            opacity: 1 !important;
+        }
     </style>
 
     <!-- Travelpayouts White Label Script -->
@@ -63,7 +80,7 @@
                 </div>
             </div>
 
-            <!-- Actions (Lang & WhatsApp Customer Service) -->
+            <!-- Actions -->
             <div class="flex items-center gap-2">
                 <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 transition">
                     <span id="langText">English</span>
