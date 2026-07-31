@@ -3,140 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الحياة للسياحة والسفريات | Al-Haya Travel & Tourism</title>
-    
-    <!-- Tailwind CSS للتصميم العصري والسريع -->
+    <title>شركة الحياة للسياحة والسفريات | حجز رحلات طيران وفنادق</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- خط الخطوط العربية والأجنبية الاحترافي (Cairo & Montserrat) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات FontAwesome -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Google Arabic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
-        .hero-bg {
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
-                        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- Header / شريط الملاحة -->
-    <header class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- الشعار -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
-                    <i class="fa-solid =>fa-plane-departure"></i>
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold text-xl">
+                    <i class="fa-solid font-plane-departure"></i>
                 </div>
                 <div>
-                    <span class="text-xl font-extrabold text-slate-900 block leading-tight">الحياة للسياحة</span>
-                    <span class="text-xs text-indigo-600 font-semibold tracking-wider uppercase">Al-Haya Travel</span>
+                    <h1 class="text-xl font-bold text-slate-900 leading-none">شركة الحياة</h1>
+                    <span class="text-xs text-indigo-600 font-semibold">للسياحة والسفريات</span>
                 </div>
             </div>
-
-            <!-- روابط الملاحة -->
-            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
-                <a href="#search" class="hover:text-indigo-600 transition">الرئيسية</a>
-                <a href="#services" class="hover:text-indigo-600 transition">خدماتنا</a>
-                <a href="#why-us" class="hover:text-indigo-600 transition">لماذا نحن</a>
-                <a href="#contact" class="hover:text-indigo-600 transition">تواصل معنا</a>
-            </nav>
-
-            <!-- زر التواصل المباشر -->
-            <div class="flex items-center gap-4">
-                <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-full font-semibold shadow-sm transition flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span class="hidden sm:inline">واتساب مباشر</span>
-                </a>
-            </div>
+            
+            <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>تواصل معنا</span>
+            </a>
         </div>
     </header>
 
-    <!-- Hero Section / قسم البحث الرئيسي -->
-    <section id="search" class="hero-bg min-h-screen pt-28 pb-16 flex items-center justify-center px-4">
-        <div class="max-w-5xl w-full text-center">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
-                وجهتك القادمة تبدأ من هنا
-            </h1>
-            <p class="text-slate-200 text-base md:text-xl mb-8 max-w-2xl mx-auto">
-                أفضل عروض رحلات الطيران والفنادق عالمياً بأسعار تنافسية وحجز فورى.
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-indigo-900 to-slate-900 text-white py-12 px-4 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+                ابحث عن أفضل عروض الطيران والسفر
+            </h2>
+            <p class="text-slate-300 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+                نجد لك أرخص أسعار تذاكر الطيران والفنادق عالمياً في ثوانٍ معدودة.
             </p>
 
-            <!-- كود محرك البحث الخاص بـ Travelpayouts / White Label -->
-            <div class="bg-white p-4 md:p-6 rounded-2xl shadow-2xl border border-slate-100 text-slate-800">
-                <!-- مكان وضع كود السكريبت من Travelpayouts -->
-                <div id="tp-widget-container">
-                    <p class="text-slate-400 py-8">
-                        <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600 mb-2 block"></i>
-                        يتم تحميل محرك البحث... (ضع كود السكريبت الخاص بـ White Label هنا)
-                    </p>
+            <!-- Search Widget Container -->
+            <div class="bg-white rounded-2xl p-4 md:p-6 shadow-2xl text-slate-800">
+                <div id="tp-widget-container" class="min-h-[180px] flex items-center justify-center">
+                    <!-- Travelpayouts Search Form Widget Script -->
+                    <script async src="https://tp.media/content?currency=usd&tru_id=758619&promo_id=7879&shmarker=758619&campaign_id=100&searchUrl=www.aviasales.com%2Fsearch&locale=ar&powered_by=true" charset="utf-8"></script>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- المميزات / Why Us -->
-    <section id="why-us" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">لماذا تختار منصة الحياة؟</h2>
-                <p class="text-slate-500">نقدم تجربة حجز متكاملة وآمنة لجميع المسافرين حول العالم.</p>
-            </div>
+    <!-- Social Links & Support -->
+    <section class="py-12 bg-white flex-grow">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-xl font-bold mb-6 text-slate-800">تابعنا على وسائل التواصل الاجتماعي</h3>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="flex items-center gap-2 bg-emerald-50 text-emerald-700 border border-emerald-200 px-5 py-3 rounded-xl hover:bg-emerald-100 transition font-medium">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>واتساب: +971565710532</span>
+                </a>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fa-solid fa-tags"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">أسعار تنافسية</h3>
-                    <p class="text-slate-600 text-sm">مقارنة آلية لآلاف شركات الطيران والفنادق لضمان الحصول على أفضل سعر.</p>
-                </div>
+                <a href="https://www.instagram.com/alhaya_ttravel" target="_blank" class="flex items-center gap-2 bg-pink-50 text-pink-700 border border-pink-200 px-5 py-3 rounded-xl hover:bg-pink-100 transition font-medium">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                    <span>إنستغرام</span>
+                </a>
 
-                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">حجز آمن 100%</h3>
-                    <p class="text-slate-600 text-sm">عمليات دفع مشفرة ومضمونة عبر أكبر موفري خدمات السفر عالمياً.</p>
-                </div>
+                <a href="https://www.facebook.com/share/1RgnZW5DFa/" target="_blank" class="flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200 px-5 py-3 rounded-xl hover:bg-blue-100 transition font-medium">
+                    <i class="fa-brands fa-facebook text-xl"></i>
+                    <span>فيسبوك</span>
+                </a>
 
-                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">دعم فني مباشر</h3>
-                    <p class="text-slate-600 text-sm">فريق متخصص لمساعدتك طوال أيام الأسبوع لضمان رحلة مريحة بدون متاعب.</p>
-                </div>
+                <a href="https://www.tiktok.com/@alhaya_ttravel" target="_blank" class="flex items-center gap-2 bg-slate-100 text-slate-800 border border-slate-200 px-5 py-3 rounded-xl hover:bg-slate-200 transition font-medium">
+                    <i class="fa-brands fa-tiktok text-xl"></i>
+                    <span>تيك توك</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer / أسفل الصفحة وروابط التواصل الاجتماعي -->
-    <footer id="contact" class="bg-slate-900 text-white pt-12 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8">
-                <div>
-                    <h3 class="text-xl font-bold">شركة الحياة للسياحة والسفريات</h3>
-                    <p class="text-slate-400 text-sm mt-1">شريكك الموثوق لتنظيم أسهل الرحلات بأسعار مثالية.</p>
-                </div>
-
-                <!-- حسابات التواصل الاجتماعي -->
-                <div class="flex items-center gap-4 text-lg">
-                    <a href="https://www.facebook.com/share/1RgnZW5DFa/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/alhaya_ttravel" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@alhaya_ttravel" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <div class="text-center text-slate-500 text-xs mt-8">
-                &copy; جميع الحقوق محفوظة لشركة الحياة للسياحة والسفريات.
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-sm border-t border-slate-800">
+        <p>© 2026 شركة الحياة للسياحة والسفريات. جميع الحقوق محفوظة.</p>
     </footer>
 
 </body>
