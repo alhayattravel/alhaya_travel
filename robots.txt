@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alhayattravel.github.io/alhaya_travel/sitemap.xml
