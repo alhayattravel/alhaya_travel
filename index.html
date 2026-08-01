@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة الحياة للسياحة والسفريات | Al-Haya Travel & Tourism</title>
+    <meta name="description" content="حجز رحلات طيران، فنادق، وتأجير سيارات بأفضل الأسعار العالمية مع شركة الحياة للسياحة والسفريات.">
     
-    <!-- Tailwind CSS (Framework) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,10 +27,8 @@
         }
     </script>
     
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome Icons & Cairo Font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Arabic Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -38,9 +37,9 @@
             background-color: #070D1E; 
             color: #F8FAFC; 
             -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
         }
 
-        /* Active Tab Styling */
         .tab-btn {
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -51,46 +50,37 @@
             border-color: transparent !important;
         }
 
-        /* Card Container */
         .glass-card {
             background: #0D1527;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* حاوية أداة البحث وحاوية النتائج */
-        #tpwl-search {
+        .widget-container {
             width: 100%;
-            min-height: 90px;
-        }
-        #tpwl-tickets {
-            width: 100%;
-            margin-top: 20px;
-            min-height: 200px;
+            min-height: 250px;
         }
     </style>
 
-    <!-- Travelpayouts White Label Script (wl_id=20408) -->
+    <!-- Travelpayouts Main Script -->
     <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
       (function () {
             var script = document.createElement("script");
-            script.async = 1;
+            script.async = true;
             script.type = "module";
             script.src = "https://tpwgts.com/wl_web/main.js?wl_id=20408";
             document.head.appendChild(script);
-          })();
+      })();
     </script>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
 
-    <!-- Navbar Header -->
-    <header class="bg-[#070D1E] border-b border-slate-800/80 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-3.5 flex items-center justify-between gap-3">
+    <!-- Header / Navbar -->
+    <header class="bg-[#070D1E]/90 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             
-            <!-- Company Logo & Brand -->
+            <!-- الشعار مع اسم الشركة -->
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#38BDF8] to-[#00B4D8] flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-sky-500/20 shrink-0">
-                    <i class="fa-solid fa-plane-departure"></i>
-                </div>
+                <img src="logo.png" alt="شعار شركة الحياة للسياحة والسفريات" class="h-12 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,180,216,0.2)]">
                 <div>
                     <h1 class="text-base md:text-lg font-extrabold text-white tracking-wide leading-tight">
                         <span data-ar="شركة الحياة" data-en="Al-Haya Travel">شركة الحياة</span>
@@ -99,7 +89,6 @@
                 </div>
             </div>
 
-            <!-- Actions Controls -->
             <div class="flex items-center gap-2">
                 <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs px-3 py-2 rounded-xl border border-slate-700/80 transition flex items-center gap-1.5 font-bold">
                     <i class="fa-solid fa-globe text-sky-400"></i>
@@ -108,7 +97,7 @@
 
                 <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/20">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
-                    <span data-ar="خدمة العملاء" data-en="Support">خدمة العملاء</span>
+                    <span data-ar="واتساب" data-en="WhatsApp">واتساب</span>
                 </a>
             </div>
 
@@ -117,6 +106,16 @@
 
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto px-4 py-6 w-full flex-grow">
+
+        <!-- Hero Title Section -->
+        <div class="text-center mb-6">
+            <h2 class="text-xl md:text-3xl font-black text-white mb-2" data-ar="وجهتك الأولى لحجز الطيران والفنادق بأفضل الأسعار" data-en="Your Best Destination for Flights & Hotels">
+                وجهتك الأولى لحجز الطيران والفنادق بأفضل الأسعار
+            </h2>
+            <p class="text-xs md:text-sm text-slate-400 font-medium" data-ar="قارن بين مئات الشركات العالمية واحجز رحلتك بثوانٍ معدودة" data-en="Compare hundreds of global airlines & agencies in seconds">
+                قارن بين مئات الشركات العالمية واحجز رحلتك بثوانٍ معدودة
+            </p>
+        </div>
 
         <!-- Category Tabs -->
         <div class="grid grid-cols-4 gap-2 md:gap-3 mb-6">
@@ -141,19 +140,146 @@
             </button>
         </div>
 
-        <!-- White Label Search Area & Tickets Container -->
-        <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl mb-8 min-h-[350px]">
-            <!-- مربع البحث -->
-            <div id="tpwl-search" class="w-full"></div>
-            <!-- نتائج الرحلات والتذاكر -->
-            <div id="tpwl-tickets" class="w-full"></div>
+        <!-- Search Card Container -->
+        <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl mb-10 min-h-[350px]">
+            
+            <!-- 1. رحلات الطيران -->
+            <div id="section-flights" class="widget-container">
+                <div id="tpwl-search" class="w-full"></div>
+                <div id="tpwl-tickets" class="w-full"></div>
+            </div>
+
+            <!-- 2. الفنادق -->
+            <div id="section-hotels" class="widget-container hidden">
+                <script async src="https://tp.media/content?currency=usd&trs=20408&shmarker=20408&show_hotels=true&powered_by=false&locale=ar&search_host=search.hotellook.com&theme=dark&primary=%2000b4d8&color_button=%2000b4d8" charset="utf-8"></script>
+            </div>
+
+            <!-- 3. تأجير السيارات -->
+            <div id="section-cars" class="widget-container hidden text-center py-12">
+                <i class="fa-solid fa-car text-5xl text-sky-400 mb-3"></i>
+                <h3 class="text-base font-bold text-white mb-2" data-ar="تأجير السيارات عالمياً" data-en="Global Car Rentals">تأجير السيارات عالمياً</h3>
+                <p class="text-xs text-slate-400 mb-4" data-ar="نوفر أفضل أسعار تأجير السيارات في جميع المطارات حول العالم" data-en="We provide best car rental rates in airports worldwide">نوفر أفضل أسعار تأجير السيارات في جميع المطارات حول العالم</p>
+                <a href="https://wa.me/message/IIVGBQM3AL7SF1?text=أود%20الاستفسار%20عن%20خدمة%20تأجير%20السيارات" target="_blank" class="inline-block bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-xs transition">
+                    <i class="fa-brands fa-whatsapp ml-1"></i> <span data-ar="اطلب سيارتك الآن" data-en="Inquire Now">اطلب سيارتك الآن</span>
+                </a>
+            </div>
+
+            <!-- 4. التأشيرات والخدمات -->
+            <div id="section-services" class="widget-container hidden text-center py-12">
+                <i class="fa-solid fa-passport text-5xl text-sky-400 mb-3"></i>
+                <h3 class="text-base font-bold text-white mb-2" data-ar="خدمات التأشيرات والسياحة" data-en="Visa & Travel Services">خدمات التأشيرات والسياحة</h3>
+                <p class="text-xs text-slate-400 mb-4" data-ar="نساعدك في تخليص التأشيرات وتنسيق الرحلات الخاصة بسهولة" data-en="We assist you with visa processing and custom trip arrangements">نساعدك في تخليص التأشيرات وتنسيق الرحلات الخاصة بسهولة</p>
+                <a href="https://wa.me/message/IIVGBQM3AL7SF1?text=أود%20الاستفسار%20عن%20استخراج%20تأشيرة%20سفر" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition">
+                    <i class="fa-brands fa-whatsapp ml-1"></i> <span data-ar="تواصل مع قسم التأشيرات" data-en="Contact Visa Dept">تواصل مع قسم التأشيرات</span>
+                </a>
+            </div>
+
         </div>
 
-        <!-- Social Links Section -->
-        <section class="glass-card rounded-2xl p-4 text-center">
-            <p class="text-xs font-bold text-slate-300 mb-3 tracking-wide" data-ar="تواصل معنا وسافر بضمان ورعايتنا الكاملة" data-en="Connect with us on official platforms">
-                تواصل معنا وسافر بضمان ورعايتنا الكاملة
-            </p>
+        <!-- Featured Destinations / Packages -->
+        <div class="mb-10">
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-fire text-amber-400"></i>
+                <span data-ar="أشهر الوجهات السياحية المطلوبة" data-en="Popular Travel Destinations">أشهر الوجهات السياحية المطلوبة</span>
+            </h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                <!-- Dubai -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
+                    <div class="p-3 text-center">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-2 text-lg">
+                            <i class="fa-solid fa-city"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">دبي - الإمارات</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">طيران + فنادق مميزة</p>
+                        <a href="https://wa.me/message/IIVGBQM3AL7SF1?text=أريد%20استفسار%20عن%20عروض%20رحلات%20دبي" target="_blank" class="mt-3 block bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-300 text-[11px] font-bold py-1.5 rounded-lg transition">
+                            احجز الآن
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cairo -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
+                    <div class="p-3 text-center">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto mb-2 text-lg">
+                            <i class="fa-solid fa-monument"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">القاهرة - مصر</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">تذاكر طيران بأفضل سعر</p>
+                        <a href="https://wa.me/message/IIVGBQM3AL7SF1?text=أريد%20استفسار%20عن%20رحلات%20القاهرة" target="_blank" class="mt-3 block bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-300 text-[11px] font-bold py-1.5 rounded-lg transition">
+                            احجز الآن
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Istanbul -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
+                    <div class="p-3 text-center">
+                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center mx-auto mb-2 text-lg">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">إسطنبول - تركيا</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">عائلية وسياحية</p>
+                        <a href="https://wa.me/message/IIVGBQM3AL7SF1?text=أريد%20استفسار%20عن%20رحلات%20إسطنبول" target="_blank" class="mt-3 block bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-300 text-[11px] font-bold py-1.5 rounded-lg transition">
+                            احجز الآن
+                        </a>
+                    </div>
+                </div>
+
+                <!-- London -->
+                <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
+                    <div class="p-3 text-center">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-2 text-lg">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">لندن - بريطانيا</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">حجوزات عالمية</p>
+                        <a href="https://wa.me/message/IIVGBQM3AL7SF1?text=أريد%20استفسار%20عن%20رحلات%20لندن" target="_blank" class="mt-3 block bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-300 text-[11px] font-bold py-1.5 rounded-lg transition">
+                            احجز الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features / Why Choose Us -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+            <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 text-lg">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white" data-ar="حجز آمن وضمان كامل" data-en="Safe & Secure Booking">حجز آمن وضمان كامل</h4>
+                    <p class="text-[11px] text-slate-400" data-ar="مقارنة بين شركات موثوقة عالمياً" data-en="Comparison among trusted platforms">مقارنة بين شركات موثوقة عالمياً</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 text-lg">
+                    <i class="fa-solid fa-tags"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white" data-ar="أقل الأسعار المتاحة" data-en="Lowest Available Rates">أقل الأسعار المتاحة</h4>
+                    <p class="text-[11px] text-slate-400" data-ar="توفير حقيقي دون أي عمولات إضافية" data-en="Real savings with no hidden fees">توفير حقيقي دون أي عمولات إضافية</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 text-lg">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white" data-ar="دعم مباشر 24/7" data-en="24/7 Direct Support">دعم مباشر 24/7</h4>
+                    <p class="text-[11px] text-slate-400" data-ar="فريقنا جاهز لمساعدتك عبر الواتساب" data-en="Our team is ready via WhatsApp">فريقنا جاهز لمساعدتك عبر الواتساب</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official Social Media Channels -->
+        <section class="glass-card rounded-2xl p-5 text-center">
+            <h4 class="text-xs font-bold text-slate-300 mb-3 tracking-wide" data-ar="تابعنا على منصاتنا الرسمية لمعرفة أحدث العروض" data-en="Follow our official channels for hot deals">
+                تابعنا على منصاتنا الرسمية لمعرفة أحدث العروض
+            </h4>
             <div class="flex flex-wrap justify-center gap-2 md:gap-3">
                 <a href="https://wa.me/message/IIVGBQM3AL7SF1" target="_blank" class="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition">
                     <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
@@ -173,13 +299,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#050914] border-t border-slate-800/80 py-4 text-center text-xs text-slate-500">
+    <footer class="bg-[#050914] border-t border-slate-800/80 py-4 text-center text-xs text-slate-500 mt-6">
         <p data-ar="© 2026 شركة الحياة للسياحة والسفريات. جميع الحقوق محفوظة." data-en="© 2026 Al-Haya Travel & Tourism. All rights reserved.">
             © 2026 شركة الحياة للسياحة والسفريات. جميع الحقوق محفوظة.
         </p>
     </footer>
 
-    <!-- Logic Script -->
+    <!-- Interactive Script -->
     <script>
         let currentLang = 'ar';
 
@@ -196,12 +322,20 @@
         }
 
         function switchCategory(category) {
+            document.getElementById('section-flights').classList.add('hidden');
+            document.getElementById('section-hotels').classList.add('hidden');
+            document.getElementById('section-cars').classList.add('hidden');
+            document.getElementById('section-services').classList.add('hidden');
+
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.classList.add('text-slate-400');
             });
-            
+
+            const selectedSection = document.getElementById(`section-${category}`);
             const activeBtn = document.getElementById(`cat-${category}`);
+            
+            if (selectedSection) selectedSection.classList.remove('hidden');
             if (activeBtn) {
                 activeBtn.classList.add('active');
                 activeBtn.classList.remove('text-slate-400');
