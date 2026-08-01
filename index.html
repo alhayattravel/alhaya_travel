@@ -51,12 +51,6 @@
             border-color: transparent !important;
         }
 
-        .trip-type-btn.active {
-            background-color: #00B4D8;
-            color: #070D1E;
-            font-weight: bold;
-        }
-
         .glass-card {
             background: #0D1527;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -65,6 +59,10 @@
         .widget-container {
             width: 100%;
             min-height: 250px;
+        }
+        
+        .hidden-section {
+            display: none !important;
         }
     </style>
 
@@ -82,12 +80,14 @@
 <body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="bg-[#070D1E]/95 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
+    <header class="bg-brand-dark/95 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             
             <!-- Logo & Brand Name -->
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="ALHAYAT TRAVEL Logo" class="h-10 md:h-12 w-auto object-contain drop-shadow-[0_2px_10px_rgba(212,175,55,0.3)]">
+                <div class="h-10 w-10 bg-brand-accent rounded-lg flex items-center justify-center shadow-lg shadow-brand-accent/20">
+                    <i class="fa-solid fa-plane-departure text-brand-dark text-xl"></i>
+                </div>
                 <div>
                     <h1 class="text-lg md:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 tracking-wider">
                         ALHAYAT TRAVEL
@@ -95,59 +95,11 @@
                 </div>
             </div>
 
-            <!-- Currency, Country, Language & Auth Controls -->
+            <!-- Auth Controls -->
             <div class="flex items-center gap-2 flex-wrap text-xs">
-                
-                <!-- Currency Selector -->
-                <select id="currencySelect" class="bg-slate-800/80 text-slate-200 px-2 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none">
-                    <option value="AED">🇦🇪 درهم إماراتي (AED)</option>
-                    <option value="SAR">🇸🇦 ريال سعودي (SAR)</option>
-                    <option value="EGP">🇪🇬 جنيه مصري (EGP)</option>
-                    <option value="USD">🇺🇸 دولار أمريكي (USD)</option>
-                    <option value="EUR">🇪🇺 يورو (EUR)</option>
-                    <option value="GBP">🇬🇧 جنيه إسترليني (GBP)</option>
-                    <option value="KWD">🇰🇼 دينار كويتي (KWD)</option>
-                    <option value="QAR">🇶🇦 ريال قطري (QAR)</option>
-                    <option value="BHD">🇧🇭 دينار بحريني (BHD)</option>
-                    <option value="OMR">🇴🇲 ريال عماني (OMR)</option>
-                    <option value="JOD">🇯🇴 دينار أردني (JOD)</option>
-                </select>
-
-                <!-- Country Selector (English Names) -->
-                <select id="countrySelect" class="bg-slate-800/80 text-slate-200 px-2 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none">
-                    <option value="AE">🇦🇪 United Arab Emirates</option>
-                    <option value="EG">🇪🇬 Egypt</option>
-                    <option value="SA">🇸🇦 Saudi Arabia</option>
-                    <option value="KW">🇰🇼 Kuwait</option>
-                    <option value="QA">🇶🇦 Qatar</option>
-                    <option value="BH">🇧🇭 Bahrain</option>
-                    <option value="OM">🇴🇲 Oman</option>
-                    <option value="JO">🇯🇴 Jordan</option>
-                    <option value="US">🇺🇸 United States</option>
-                    <option value="GB">🇬🇧 United Kingdom</option>
-                    <option value="DE">🇩🇪 Germany</option>
-                    <option value="FR">🇫🇷 France</option>
-                    <option value="TR">🇹🇷 Turkey</option>
-                </select>
-
-                <!-- Language Selector -->
-                <select id="langSelect" onchange="toggleLanguage(this.value)" class="bg-slate-800/80 text-slate-200 px-2 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none">
-                    <option value="ar">العربية (Arabic)</option>
-                    <option value="en">English</option>
-                    <option value="fr">Français (French)</option>
-                    <option value="de">Deutsch (German)</option>
-                    <option value="es">Español (Spanish)</option>
-                    <option value="ru">Русский (Russian)</option>
-                    <option value="tr">Türkçe (Turkish)</option>
-                    <option value="zh">中文 (Chinese)</option>
-                    <option value="ja">日本語 (Japanese)</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                </select>
-
-                <!-- Account / Login Button -->
                 <button onclick="openModal('loginModal')" id="userBtn" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
                     <i class="fa-solid fa-user"></i>
-                    <span id="userBtnText" data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</span>
+                    <span id="userBtnText">تسجيل الدخول</span>
                 </button>
             </div>
 
@@ -159,37 +111,30 @@
 
         <!-- Hero Title Section -->
         <div class="text-center mb-6">
-            <h2 class="text-xl md:text-3xl font-black text-white mb-2" data-ar="وجهتك الأولى لحجز الطيران والفنادق بأفضل الأسعار" data-en="Your Destination for Flights & Hotels">
+            <h2 class="text-xl md:text-3xl font-black text-white mb-2">
                 وجهتك الأولى لحجز الطيران والفنادق بأفضل الأسعار
             </h2>
-            <p class="text-xs md:text-sm text-slate-400 font-medium" data-ar="قارن بين مئات الشركات العالمية واحجز رحلتك بثوانٍ معدودة" data-en="Compare hundreds of global airlines & agencies">
+            <p class="text-xs md:text-sm text-slate-400 font-medium">
                 قارن بين مئات الشركات العالمية واحجز رحلتك بثوانٍ معدودة
             </p>
         </div>
 
         <!-- Category Tabs -->
         <div class="grid grid-cols-3 gap-2 md:gap-3 mb-4">
-            <button onclick="switchCategory('flights')" id="cat-flights" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-[#0D1527] border border-slate-800 text-slate-300 font-bold hover:text-white">
+            <button onclick="switchCategory('flights')" id="cat-flights" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-300 font-bold hover:text-white">
                 <i class="fa-solid fa-plane text-lg md:text-xl"></i>
-                <span class="text-xs" data-ar="رحلات طيران" data-en="Flights">رحلات طيران</span>
+                <span class="text-xs">رحلات طيران</span>
             </button>
 
-            <button onclick="switchCategory('hotels')" id="cat-hotels" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-[#0D1527] border border-slate-800 text-slate-400 font-bold hover:text-white">
+            <button onclick="switchCategory('hotels')" id="cat-hotels" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white">
                 <i class="fa-solid fa-hotel text-lg md:text-xl"></i>
-                <span class="text-xs" data-ar="فنادق وإقامة" data-en="Hotels">فنادق وإقامة</span>
+                <span class="text-xs">فنادق وإقامة</span>
             </button>
 
-            <button onclick="switchCategory('cars')" id="cat-cars" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-[#0D1527] border border-slate-800 text-slate-400 font-bold hover:text-white">
+            <button onclick="switchCategory('cars')" id="cat-cars" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white">
                 <i class="fa-solid fa-car text-lg md:text-xl"></i>
-                <span class="text-xs" data-ar="تأجير سيارات" data-en="Car Rentals">تأجير سيارات</span>
+                <span class="text-xs">تأجير سيارات</span>
             </button>
-        </div>
-
-        <!-- Trip Type Switcher (Flight Section Only) -->
-        <div id="tripTypeContainer" class="flex justify-center gap-2 mb-4 bg-slate-900/60 p-2 rounded-2xl border border-slate-800 max-w-md mx-auto">
-            <button onclick="setTripType('oneway')" id="trip-oneway" class="trip-type-btn text-xs py-1.5 px-3 rounded-xl transition text-slate-300" data-ar="ذهاب فقط" data-en="One Way">ذهاب فقط</button>
-            <button onclick="setTripType('roundtrip')" id="trip-roundtrip" class="trip-type-btn active text-xs py-1.5 px-3 rounded-xl transition text-slate-300" data-ar="ذهاب وعودة" data-en="Round Trip">ذهاب وعودة</button>
-            <button onclick="setTripType('multicity')" id="trip-multicity" class="trip-type-btn text-xs py-1.5 px-3 rounded-xl transition text-slate-300" data-ar="مدن متعددة" data-en="Multi-City">مدن متعددة</button>
         </div>
 
         <!-- Search Card Container -->
@@ -202,17 +147,19 @@
             </div>
 
             <!-- 2. الفنادق -->
-            <div id="section-hotels" class="widget-container hidden">
-                <script async src="https://tp.media/content?currency=usd&trs=20408&shmarker=20408&show_hotels=true&powered_by=false&locale=ar&search_host=search.hotellook.com&theme=dark&primary=%2000b4d8&color_button=%2000b4d8" charset="utf-8"></script>
+            <div id="section-hotels" class="widget-container hidden-section">
+                <div id="hotels-widget-container" class="w-full">
+                    <p class="text-center text-slate-400 py-10">جاري تحميل محرك بحث الفنادق...</p>
+                </div>
             </div>
 
             <!-- 3. تأجير السيارات -->
-            <div id="section-cars" class="widget-container hidden text-center py-12">
+            <div id="section-cars" class="widget-container hidden-section text-center py-12">
                 <i class="fa-solid fa-car text-5xl text-sky-400 mb-3"></i>
-                <h3 class="text-base font-bold text-white mb-2" data-ar="تأجير السيارات عالمياً" data-en="Global Car Rentals">تأجير السيارات عالمياً</h3>
-                <p class="text-xs text-slate-400 mb-4" data-ar="نوفر أفضل أسعار تأجير السيارات في جميع المطارات حول العالم" data-en="We provide best car rental rates in airports worldwide">نوفر أفضل أسعار تأجير السيارات في جميع المطارات حول العالم</p>
+                <h3 class="text-base font-bold text-white mb-2">تأجير السيارات عالمياً</h3>
+                <p class="text-xs text-slate-400 mb-4">نوفر أفضل أسعار تأجير السيارات في جميع المطارات حول العالم</p>
                 <button onclick="openModal('supportModal')" class="inline-block bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-xs transition">
-                    <i class="fa-solid fa-headset ml-1"></i> <span data-ar="تواصل مع خدمة العملاء" data-en="Contact Support">تواصل مع خدمة العملاء</span>
+                    <i class="fa-solid fa-headset ml-1"></i> <span>تواصل مع خدمة العملاء</span>
                 </button>
             </div>
 
@@ -222,11 +169,10 @@
         <div class="mb-10">
             <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <i class="fa-solid fa-fire text-amber-400"></i>
-                <span data-ar="أشهر الوجهات السياحية المطلوبة" data-en="Popular Travel Destinations">أشهر الوجهات السياحية المطلوبة</span>
+                <span>أشهر الوجهات السياحية المطلوبة</span>
             </h3>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                <!-- Dubai -->
                 <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
                     <div class="p-3 text-center">
                         <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-2 text-lg">
@@ -240,7 +186,6 @@
                     </div>
                 </div>
 
-                <!-- Cairo -->
                 <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
                     <div class="p-3 text-center">
                         <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto mb-2 text-lg">
@@ -254,10 +199,9 @@
                     </div>
                 </div>
 
-                <!-- Istanbul -->
                 <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
                     <div class="p-3 text-center">
-                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center mx-auto mb-2 text-lg">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-2 text-lg">
                             <i class="fa-solid fa-mosque"></i>
                         </div>
                         <h4 class="text-sm font-bold text-white">إسطنبول - IST</h4>
@@ -268,7 +212,6 @@
                     </div>
                 </div>
 
-                <!-- London -->
                 <div class="glass-card rounded-2xl overflow-hidden hover:border-sky-500/50 transition duration-300">
                     <div class="p-3 text-center">
                         <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-2 text-lg">
@@ -284,9 +227,9 @@
             </div>
         </div>
 
-        <!-- Official Social Media Channels & Support -->
+        <!-- Social Media -->
         <section class="glass-card rounded-2xl p-5 text-center">
-            <h4 class="text-xs font-bold text-slate-300 mb-3 tracking-wide" data-ar="تابع منصاتنا الرسمية أو تواصل مع خدمة العملاء" data-en="Follow our channels or contact customer support">
+            <h4 class="text-xs font-bold text-slate-300 mb-3 tracking-wide">
                 تابع منصاتنا الرسمية أو تواصل مع خدمة العملاء
             </h4>
             <div class="flex flex-wrap justify-center gap-2 md:gap-3">
@@ -307,58 +250,37 @@
 
     </main>
 
-    <!-- Modal: Login / Sign Up -->
-    <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <!-- Modals -->
+    <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl">
             <button onclick="closeModal('loginModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            
             <h3 id="modalTitle" class="text-lg font-bold text-white mb-4 text-center">تسجيل الدخول إلى ALHAYAT TRAVEL</h3>
-
-            <!-- Google Sign In -->
             <button onclick="mockAuth('Google')" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 mb-4 transition">
                 <i class="fa-brands fa-google text-red-500"></i> المتابعة باستخدام Google
             </button>
-
-            <div class="text-center text-slate-500 text-xs mb-4">أو باستخدام البريد الإلكتروني</div>
-
             <form onsubmit="handleAuth(event)">
                 <div class="mb-3">
-                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني</label>
-                    <input type="email" id="emailInput" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500" placeholder="name@example.com">
+                    <input type="email" id="emailInput" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500" placeholder="البريد الإلكتروني">
                 </div>
                 <div class="mb-4">
-                    <label class="block text-xs text-slate-400 mb-1">كلمة المرور</label>
-                    <input type="password" id="passInput" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500" placeholder="••••••••">
+                    <input type="password" id="passInput" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500" placeholder="كلمة المرور">
                 </div>
-
-                <button type="submit" id="submitAuthBtn" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">
-                    تسجيل الدخول
-                </button>
+                <button type="submit" id="submitAuthBtn" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">تسجيل الدخول</button>
             </form>
-
-            <div class="mt-4 text-center text-xs text-slate-400">
-                <span id="authToggleText">ليس لديك حساب؟</span>
-                <button onclick="toggleAuthMode()" id="authToggleBtn" class="text-sky-400 font-bold mr-1 hover:underline">إنشاء حساب جديد</button>
-            </div>
         </div>
     </div>
 
-    <!-- Modal: Customer Support -->
-    <div id="supportModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div id="supportModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="glass-card w-full max-w-sm rounded-3xl p-6 relative border border-slate-700 shadow-2xl text-center">
             <button onclick="closeModal('supportModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-
             <i class="fa-solid fa-headset text-4xl text-sky-400 mb-3"></i>
             <h3 class="text-base font-bold text-white mb-2">خدمة عملاء ALHAYAT TRAVEL</h3>
-            <p class="text-xs text-slate-400 mb-4">فريق الدعم الفني متواجد لمساعدتك في استفسارات الحجز والتذاكر على مدار الساعة.</p>
-            
-            <a href="mailto:support@alhayattravel.com" class="block w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-xl text-xs font-bold mb-2 transition">
-                <i class="fa-solid fa-envelope ml-1"></i> عبر البريد الإلكتروني
-            </a>
+            <p class="text-xs text-slate-400 mb-4">نحن هنا لمساعدتك على مدار الساعة.</p>
+            <a href="mailto:support@alhayattravel.com" class="block w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-xl text-xs font-bold mb-2 transition">عبر البريد الإلكتروني</a>
             <button onclick="closeModal('supportModal')" class="w-full bg-sky-500 text-slate-950 font-bold py-2 rounded-xl text-xs">إغلاق</button>
         </div>
     </div>
@@ -368,29 +290,14 @@
         <p>© 2026 ALHAYAT TRAVEL. All rights reserved.</p>
     </footer>
 
-    <!-- Interactive Script -->
     <script>
         let isSignUp = false;
 
-        function toggleLanguage(lang) {
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            
-            document.querySelectorAll('[data-ar]').forEach(el => {
-                if (lang === 'ar') {
-                    el.innerText = el.getAttribute('data-ar');
-                } else {
-                    el.innerText = el.getAttribute('data-en') || el.getAttribute('data-ar');
-                }
-            });
-        }
-
         function switchCategory(category) {
-            document.getElementById('section-flights').classList.add('hidden');
-            document.getElementById('section-hotels').classList.add('hidden');
-            document.getElementById('section-cars').classList.add('hidden');
-            document.getElementById('tripTypeContainer').classList.add('hidden');
-
+            document.getElementById('section-flights').classList.add('hidden-section');
+            document.getElementById('section-hotels').classList.add('hidden-section');
+            document.getElementById('section-cars').classList.add('hidden-section');
+            
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.classList.add('text-slate-400');
@@ -399,28 +306,27 @@
             const selectedSection = document.getElementById(`section-${category}`);
             const activeBtn = document.getElementById(`cat-${category}`);
             
-            if (selectedSection) selectedSection.classList.remove('hidden');
+            if (selectedSection) selectedSection.classList.remove('hidden-section');
             if (activeBtn) {
                 activeBtn.classList.add('active');
                 activeBtn.classList.remove('text-slate-400');
             }
 
-            if (category === 'flights') {
-                document.getElementById('tripTypeContainer').classList.remove('hidden');
+            if (category === 'hotels') {
+                loadHotelsWidget();
             }
         }
 
-        // تحكم فوري ديناميكي بنوع الرحلة في المحرك
-        function setTripType(type) {
-            document.querySelectorAll('.trip-type-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`trip-${type}`).classList.add('active');
-
-            // محاكاة تحويل خيار أداة البحث المباشرة
-            const iframe = document.querySelector('#tpwl-search iframe');
-            if (iframe) {
-                // إعادة تنشيط الاستعلام حسب النوع
-                iframe.src = iframe.src;
-            }
+        function loadHotelsWidget() {
+            const container = document.getElementById('hotels-widget-container');
+            if (container.getAttribute('data-loaded') === 'true') return;
+            container.innerHTML = '';
+            const script = document.createElement('script');
+            script.src = "https://tp.media/content?currency=usd&trs=20408&shmarker=20408&show_hotels=true&powered_by=false&locale=ar&search_host=search.hotellook.com&theme=dark&primary=00b4d8&color_button=00b4d8";
+            script.async = true;
+            script.charset = "utf-8";
+            container.appendChild(script);
+            container.setAttribute('data-loaded', 'true');
         }
 
         function searchDestination(code) {
@@ -430,24 +336,18 @@
 
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(id) {
             document.getElementById(id).classList.add('hidden');
-        }
-
-        function toggleAuthMode() {
-            isSignUp = !isSignUp;
-            document.getElementById('modalTitle').innerText = isSignUp ? 'إنشاء حساب جديد في ALHAYAT TRAVEL' : 'تسجيل الدخول إلى ALHAYAT TRAVEL';
-            document.getElementById('submitAuthBtn').innerText = isSignUp ? 'إنشاء حساب' : 'تسجيل الدخول';
-            document.getElementById('authToggleText').innerText = isSignUp ? 'لديك حساب بالفعل؟' : 'ليس لديك حساب؟';
-            document.getElementById('authToggleBtn').innerText = isSignUp ? 'تسجيل الدخول' : 'إنشاء حساب جديد';
+            document.body.style.overflow = '';
         }
 
         function handleAuth(e) {
             e.preventDefault();
             const email = document.getElementById('emailInput').value;
-            alert(isSignUp ? `تم إنشاء الحساب بنجاح لـ ${email}` : `تم تسجيل الدخول بنجاح!`);
+            alert(`تم تسجيل الدخول بنجاح!`);
             document.getElementById('userBtnText').innerText = email.split('@')[0];
             closeModal('loginModal');
         }
@@ -456,6 +356,12 @@
             alert(`تم تسجيل الدخول عبر ${provider} بنجاح!`);
             document.getElementById('userBtnText').innerText = 'User Account';
             closeModal('loginModal');
+        }
+        
+        window.onclick = function(event) {
+            if (event.target.classList.contains('fixed')) {
+                closeModal(event.target.id);
+            }
         }
     </script>
 </body>
