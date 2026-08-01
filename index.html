@@ -57,14 +57,18 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* إخفاء شعار Travelpayouts السفلي كلياً */
+        /* إخفاء التذاكر والشعار السفلي نهائياً داخل الرئيسية */
+        #tpwl-tickets,
         .tpwl-powered-by, 
         [class*="powered-by"],
-        [class*="PoweredBy"] {
+        [class*="PoweredBy"],
+        [class*="tickets-container"],
+        [class*="tickets_container"] {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
             height: 0 !important;
+            overflow: hidden !important;
         }
     </style>
 
@@ -140,7 +144,7 @@
             </button>
         </div>
 
-        <!-- White Label Search Area ONLY (No Tickets Container Here) -->
+        <!-- White Label Search Area ONLY -->
         <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl mb-8">
             <div id="tpwl-search" class="w-full"></div>
         </div>
