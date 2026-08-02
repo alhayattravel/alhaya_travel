@@ -168,11 +168,17 @@
                 </div>
             </div>
 
-            <!-- 3. تأجير السيارات -->
-<div id="cars-search-container" class="w-full my-4 rounded-xl overflow-hidden shadow-lg">
-  <script async src="https://tpwgts.com/content?trs=557141&shmarker=758619&locale=en&powered_by=false&border_radius=12&plain=true&show_logo=true&color_background=%2300000069&color_button=%2398A539e6&color_text=%23000000&color_input_text=%23000000&color_button_text=%23ffffff&promo_id=4480&campaign_id=10" charset="utf-8"></script>
-</div>
-
+            <!-- 3. تأجير السيارات المدمج داخل الموقع -->
+            <div id="section-cars" class="widget-container hidden-section">
+                <div class="w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
+                    <iframe 
+                        src="https://www.economybookings.com/?marker=758619" 
+                        class="w-full h-[600px] border-0 rounded-2xl" 
+                        title="تأجير السيارات"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
 
         </div>
 
@@ -367,15 +373,22 @@
     <!-- Site Functions JS -->
     <script>
         function switchCategory(category) {
-            document.getElementById('section-flights').classList.add('hidden-section');
-            document.getElementById('section-hotels').classList.add('hidden-section');
-            document.getElementById('section-cars').classList.add('hidden-section');
+            // إخفاء جميع الأقسام الثلاثة
+            const flightsSec = document.getElementById('section-flights');
+            const hotelsSec = document.getElementById('section-hotels');
+            const carsSec = document.getElementById('section-cars');
+
+            if (flightsSec) flightsSec.classList.add('hidden-section');
+            if (hotelsSec) hotelsSec.classList.add('hidden-section');
+            if (carsSec) carsSec.classList.add('hidden-section');
             
+            // إعادة ضبط ألوان الأزرار
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.classList.add('text-slate-400');
             });
 
+            // إظهار القسم المختار وتنشيط زره
             const selectedSection = document.getElementById(`section-${category}`);
             const activeBtn = document.getElementById(`cat-${category}`);
             
