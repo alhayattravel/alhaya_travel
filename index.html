@@ -104,7 +104,6 @@
             <!-- Logo & Brand Name -->
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="ALHAYAT TRAVEL" class="h-10 md:h-12 w-auto object-contain rounded-lg">
-
                 <div>
                     <h1 class="text-lg md:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 tracking-wider">
                         ALHAYAT TRAVEL
@@ -112,9 +111,14 @@
                 </div>
             </div>
 
-            <!-- Auth Controls -->
+            <!-- Auth & Notification Controls -->
             <div class="flex items-center gap-2 flex-wrap text-xs">
-                <button onclick="openModal('loginModal')" id="userBtn" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
+                <button onclick="requestNotificationPermission()" id="notifBtn" class="bg-slate-800 hover:bg-slate-700 text-sky-400 font-bold px-3 py-1.5 rounded-xl border border-sky-500/30 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>تفعيل الإشعارات</span>
+                </button>
+
+                <button onclick="handleUserBtnClick()" id="userBtn" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-md">
                     <i class="fa-solid fa-user"></i>
                     <span id="userBtnText">تسجيل الدخول</span>
                 </button>
@@ -157,7 +161,7 @@
         <!-- Search Card Container -->
         <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl mb-10 min-h-[350px]">
             
-            <!-- 1. رحلات الطيران (Travelpayouts Widget) -->
+            <!-- 1. رحلات الطيران -->
             <div id="section-flights" class="widget-container">
                 <div id="tpwl-search" class="w-full"></div>
                 <div id="tpwl-tickets" class="w-full"></div>
@@ -170,7 +174,7 @@
                 </div>
             </div>
 
-            <!-- 3. تأجير السيارات المدمج داخل الموقع -->
+            <!-- 3. تأجير السيارات -->
             <div id="section-cars" class="widget-container hidden-section">
                 <div class="w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
                     <iframe 
@@ -270,7 +274,7 @@
     </main>
 
     <!-- Modals -->
-    <!-- 1. Real Firebase Auth Modal -->
+    <!-- Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('loginModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
@@ -280,7 +284,6 @@
             <h3 class="text-xl font-bold text-sky-400 mb-1 text-center">ALHAYAT TRAVEL</h3>
             <p id="cardSubtitle" class="text-xs text-slate-400 mb-4 text-center">تسجيل الدخول إلى حسابك</p>
 
-            <!-- Google Login Button -->
             <button id="googleBtn" onclick="handleGoogleSignIn()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 mb-3 transition shadow-md">
                 <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.8 7.3l3.7 2.9C6.4 7.2 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#FBBC05" d="M5.5 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.8 7.3C.7 9.5 0 10.7 0 12s.7 2.5 1.8 4.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.6-2.2-6.5-5.2L1.8 16C3.7 19.7 7.5 23 12 23z"/></svg>
                 <span>المتابعة باستخدام Google</span>
@@ -288,10 +291,7 @@
 
             <div id="authDivider" class="divider"><span>أو</span></div>
 
-            <!-- Auth Form -->
             <form id="authForm" onsubmit="event.preventDefault();">
-              
-              <!-- Additional SignUp Fields -->
               <div id="signUpFields" style="display: none;">
                 <div class="grid grid-cols-2 gap-2 mb-3">
                   <div>
@@ -319,7 +319,6 @@
                 </div>
               </div>
 
-              <!-- Email & Password -->
               <div class="mb-3">
                 <label class="block text-[11px] text-slate-400 mb-1">البريد الإلكتروني</label>
                 <input type="email" id="email" placeholder="name@example.com" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
@@ -333,27 +332,80 @@
               <button class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition" id="submitBtn" onclick="submitAuth()">تسجيل الدخول</button>
             </form>
 
-            <!-- Notifications / Error Messages -->
             <div id="errorMsg" class="text-rose-500 text-xs mt-3 text-center font-medium"></div>
             <div id="successMsg" class="text-emerald-400 text-xs mt-3 text-center font-medium"></div>
 
-            <!-- Toggle View -->
             <div class="text-center mt-4 text-xs text-slate-400" id="toggleArea">
               ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>
             </div>
-
-            <!-- Profile / User State -->
-            <div id="profileView" style="display: none;" class="text-center py-4">
-              <i class="fa-solid fa-circle-check text-4xl text-emerald-400 mb-2"></i>
-              <h3 class="text-base font-bold text-sky-400 mb-1">مرحباً بك في ALHAYAT TRAVEL 👋</h3>
-              <p id="welcomeEmail" class="text-xs text-slate-300 mb-4"></p>
-              <button class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl text-xs transition" onclick="handleSignOut()">تسجيل الخروج</button>
-            </div>
-
         </div>
     </div>
 
-    <!-- 2. Support Modal -->
+    <!-- Profile Modal -->
+    <div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+        <div class="glass-card w-full max-w-lg rounded-3xl p-6 relative border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('profileModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 rounded-2xl bg-sky-500/20 border border-sky-500/40 text-sky-400 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white">لوحة تحكم الحساب الشخصي</h3>
+                <p id="profileUserEmail" class="text-xs text-slate-400 mt-0.5"></p>
+            </div>
+
+            <form id="profileForm" onsubmit="event.preventDefault(); updateProfileData();">
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">الاسم الكامل</label>
+                        <input type="text" id="profName" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">رقم الهاتف</label>
+                        <input type="text" id="profPhone" placeholder="+971..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">تاريخ الميلاد</label>
+                        <input type="date" id="profDob" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">النوع</label>
+                        <select id="profGender" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="male">ذكر</option>
+                            <option value="female">أنثى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition mb-4">
+                    حفظ التعديلات
+                </button>
+            </form>
+
+            <div id="profMsg" class="text-emerald-400 text-xs mb-4 text-center font-medium"></div>
+
+            <div class="border-t border-slate-800 pt-4 mb-4">
+                <h4 class="text-xs font-bold text-slate-300 mb-2 flex items-center gap-1.5">
+                    <i class="fa-solid fa-plane-departure text-sky-400"></i>
+                    <span>حجوزاتي المفضلة / السابقة</span>
+                </h4>
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 text-center text-slate-400 text-xs">
+                    لا توجد رحلات مفضلة محفوظة حالياً. ابدأ بالبحث واحفظ وجهتك المفضلة!
+                </div>
+            </div>
+
+            <button onclick="handleSignOut(); closeModal('profileModal');" class="w-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 font-bold py-2.5 rounded-xl text-xs transition">
+                تسجيل الخروج من الحساب
+            </button>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
     <div id="supportModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="glass-card w-full max-w-sm rounded-3xl p-6 relative border border-slate-700 shadow-2xl text-center">
             <button onclick="closeModal('supportModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
@@ -374,8 +426,9 @@
 
     <!-- Site Functions JS -->
     <script>
+        let currentUserGlobal = null;
+
         function switchCategory(category) {
-            // إخفاء جميع الأقسام الثلاثة
             const flightsSec = document.getElementById('section-flights');
             const hotelsSec = document.getElementById('section-hotels');
             const carsSec = document.getElementById('section-cars');
@@ -384,13 +437,11 @@
             if (hotelsSec) hotelsSec.classList.add('hidden-section');
             if (carsSec) carsSec.classList.add('hidden-section');
             
-            // إعادة ضبط ألوان الأزرار
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.classList.add('text-slate-400');
             });
 
-            // إظهار القسم المختار وتنشيط زره
             const selectedSection = document.getElementById(`section-${category}`);
             const activeBtn = document.getElementById(`cat-${category}`);
             
@@ -437,9 +488,17 @@
                 closeModal(event.target.id);
             }
         }
+
+        function handleUserBtnClick() {
+            if (currentUserGlobal) {
+                openModal('profileModal');
+            } else {
+                openModal('loginModal');
+            }
+        }
     </script>
 
-    <!-- Real Firebase Authentication, Firestore & Analytics Script -->
+    <!-- Firebase SDK & Messaging Setup -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
@@ -453,9 +512,9 @@
           onAuthStateChanged,
           signOut
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
 
-        // Firebase Configuration (ALHAYAT TRAVEL)
         const firebaseConfig = {
           apiKey: "AIzaSyCoKoDJjLqUgFW30FPeGft9yt95AOCUPsY",
           authDomain: "alhaya-travel.firebaseapp.com",
@@ -470,9 +529,46 @@
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
         const db = getFirestore(app);
+        const messaging = getMessaging(app);
         let isSignUpMode = false;
 
-        // دالة حفظ بيانات المستخدم في Firestore
+        // دالة تفعيل الإشعارات وحفظ التوكن
+        window.requestNotificationPermission = async () => {
+          try {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+              const currentToken = await getToken(messaging, { 
+                vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' // يمكن توليده من لوحة تحكم Firebase Messaging
+              });
+              
+              if (currentToken) {
+                console.log('FCM Token:', currentToken);
+                if (auth.currentUser) {
+                  await setDoc(doc(db, "users", auth.currentUser.uid), {
+                    fcmToken: currentToken
+                  }, { merge: true });
+                }
+                const notifBtn = document.getElementById("notifBtn");
+                if (notifBtn) {
+                  notifBtn.innerHTML = `<i class="fa-solid fa-bell-slash"></i> <span>الإشعارات مفعلة</span>`;
+                  notifBtn.classList.replace("text-sky-400", "text-emerald-400");
+                }
+                alert("تم تفعيل الإشعارات بنجاح!");
+              }
+            } else {
+              alert("تم رفض إذن الإشعارات.");
+            }
+          } catch (err) {
+            console.error("خطأ أثناء تفعيل الإشعارات:", err);
+          }
+        };
+
+        // استقبال الإشعارات عندما تكون الصفحة مفتوحة
+        onMessage(messaging, (payload) => {
+          console.log('Message received: ', payload);
+          alert(`🔔 ${payload.notification.title}\n${payload.notification.body}`);
+        });
+
         async function saveUserToFirestore(user, extraData = {}) {
           try {
             await setDoc(doc(db, "users", user.uid), {
@@ -480,19 +576,51 @@
               name: extraData.name || user.displayName || "مستخدم",
               email: user.email,
               photoURL: user.photoURL || "",
-              createdAt: serverTimestamp(),
               lastLogin: serverTimestamp(),
               ...extraData
             }, { merge: true });
           } catch (e) {
-            console.error("خطأ في حفظ البيانات في Firestore:", e);
+            console.error("خطأ في حفظ البيانات:", e);
           }
         }
 
-        // Toggle Mode
+        async function loadProfileData(user) {
+          try {
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              document.getElementById("profName").value = data.name || "";
+              document.getElementById("profPhone").value = data.phone || "";
+              document.getElementById("profDob").value = data.dob || "";
+              document.getElementById("profGender").value = data.gender || "male";
+            }
+          } catch (e) {
+            console.error("خطأ في جلب البيانات:", e);
+          }
+        }
+
+        window.updateProfileData = async () => {
+          if (!auth.currentUser) return;
+          const name = document.getElementById("profName").value;
+          const phone = document.getElementById("profPhone").value;
+          const dob = document.getElementById("profDob").value;
+          const gender = document.getElementById("profGender").value;
+
+          try {
+            await setDoc(doc(db, "users", auth.currentUser.uid), {
+              name, phone, dob, gender, updatedAt: serverTimestamp()
+            }, { merge: true });
+            
+            document.getElementById("profMsg").innerText = "تم حفظ التعديلات بنجاح!";
+            setTimeout(() => { document.getElementById("profMsg").innerText = ""; }, 3000);
+          } catch (e) {
+            console.error("خطأ في التحديث:", e);
+          }
+        };
+
         window.toggleMode = (signUp) => {
           isSignUpMode = signUp;
-          
           const signUpFields = document.getElementById("signUpFields");
           const cardSubtitle = document.getElementById("cardSubtitle");
           const submitBtn = document.getElementById("submitBtn");
@@ -506,11 +634,9 @@
               ? 'لديك حساب بالفعل؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(false)">تسجيل الدخول</span>'
               : 'ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>';
           }
-          
           clearMsgs();
         };
 
-        // Handlers
         window.submitAuth = async () => {
           clearMsgs();
           const email = document.getElementById("email")?.value;
@@ -528,119 +654,87 @@
             const gender = document.getElementById("gender")?.value;
 
             if (!firstName || !lastName || !dob) {
-              showError("يرجى إكمال جميع البيانات المطلوبة (الاسم، تاريخ الميلاد).");
+              showError("يرجى إكمال جميع البيانات المطلوبة.");
               return;
             }
 
             try {
               const userCredential = await createUserWithEmailAndPassword(auth, email, password);
               await sendEmailVerification(userCredential.user);
-              
-              // حفظ البيانات في Firestore عند الإنشاء
               await saveUserToFirestore(userCredential.user, {
                 name: `${firstName} ${lastName}`,
-                firstName: firstName,
-                lastName: lastName,
-                dob: dob,
-                gender: gender
+                dob, gender
               });
-
-              showSuccess("تم إنشاء الحساب بنجاح! تم إرسال رابط تأكيد إلى بريدك الإلكتروني.");
+              showSuccess("تم إنشاء الحساب بنجاح!");
             } catch (err) {
-              showError("فشل إنشاء الحساب: " + getArabicError(err.code));
+              showError("فشل إنشاء الحساب: " + err.code);
             }
           } else {
             try {
               const userCredential = await signInWithEmailAndPassword(auth, email, password);
-              // تحديث آخر تسجيل دخول في Firestore
               await saveUserToFirestore(userCredential.user);
-
-              if (typeof closeModal === 'function') closeModal('loginModal');
+              closeModal('loginModal');
             } catch (err) {
               showError("بيانات الدخول غير صحيحة.");
             }
           }
         };
 
-        // Google Sign-In
         window.handleGoogleSignIn = async () => {
           clearMsgs();
           const provider = new GoogleAuthProvider();
           try {
             const result = await signInWithPopup(auth, provider);
-            // حفظ بيانات مستخدم جوجل في Firestore
             await saveUserToFirestore(result.user);
-
-            if (typeof closeModal === 'function') closeModal('loginModal');
+            closeModal('loginModal');
           } catch (err) {
             showError("تعذر الدخول بواسطة Google.");
           }
         };
 
-        // Sign Out
         window.handleSignOut = () => signOut(auth);
 
-        // Auth Observer
         onAuthStateChanged(auth, (user) => {
-          const authForm = document.getElementById("authForm");
-          const signUpFields = document.getElementById("signUpFields");
-          const toggleArea = document.getElementById("toggleArea");
-          const googleBtn = document.getElementById("googleBtn");
-          const authDivider = document.getElementById("authDivider");
-          const profileView = document.getElementById("profileView");
-          const welcomeEmail = document.getElementById("welcomeEmail");
+          currentUserGlobal = user;
           const userBtnText = document.getElementById("userBtnText");
+          const profileUserEmail = document.getElementById("profileUserEmail");
 
           if (user) {
-            if (authForm) authForm.style.display = "none";
-            if (signUpFields) signUpFields.style.display = "none";
-            if (toggleArea) toggleArea.style.display = "none";
-            if (googleBtn) googleBtn.style.display = "none";
-            if (authDivider) authDivider.style.display = "none";
-            if (profileView) profileView.style.display = "block";
-            if (welcomeEmail) welcomeEmail.innerText = user.email;
-            if (userBtnText) userBtnText.innerText = user.displayName || user.email.split('@')[0];
+            userBtnText.innerText = user.displayName || user.email.split('@')[0];
+            if (profileUserEmail) profileUserEmail.innerText = user.email;
+            loadProfileData(user);
           } else {
-            if (authForm) authForm.style.display = "block";
-            if (toggleArea) toggleArea.style.display = "block";
-            if (googleBtn) googleBtn.style.display = "flex";
-            if (authDivider) authDivider.style.display = "block";
-            if (profileView) profileView.style.display = "none";
-            if (userBtnText) userBtnText.innerText = "تسجيل الدخول";
+            userBtnText.innerText = "تسجيل الدخول";
+            if (profileUserEmail) profileUserEmail.innerText = "";
           }
         });
 
-        // Helpers
         function validateEmail(email) {
           return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
-
         function showError(msg) {
-          const errorElem = document.getElementById("errorMsg");
-          if (errorElem) errorElem.innerText = msg;
+          document.getElementById("errorMsg").innerText = msg;
         }
-
         function showSuccess(msg) {
-          const successElem = document.getElementById("successMsg");
-          if (successElem) successElem.innerText = msg;
+          document.getElementById("successMsg").innerText = msg;
         }
-
         function clearMsgs() {
           showError("");
           showSuccess("");
         }
-
-        function getArabicError(code) {
-          if (code === 'auth/email-already-in-use') return 'البريد الإلكتروني مستخدم بالفعل.';
-          if (code === 'auth/weak-password') return 'كلمة المرور ضعيفة (يجب أن تكون 6 أحرف على الأقل).';
-          return 'حدث خطأ أثناء العملية.';
-        }
-    </script> 
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js');
-      }
     </script>
 
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a6f00d62539311d47e44b9a/1jv0pmhjr';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 </body>
 </html>
