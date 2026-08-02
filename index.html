@@ -599,6 +599,12 @@
           if (code === 'auth/weak-password') return 'كلمة المرور ضعيفة (يجب أن تكون 6 أحرف على الأقل).';
           return 'حدث خطأ أثناء العملية.';
         }
-    </script>
+    </script> 
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+
 </body>
 </html>
