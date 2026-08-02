@@ -136,22 +136,21 @@
 
         <!-- Category Tabs -->
         <div class="grid grid-cols-3 gap-2 md:gap-3 mb-4">
-        <div class="grid grid-cols-3 gap-2 md:gap-3 mb-4">
-  <button id="btn-flights" onclick="switchCategory('flights')" class="tab-btn active bg-sky-500 text-white font-bold p-3 rounded-xl flex flex-col items-center justify-center gap-1 transition">
-    <i class="fa-solid fa-plane text-lg md:text-xl"></i>
-    <span class="text-xs">رحلات طيران</span>
-  </button>
+            <button onclick="switchCategory('flights')" id="cat-flights" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-300 font-bold hover:text-white">
+                <i class="fa-solid fa-plane text-lg md:text-xl"></i>
+                <span class="text-xs">رحلات طيران</span>
+            </button>
 
-  <button id="btn-hotels" onclick="switchCategory('hotels')" class="tab-btn bg-slate-800 text-gray-300 font-bold p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:bg-slate-700 transition">
-    <i class="fa-solid fa-hotel text-lg md:text-xl"></i>
-    <span class="text-xs">فنادق وإقامة</span>
-  </button>
+            <button onclick="switchCategory('hotels')" id="cat-hotels" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white">
+                <i class="fa-solid fa-hotel text-lg md:text-xl"></i>
+                <span class="text-xs">فنادق وإقامة</span>
+            </button>
 
-  <button id="btn-cars" onclick="switchCategory('cars')" class="tab-btn bg-slate-800 text-gray-300 font-bold p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:bg-slate-700 transition">
-    <i class="fa-solid fa-car text-lg md:text-xl"></i>
-    <span class="text-xs">تأجير سيارات</span>
-  </button>
-</div>
+            <button onclick="switchCategory('cars')" id="cat-cars" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white">
+                <i class="fa-solid fa-car text-lg md:text-xl"></i>
+                <span class="text-xs">تأجير سيارات</span>
+            </button>
+        </div>
 
         <!-- Search Card Container -->
         <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl mb-10 min-h-[350px]">
@@ -169,23 +168,10 @@
                 </div>
             </div>
 
-            <div id="cars-search-container" class="w-full my-4 hidden rounded-2xl overflow-hidden border border-slate-700 bg-slate-900 shadow-2xl">
-  <div class="bg-slate-800 p-3 text-center border-b border-slate-700">
-    <p class="text-xs md:text-sm text-sky-400 font-semibold">
-      🚗 ابحث وقارن بين أفضل أسعار تأجير السيارات عالمياً مباشرة
-    </p>
-  </div>
-
-  <div class="w-full relative min-h-[600px]">
-    <iframe 
-      src="https://www.economybookings.com/?marker=758619" 
-      class="w-full h-[650px] border-0 rounded-b-2xl" 
-      title="محرك بحث السيارات"
-      loading="lazy">
-    </iframe>
-  </div>
+            <!-- 3. تأجير السيارات -->
+<div id="cars-search-container" class="w-full my-4 rounded-xl overflow-hidden shadow-lg">
+  <script async src="https://tpwgts.com/content?trs=557141&shmarker=758619&locale=en&powered_by=false&border_radius=12&plain=true&show_logo=true&color_background=%2300000069&color_button=%2398A539e6&color_text=%23000000&color_input_text=%23000000&color_button_text=%23ffffff&promo_id=4480&campaign_id=10" charset="utf-8"></script>
 </div>
-
 
 
         </div>
@@ -598,35 +584,6 @@
           if (code === 'auth/weak-password') return 'كلمة المرور ضعيفة (يجب أن تكون 6 أحرف على الأقل).';
           return 'حدث خطأ أثناء العملية.';
         }
-        <script>
-function switchCategory(category) {
-  // إخفاء جميع الأقسام
-  const flightsSection = document.getElementById('flights-section') || document.getElementById('tab-flights');
-  const hotelsSection = document.getElementById('hotels-section') || document.getElementById('tab-hotels');
-  const carsSection = document.getElementById('cars-search-container') || document.getElementById('tab-cars');
-
-  if (flightsSection) flightsSection.classList.add('hidden');
-  if (hotelsSection) hotelsSection.classList.add('hidden');
-  if (carsSection) carsSection.classList.add('hidden');
-
-  // إعادة ضبط ألوان الأزرار
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('bg-sky-500', 'text-white');
-    btn.classList.add('bg-slate-800', 'text-gray-300');
-  });
-
-  // إظهار القسم المطلوب وتنشيط زره
-  if (category === 'flights' && flightsSection) flightsSection.classList.remove('hidden');
-  if (category === 'hotels' && hotelsSection) hotelsSection.classList.remove('hidden');
-  if (category === 'cars' && carsSection) carsSection.classList.remove('hidden');
-
-  const activeBtn = document.getElementById('btn-' + category);
-  if (activeBtn) {
-    activeBtn.classList.remove('bg-slate-800', 'text-gray-300');
-    activeBtn.classList.add('bg-sky-500', 'text-white');
-  }
-}
-</script>
-
+    </script>
 </body>
 </html>
