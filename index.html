@@ -386,12 +386,14 @@
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition mb-4">
-                    حفظ التعديلات
+                <!-- رسائل الخطأ والنجاح الخاصة باللوحة -->
+                <div id="profErrorMsg" class="text-rose-500 text-xs mb-2 text-center font-medium"></div>
+                <div id="profMsg" class="text-emerald-400 text-xs mb-2 text-center font-medium"></div>
+
+                <button type="submit" id="saveProfileBtn" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition mb-4 flex items-center justify-center gap-2">
+                    <span>حفظ التعديلات</span>
                 </button>
             </form>
-
-            <div id="profMsg" class="text-emerald-400 text-xs mb-4 text-center font-medium"></div>
 
             <div class="border-t border-slate-800 pt-4 mb-4">
                 <h4 class="text-xs font-bold text-slate-300 mb-2 flex items-center gap-1.5">
@@ -514,7 +516,9 @@
           signInWithPopup,
           sendEmailVerification,
           onAuthStateChanged,
-          signOut
+          signOut,
+          setPersistence,
+          browserLocalPersistence
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
@@ -532,6 +536,12 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
+        
+        // حل مشكلة فقدان حالة الجلسة وتخزين الـ sessionStorage في المتصفحات الخارجية
+        setPersistence(auth, browserLocalPersistence).catch((error) => {
+          console.error("Auth persistence error:", error);
+        });
+
         const db = getFirestore(app);
         const messaging = getMessaging(app);
         let isSignUpMode = false;
@@ -542,7 +552,7 @@
             const permission = await Notification.requestPermission();
             if (permission === 'granted') {
               const currentToken = await getToken(messaging, { 
-                vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' // يمكن توليده من لوحة تحكم Firebase Messaging
+                vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' 
               });
               
               if (currentToken) {
@@ -588,6 +598,7 @@
           }
         }
 
+        // 1 & 2. جلب وتعبئة بيانات المستخدم تلقائياً باستخدام UID كمفتاح أساسي
         async function loadProfileData(user) {
           try {
             const docRef = doc(db, "users", user.uid);
@@ -600,26 +611,69 @@
               document.getElementById("profGender").value = data.gender || "male";
             }
           } catch (e) {
-            console.error("خطأ في جلب البيانات:", e);
+            console.error("خطأ في جلب بيانات الملف الشخصي:", e);
           }
         }
 
+        // 3, 4 & 5. تحديث الحفظ مع Validation و Loading و Feedback المباشر
         window.updateProfileData = async () => {
           if (!auth.currentUser) return;
-          const name = document.getElementById("profName").value;
-          const phone = document.getElementById("profPhone").value;
+
+          const name = document.getElementById("profName").value.trim();
+          const phone = document.getElementById("profPhone").value.trim();
           const dob = document.getElementById("profDob").value;
           const gender = document.getElementById("profGender").value;
 
+          const errBox = document.getElementById("profErrorMsg");
+          const successBox = document.getElementById("profMsg");
+          const saveBtn = document.getElementById("saveProfileBtn");
+
+          // تصفير الرسائل القديمة
+          errBox.innerText = "";
+          successBox.innerText = "";
+
+          // 4. التحقق من البيانات (Validation)
+          if (!name) {
+            errBox.innerText = "❌ يرجى إدخال الاسم الكامل.";
+            return;
+          }
+
+          const phoneRegex = /^[+]?[\d\s-]{8,}$/;
+          if (!phone || !phoneRegex.test(phone)) {
+            errBox.innerText = "❌ يرجى إدخال رقم هاتف صحيح.";
+            return;
+          }
+
+          if (!dob) {
+            errBox.innerText = "❌ يرجى إدخال تاريخ الميلاد.";
+            return;
+          }
+
+          // 5. تجربة المستخدم - تفعيل حالة الـ Loading للزر
+          saveBtn.disabled = true;
+          saveBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>جاري الحفظ...</span>`;
+
           try {
             await setDoc(doc(db, "users", auth.currentUser.uid), {
-              name, phone, dob, gender, updatedAt: serverTimestamp()
+              name, 
+              phone, 
+              dob, 
+              gender, 
+              updatedAt: serverTimestamp()
             }, { merge: true });
             
-            document.getElementById("profMsg").innerText = "تم حفظ التعديلات بنجاح!";
-            setTimeout(() => { document.getElementById("profMsg").innerText = ""; }, 3000);
+            successBox.innerText = "✅ تم حفظ التعديلات بنجاح!";
+            setTimeout(() => { 
+              successBox.innerText = ""; 
+            }, 4000);
+
           } catch (e) {
             console.error("خطأ في التحديث:", e);
+            errBox.innerText = "❌ حدث خطأ أثناء الحفظ، حاول مرة أخرى.";
+          } finally {
+            // إعادة الزر لحالته الطبيعية
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = `<span>حفظ التعديلات</span>`;
           }
         };
 
@@ -692,7 +746,7 @@
             await saveUserToFirestore(result.user);
             closeModal('loginModal');
           } catch (err) {
-            showError("تعذر الدخول بواسطة Google.");
+            showError("تعذر الدخول بواسطة Google: " + err.message);
           }
         };
 
@@ -733,7 +787,7 @@
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
+    s1.async=`true`;
     s1.src='https://embed.tawk.to/6a6f00d62539311d47e44b9a/1jv0pmhjr';
     s1.charset='UTF-8';
     s1.setAttribute('crossorigin','*');
