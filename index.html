@@ -104,7 +104,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white pb-20">
 
-    <!-- Header / Navbar (يختفي في صفحات القوائم السفلية ما عدا الرئيسية) -->
+    <!-- Header / Navbar -->
     <header id="mainHeader" class="bg-brand-dark/95 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             
@@ -136,7 +136,6 @@
                         <div id="userAvatar" class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-extrabold flex items-center justify-center text-[11px]">
                             U
                         </div>
-                        <span id="headerUserName" class="truncate max-w-[110px]">المستخدم</span>
                         <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
                     </button>
                     
@@ -176,24 +175,24 @@
             </div>
 
             <!-- الخانات الرئيسية: رحلات، أماكن إقامة، السيارات -->
-            <div class="grid grid-cols-3 gap-2 md:gap-3 mb-6">
-                <button onclick="navigateTo('flights')" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-300 font-bold hover:text-white shadow-lg">
+            <div class="grid grid-cols-3 gap-2 md:gap-3 mb-6 relative">
+                <button onclick="navigateToTab('flights', 0)" id="mainTabBtn0" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-300 font-bold hover:text-white shadow-lg">
                     <i class="fa-solid fa-plane text-xl md:text-2xl text-sky-400"></i>
                     <span class="text-xs md:text-sm">رحلات</span>
                 </button>
 
-                <button onclick="navigateTo('hotels')" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white shadow-lg">
+                <button onclick="navigateToTab('hotels', 1)" id="mainTabBtn1" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white shadow-lg">
                     <i class="fa-solid fa-bed text-xl md:text-2xl text-amber-400"></i>
                     <span class="text-xs md:text-sm">أماكن إقامة</span>
                 </button>
 
-                <button onclick="navigateTo('cars')" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white shadow-lg">
+                <button onclick="navigateToTab('cars', 2)" id="mainTabBtn2" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white shadow-lg">
                     <i class="fa-solid fa-car text-xl md:text-2xl text-emerald-400"></i>
                     <span class="text-xs md:text-sm">السيارات</span>
                 </button>
             </div>
 
-            <!-- خانات إضافية (لماذا + استكشف جميع الوجهات) -->
+            <!-- خانات إضافية -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                 <button onclick="navigateTo('why-us')" class="glass-card hover:border-sky-500/50 p-4 rounded-2xl flex items-center gap-3 transition text-right group">
                     <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-sky-500 group-hover:text-slate-950 transition">
@@ -222,8 +221,8 @@
                     <i class="fa-solid fa-clock-rotate-left text-sky-400"></i>
                     <span>تابع من حيث توقفت</span>
                 </div>
-                <div id="continueContainer" class="text-xs text-slate-400 text-center py-4 bg-slate-900/50 rounded-xl border border-slate-800">
-                    لا توجد عمليات بحث سابقة. ابدأ بحثك الآن!
+                <div id="continueContainer" class="text-xs text-slate-300 text-center py-4 bg-slate-900/50 rounded-xl border border-slate-800">
+                    لا توجد عمليات بحث سابقة. ابدأ بحثك الآن وسيتم حفظه تلقائياً!
                 </div>
             </div>
         </div>
@@ -249,6 +248,14 @@
                 </h3>
             </div>
             <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl">
+                <div class="mb-6 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                    <h4 class="text-xs font-bold text-amber-400 mb-3">حفظ حجز فندق سريع</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 text-xs">
+                        <input type="text" id="hotelNameInput" placeholder="اسم الفندق والمدينة (مثال: فندق هيلتون دبي)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white">
+                        <input type="date" id="hotelDateInput" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white">
+                    </div>
+                    <button onclick="saveHotelItem()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">حفظ الفندق في المحفوظات</button>
+                </div>
                 <div id="hotels-widget-container" class="w-full">
                     <p class="text-center text-slate-400 py-10">جاري تحميل محرك بحث الفنادق...</p>
                 </div>
@@ -347,20 +354,17 @@
 
         <!-- ================= PAGE 7: المحفوظات (Favorites) ================= -->
         <div id="page-favorites" class="page-view">
-            <div class="glass-card rounded-3xl p-6 text-center">
-                <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-500 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2">المحفوظات (الرحلات والفنادق والسيارات)</h3>
-                
-                <div id="favoritesContentArea" class="mt-4">
-                    <!-- إذا لم يكن حافظ شيئاً -->
-                    <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6">
-                        <p class="text-xs text-slate-400 mb-4">لم تقم بحفظ أي رحلات أو فنادق أو سيارات حتى الآن.</p>
-                        <button onclick="navigateTo('flights')" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-md">
-                            <i class="fa-solid fa-magnifying-glass"></i> البحث عن الرحلات الجوية
-                        </button>
+            <div class="glass-card rounded-3xl p-6">
+                <div class="text-center mb-4">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-500 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+                        <i class="fa-solid fa-heart"></i>
                     </div>
+                    <h3 class="text-lg font-bold text-white mb-2">المحفوظات (الرحلات والفنادق والسيارات)</h3>
+                    <p class="text-xs text-slate-400">أي رحلة أو حجز يتم حفظه يظهر هنا مباشرة</p>
+                </div>
+                
+                <div id="favoritesContentArea" class="mt-4 space-y-2">
+                    <!-- يتم تعبئتها ديناميكياً من الـ localStorage -->
                 </div>
             </div>
         </div>
@@ -382,11 +386,9 @@
         </div>
 
         <!-- ================= PAGE 9: حسابي والأقسام الفرعية (Account) ================= -->
-        <!-- 9.1 الصفحة الرئيسية لحسابي -->
         <div id="page-account-main" class="page-view">
             <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
                 <div class="text-center mb-6">
-                    <!-- الدائرة الملونه وبداية الحرفين -->
                     <div id="accountCircleBadge" class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 text-slate-950 font-black text-2xl flex items-center justify-center mx-auto mb-3 shadow-xl">
                         AH
                     </div>
@@ -394,7 +396,6 @@
                     <p id="accountProfileEmail" class="text-xs text-slate-400 mt-0.5">user@example.com</p>
                 </div>
 
-                <!-- الأربع مربعات بالبنط العريض -->
                 <div class="grid grid-cols-2 gap-3">
                     <button onclick="navigateTo('account-data')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group">
                         <div class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-2 group-hover:bg-sky-500 group-hover:text-slate-950 transition">
@@ -437,19 +438,51 @@
                 <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-file-lines text-sky-400"></i> بياناتك الشخصية
                 </h3>
-                <div class="space-y-2 text-xs">
-                    <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800 flex items-center justify-between">
-                        <span class="text-slate-300 font-bold">بيانات تسجيل الدخول</span>
-                        <span class="text-sky-400 text-[11px]">نشط وآمن</span>
+                <div class="space-y-3 text-xs">
+                    
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-slate-200 font-bold text-sm">بيانات تسجيل الدخول</span>
+                            <button onclick="toggleSection('loginDetailsView')" class="text-sky-400 underline font-bold">عرض البيانات</button>
+                        </div>
+                        <div id="loginDetailsView" class="hidden mt-3 pt-3 border-t border-slate-800 space-y-2 text-slate-300">
+                            <p><strong>البريد الإلكتروني:</strong> <span id="displayLoginEmail">-</span></p>
+                            <p><strong>اسم المستخدم:</strong> <span id="displayLoginName">-</span></p>
+                            <p><strong>تاريخ الميلاد المسجل:</strong> <span id="displayLoginDob">-</span></p>
+                        </div>
                     </div>
-                    <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800 flex items-center justify-between">
-                        <span class="text-slate-300 font-bold">إدارة الحساب والملف</span>
-                        <button onclick="openModal('profileModal')" class="text-sky-400 underline">تعديل</button>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-slate-200 font-bold text-sm">إدارة الحساب والملف</span>
+                            <button onclick="toggleSection('editProfileSection')" class="text-sky-400 underline font-bold">تعديل البيانات</button>
+                        </div>
+                        <div id="editProfileSection" class="hidden mt-3 pt-3 border-t border-slate-800 space-y-3">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">الاسم</label>
+                                <input type="text" id="editProfileName" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">تاريخ الميلاد</label>
+                                <input type="date" id="editProfileDob" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">رقم الجوال</label>
+                                <input type="tel" id="editProfilePhone" placeholder="+966..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">البريد الإلكتروني (غير قابل للتعديل)</label>
+                                <input type="email" id="editProfileEmail" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-500 cursor-not-allowed">
+                            </div>
+                            <button onclick="saveProfileEdits()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2 rounded-xl transition">حفظ التعديلات</button>
+                        </div>
                     </div>
-                    <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800 flex items-center justify-between">
-                        <span class="text-rose-400 font-bold">تسجيل خروج</span>
-                        <button onclick="handleSignOut()" class="text-rose-400 underline">خروج</button>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
+                        <span class="text-rose-400 font-bold text-sm">تسجيل خروج</span>
+                        <button onclick="handleSignOut()" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 font-bold px-4 py-2 rounded-xl transition">خروج فوراً</button>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -457,11 +490,18 @@
         <!-- 9.3 فرع رحلاتك -->
         <div id="page-account-trips" class="page-view">
             <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
-                <h3 class="text-base font-bold text-white mb-2">تخطيط الرحلات</h3>
-                <p class="text-xs text-slate-400 mb-4">نظم رحلاتك واحصل على كافة تفاصيلها في مكان واحد.</p>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
-                    <span class="text-slate-300 font-bold">تنبيهات الأسعار</span>
-                    <span class="bg-sky-500/10 text-sky-400 px-2.5 py-1 rounded-full font-bold">مفعل</span>
+                <h3 class="text-base font-bold text-white mb-2">رحلاتك وتنبيه الأسعار</h3>
+                <p class="text-xs text-slate-400 mb-4">تنبيه الأسعار فعال وجاهز لإضافة رابطك المخصص في المستقبل.</p>
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-3 text-xs">
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-200 font-bold">تنبيه الاسعار (نشط)</span>
+                        <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-bold">مفعل</span>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">رابط تنبيه الأسعار (مستقبلي)</label>
+                        <input type="text" id="futurePriceAlertLink" placeholder="https://your-custom-link.com" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs mb-2">
+                        <button onclick="savePriceAlertLink()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2 rounded-xl transition">حفظ الرابط</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -472,23 +512,100 @@
                 <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-gear text-amber-400"></i> إعدادات الحساب والتطبيق
                 </h3>
-                <div class="space-y-2 text-xs text-slate-300">
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                        <span>العملة</span>
-                        <span class="text-sky-400 font-bold">USD ($)</span>
+                
+                <div class="space-y-4 text-xs text-slate-300">
+                    
+                    <div>
+                        <label class="block font-bold text-white mb-1">العملة</label>
+                        <select id="settingsCurrency" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500">
+                            <option value="USD">دولار أمريكي (USD)</option>
+                            <option value="EUR">يورو (EUR)</option>
+                            <option value="SAR">ريال سعودي (SAR)</option>
+                            <option value="AED">درهم إماراتي (AED)</option>
+                            <option value="EGP">جنيه مصري (EGP)</option>
+                            <option value="KWD">دينار كويتي (KWD)</option>
+                            <option value="QAR">ريال قطري (QAR)</option>
+                            <option value="BHD">دينار بحريني (BHD)</option>
+                            <option value="OMR">ريال عماني (OMR)</option>
+                            <option value="JOD">دينار أردني (JOD)</option>
+                            <option value="GBP">جنيه إسترليني (GBP)</option>
+                            <option value="CAD">دولار كندي (CAD)</option>
+                            <option value="AUD">دولار أسترالي (AUD)</option>
+                            <option value="JPY">ين ياباني (JPY)</option>
+                            <option value="CHF">فرنك سويسري (CHF)</option>
+                            <option value="TRY">ليرة تركية (TRY)</option>
+                            <option value="INR">روبية هندية (INR)</option>
+                            <option value="CNY">يوان صيني (CNY)</option>
+                        </select>
                     </div>
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                        <span>اختيار البلد أو المنطقة</span>
-                        <span class="text-sky-400 font-bold">الإمارات العربية المتحدة</span>
+
+                    <div>
+                        <label class="block font-bold text-white mb-1">اختيار البلد أو المنطقة</label>
+                        <select id="settingsCountry" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500">
+                            <option value="AE">الإمارات العربية المتحدة</option>
+                            <option value="SA">المملكة العربية السعودية</option>
+                            <option value="EG">جمهورية مصر العربية</option>
+                            <option value="KW">الكويت</option>
+                            <option value="QA">قطر</option>
+                            <option value="BH">البحرين</option>
+                            <option value="OM">عمان</option>
+                            <option value="JO">الأردن</option>
+                            <option value="LB">لبنان</option>
+                            <option value="MA">المغرب</option>
+                            <option value="DZ">الجزائر</option>
+                            <option value="TN">تونس</option>
+                            <option value="US">الولايات المتحدة الأمريكية</option>
+                            <option value="GB">المملكة المتحدة</option>
+                            <option value="CA">كندا</option>
+                            <option value="DE">ألمانيا</option>
+                            <option value="FR">فرنسا</option>
+                            <option value="TR">تركيا</option>
+                            <option value="IN">الهند</option>
+                            <option value="JP">اليابان</option>
+                            <option value="CN">الصين</option>
+                            <option value="ALL">اختر أي دولة أخرى حول العالم...</option>
+                        </select>
                     </div>
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                        <span>خيار التسويق</span>
-                        <span class="text-emerald-400 font-bold">موافق</span>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <strong class="text-white block mb-0.5">خيار التسويق</strong>
+                            <p class="text-[11px] text-slate-400">احصل على العروض ونصائح وأفكار مهمه</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="marketingSwitch" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-500"></div>
+                        </label>
                     </div>
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                        <span>اعدادات البيانات</span>
-                        <span class="text-sky-400 font-bold">محمية</span>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <strong class="text-white block">إعدادات البيانات</strong>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">
+                            نستخدم أدوات البيانات لجعل التطبيق فعالاً وتحسين الميزات وعرض المحتوى ذي الصلة. اطلع على المزيد في سياسة ملفات تعريف الارتباط السارية لدينا.
+                        </p>
+                        
+                        <div class="pt-2 border-t border-slate-800 space-y-3 text-[11px]">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">ملفات تعريف الارتباط الأساسية (والتي تجعل موقعنا يعمل ولا يمكن إيقاف تشغيله.)</span>
+                                <span class="text-sky-400 font-bold">دائم (لا يمكن إيقافه)</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">تجربة محسنة (نستخدمها لاختبار الميزات وتحسينها وتطويرها.)</span>
+                                <input type="checkbox" id="cookieEnhanced" class="w-4 h-4 accent-sky-500 rounded" checked>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">الإعلان والتقنيات ذات الصلة (نعرض الإعلانات التي نقدمها نحن والأطراف الثالثة. إننا نقوم بجمع معلومات حول كيفية استخدامك لـ ALHAYAT TRAVEL، والتي تتضمن بيانات شخصية مثل عنوان IP الخاص بك.) يستخدم هذا لتحسين تجربتك، وتخزين المعلومات و/أو الوصول إليها على الجهاز، والإعلانات المخصصة، وقياس الإعلانات.</span>
+                                <input type="checkbox" id="cookieAds" class="w-4 h-4 accent-sky-500 rounded" checked>
+                            </div>
+                        </div>
                     </div>
+
+                    <button onclick="saveAllSettings()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 rounded-xl transition shadow-lg text-sm">
+                        حفظ الإعدادات
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -514,27 +631,31 @@
 
     </main>
 
-    <!-- الشريط السفلي الثابت (Bottom Navigation Bar) -->
+    <!-- الشريط السفلي الثابت -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[#070D1E]/95 backdrop-blur-md border-t border-slate-800 z-40 py-2 px-4">
-        <div class="max-w-md mx-auto flex items-center justify-around text-slate-400 text-xs font-bold">
+        <div class="max-w-md mx-auto flex items-center justify-around text-slate-400 text-xs font-bold relative">
             
-            <button onclick="navigateTo('home')" id="nav-home" class="flex flex-col items-center gap-1 hover:text-sky-400 transition text-sky-400">
+            <div id="bottomNavIndicator" class="absolute top-0 h-1 bg-sky-500 rounded-full transition-all duration-300" style="width: 25%; left: 75%;"></div>
+
+            <button onclick="navigateTo('home'); updateBottomIndicator(0);" id="navBtn-home" class="flex flex-col items-center gap-1 hover:text-sky-400 transition text-sky-400 py-1 flex-1">
                 <i class="fa-solid fa-house text-lg"></i>
                 <span>الرئيسية</span>
             </button>
 
-            <button onclick="navigateTo('favorites')" id="nav-favorites" class="flex flex-col items-center gap-1 hover:text-sky-400 transition">
+            <button onclick="navigateTo('favorites'); updateBottomIndicator(1);" id="navBtn-favorites" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
                 <i class="fa-solid fa-heart text-lg"></i>
                 <span>المحفوظات</span>
             </button>
 
-            <button onclick="navigateTo('drops')" id="nav-drops" class="flex flex-col items-center gap-1 hover:text-sky-400 transition">
+            <button onclick="navigateTo('drops'); updateBottomIndicator(2);" id="navBtn-drops" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
                 <i class="fa-solid fa-arrow-down text-lg"></i>
                 <span>Drops</span>
             </button>
 
-            <button onclick="handleAccountNavClick()" id="nav-account" class="flex flex-col items-center gap-1 hover:text-sky-400 transition">
-                <i class="fa-solid fa-user text-lg"></i>
+            <button onclick="handleAccountNavClick(); updateBottomIndicator(3);" id="navBtn-account" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <div id="navUserInitialsBadge" class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 font-extrabold flex items-center justify-center text-[10px] border border-sky-500/40">
+                    AH
+                </div>
                 <span>حسابي</span>
             </button>
 
@@ -635,39 +756,48 @@
         </div>
     </div>
 
-    <!-- التحكم بنظام الصفحات والتنقل -->
+    <!-- JavaScript Scripts -->
     <script>
         let historyStack = ['home'];
         let hotelsLoaded = false;
 
         function navigateTo(pageId, addToHistory = true) {
-            // إخفاء جميع الصفحات
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
             
-            // إظهار الصفحة المطلوبة
             const target = document.getElementById(`page-${pageId}`);
             if (target) {
                 target.classList.add('active-page');
             }
 
-            // إدارة الـ History للرجوع
             if (addToHistory && historyStack[historyStack.length - 1] !== pageId) {
                 historyStack.push(pageId);
             }
 
-            // إدارة الهيدر (هل يظهر زر الرجوع والشعار أم لا حسب التعليمات)
             const brandLogoContainer = document.getElementById('brandLogoContainer');
             const backButtonContainer = document.getElementById('backButtonContainer');
 
             if (pageId === 'home') {
                 if (brandLogoContainer) brandLogoContainer.style.display = 'flex';
                 if (backButtonContainer) backButtonContainer.classList.add('hidden');
+                updateBottomIndicator(0);
+            } else if (pageId === 'favorites') {
+                if (brandLogoContainer) brandLogoContainer.style.display = 'none';
+                if (backButtonContainer) backButtonContainer.classList.remove('hidden');
+                updateBottomIndicator(1);
+                renderFavorites();
+            } else if (pageId === 'drops') {
+                if (brandLogoContainer) brandLogoContainer.style.display = 'none';
+                if (backButtonContainer) backButtonContainer.classList.remove('hidden');
+                updateBottomIndicator(2);
+            } else if (pageId.startsWith('account')) {
+                if (brandLogoContainer) brandLogoContainer.style.display = 'none';
+                if (backButtonContainer) backButtonContainer.classList.remove('hidden');
+                updateBottomIndicator(3);
             } else {
                 if (brandLogoContainer) brandLogoContainer.style.display = 'none';
                 if (backButtonContainer) backButtonContainer.classList.remove('hidden');
             }
 
-            // تحميل الفنادق عند الحاجة
             if (pageId === 'hotels' && !hotelsLoaded) {
                 loadHotelsWidget();
             }
@@ -677,7 +807,7 @@
 
         function goBack() {
             if (historyStack.length > 1) {
-                historyStack.pop(); // إزالة الصفحة الحالية
+                historyStack.pop();
                 const previousPage = historyStack[historyStack.length - 1];
                 navigateTo(previousPage, false);
             } else {
@@ -691,6 +821,126 @@
             } else {
                 openModal('loginModal');
             }
+        }
+
+        function updateBottomIndicator(index) {
+            const indicator = document.getElementById('bottomNavIndicator');
+            if (indicator) {
+                const positions = ['75%', '50%', '25%', '0%'];
+                indicator.style.left = positions[index];
+            }
+            
+            ['home', 'favorites', 'drops', 'account'].forEach((id, idx) => {
+                const btn = document.getElementById(`navBtn-${id}`);
+                if (btn) {
+                    if (idx === index) {
+                        btn.classList.add('text-sky-400');
+                    } else {
+                        btn.classList.remove('text-sky-400');
+                        btn.classList.add('text-slate-400');
+                    }
+                }
+            });
+        }
+
+        function navigateToTab(tabName, btnIndex) {
+            for(let i=0; i<3; i++) {
+                const b = document.getElementById(`mainTabBtn${i}`);
+                if(b) b.classList.remove('active');
+            }
+            const activeBtn = document.getElementById(`mainTabBtn${btnIndex}`);
+            if(activeBtn) activeBtn.classList.add('active');
+
+            navigateTo(tabName);
+        }
+
+        function saveHotelItem() {
+            const hotelName = document.getElementById('hotelNameInput').value || "فندق مميز";
+            const hotelDate = document.getElementById('hotelDateInput').value || "قريباً";
+            
+            const searchDesc = `بحث حجز فندق: ${hotelName} (${hotelDate})`;
+            localStorage.setItem('alh_last_search', searchDesc);
+
+            const cont = document.getElementById('continueContainer');
+            if(cont) cont.innerHTML = `<span class="text-amber-400 font-bold">${searchDesc}</span>`;
+
+            addFavoriteItem({ type: 'فندق', title: hotelName, date: hotelDate });
+            alert("تم حفظ حجز الفندق بنجاح في المحفوظات!");
+        }
+
+        function addFavoriteItem(item) {
+            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
+            favs.push(item);
+            localStorage.setItem('alh_favorites', JSON.stringify(favs));
+        }
+
+        function renderFavorites() {
+            const area = document.getElementById('favoritesContentArea');
+            if(!area) return;
+            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
+            if(favs.length === 0) {
+                area.innerHTML = `<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 text-center"><p class="text-xs text-slate-400 mb-3">لم تقم بحفظ أي رحلات أو فنادق حتى الآن.</p></div>`;
+                return;
+            }
+            let html = '';
+            favs.forEach((f, idx) => {
+                html += `<div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+                    <div>
+                        <span class="text-sky-400 font-bold block mb-0.5">${f.type}</span>
+                        <span class="text-white font-medium">${f.title} (${f.date})</span>
+                    </div>
+                    <button onclick="removeFavorite(${idx})" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            area.innerHTML = html;
+        }
+
+        function removeFavorite(index) {
+            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
+            favs.splice(index, 1);
+            localStorage.setItem('alh_favorites', JSON.stringify(favs));
+            renderFavorites();
+        }
+
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            if(el) el.classList.toggle('hidden');
+        }
+
+        function saveProfileEdits() {
+            const newName = document.getElementById('editProfileName').value;
+            const newDob = document.getElementById('editProfileDob').value;
+            const newPhone = document.getElementById('editProfilePhone').value;
+
+            let userProfile = JSON.parse(localStorage.getItem('alh_user_profile') || '{}');
+            userProfile.name = newName || userProfile.name;
+            userProfile.dob = newDob || userProfile.dob;
+            userProfile.phone = newPhone || userProfile.phone;
+            localStorage.setItem('alh_user_profile', JSON.stringify(userProfile));
+
+            document.getElementById('displayLoginName').innerText = userProfile.name;
+            document.getElementById('displayLoginDob').innerText = userProfile.dob || 'غير محدد';
+            document.getElementById('accountProfileName').innerText = userProfile.name;
+
+            alert("تم حفظ تعديلات الحساب بنجاح!");
+            toggleSection('editProfileSection');
+        }
+
+        function savePriceAlertLink() {
+            const link = document.getElementById('futurePriceAlertLink').value;
+            localStorage.setItem('alh_price_alert_link', link);
+            alert("تم حفظ رابط تنبيه الأسعار بنجاح ليعمل في المستقبل!");
+        }
+
+        function saveAllSettings() {
+            const currency = document.getElementById('settingsCurrency').value;
+            const country = document.getElementById('settingsCountry').value;
+            const marketing = document.getElementById('marketingSwitch').checked;
+            const enhanced = document.getElementById('cookieEnhanced').checked;
+            const ads = document.getElementById('cookieAds').checked;
+
+            localStorage.setItem('alh_settings', JSON.stringify({ currency, country, marketing, enhanced, ads }));
+            alert("تم حفظ إعدادات الحساب والتطبيق بنجاح!");
         }
 
         function loadHotelsWidget() {
@@ -724,6 +974,14 @@
             document.getElementById(id).classList.add('hidden');
             document.body.style.overflow = '';
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            let lastSearch = localStorage.getItem('alh_last_search');
+            if(lastSearch) {
+                const cont = document.getElementById('continueContainer');
+                if(cont) cont.innerHTML = `<span class="text-sky-400 font-bold">${lastSearch}</span>`;
+            }
+        });
     </script>
 
     <!-- Firebase SDK & Google Authentication Integration -->
@@ -740,7 +998,7 @@
           setPersistence,
           browserLocalPersistence
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyCoKoDJjLqUgFW30FPeGft9yt95AOCUPsY",
@@ -820,33 +1078,58 @@
           }
         };
 
-        window.handleSignOut = () => signOut(auth);
+        window.handleSignOut = () => {
+          signOut(auth).then(() => {
+            alert("تم تسجيل الخروج بنجاح.");
+            navigateTo('home');
+          });
+        };
 
         onAuthStateChanged(auth, (user) => {
           window.currentUserGlobal = user;
           const loggedOutBtn = document.getElementById("loggedOutBtn");
           const loggedInMenu = document.getElementById("loggedInMenu");
-          const headerUserName = document.getElementById("headerUserName");
           const userAvatar = document.getElementById("userAvatar");
           const accountProfileName = document.getElementById("accountProfileName");
           const accountProfileEmail = document.getElementById("accountProfileEmail");
           const accountCircleBadge = document.getElementById("accountCircleBadge");
+          const navUserInitialsBadge = document.getElementById("navUserInitialsBadge");
 
           if (user) {
             if (loggedOutBtn) loggedOutBtn.classList.add("hidden");
             if (loggedInMenu) loggedInMenu.classList.remove("hidden");
             const name = user.displayName || user.email.split('@')[0];
-            if (headerUserName) headerUserName.innerText = name;
-            if (userAvatar) userAvatar.innerText = name.charAt(0).toUpperCase();
-            if (accountProfileName) accountProfileName.innerText = name;
-            if (accountProfileEmail) accountProfileEmail.innerText = user.email;
-            if (accountCircleBadge) {
-                const initials = name.length >= 2 ? name.substring(0, 2).toUpperCase() : name.charAt(0).toUpperCase();
-                accountCircleBadge.innerText = initials;
+            
+            let userProfile = JSON.parse(localStorage.getItem('alh_user_profile') || '{}');
+            if(!userProfile.email) {
+                userProfile.email = user.email;
+                userProfile.name = name;
+                userProfile.dob = "1995-01-01";
+                userProfile.phone = "+966000000000";
+                localStorage.setItem('alh_user_profile', JSON.stringify(userProfile));
             }
+
+            if (userAvatar) userAvatar.innerText = name.charAt(0).toUpperCase();
+            if (accountProfileName) accountProfileName.innerText = userProfile.name;
+            if (accountProfileEmail) accountProfileEmail.innerText = user.email;
+            
+            const initials = userProfile.name.length >= 2 ? userProfile.name.substring(0, 2).toUpperCase() : userProfile.name.charAt(0).toUpperCase();
+            if (accountCircleBadge) accountCircleBadge.innerText = initials;
+            if (navUserInitialsBadge) navUserInitialsBadge.innerText = initials;
+
+            document.getElementById('displayLoginEmail').innerText = user.email;
+            document.getElementById('displayLoginName').innerText = userProfile.name;
+            document.getElementById('displayLoginDob').innerText = userProfile.dob || 'غير محدد';
+
+            document.getElementById('editProfileName').value = userProfile.name;
+            document.getElementById('editProfileDob').value = userProfile.dob || '';
+            document.getElementById('editProfilePhone').value = userProfile.phone || '';
+            document.getElementById('editProfileEmail').value = user.email;
+
           } else {
             if (loggedOutBtn) loggedOutBtn.classList.remove("hidden");
             if (loggedInMenu) loggedInMenu.classList.add("hidden");
+            if (navUserInitialsBadge) navUserInitialsBadge.innerText = "AH";
           }
         });
     </script>
