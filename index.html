@@ -155,10 +155,10 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Main Content Area (9 Pages) -->
     <main class="max-w-5xl mx-auto px-4 py-6 w-full flex-grow">
 
-        <!-- ================= PAGE 1: الرئيسية ================= -->
+        <!-- ================= PAGE 1: الصفحة الرئيسية (Home) ================= -->
         <div id="page-home" class="page-view active-page">
             <div class="text-center mb-6">
                 <h2 class="text-xl md:text-3xl font-black text-white mb-2">
@@ -169,7 +169,7 @@
                 </p>
             </div>
 
-            <!-- الخانات الرئيسية -->
+            <!-- الخانات الرئيسية: رحلات، أماكن إقامة، السيارات -->
             <div class="grid grid-cols-3 gap-2 md:gap-3 mb-6 relative">
                 <button onclick="navigateToTab('flights', 0)" id="mainTabBtn0" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-300 font-bold hover:text-white shadow-lg">
                     <i class="fa-solid fa-plane text-xl md:text-2xl text-sky-400"></i>
@@ -187,6 +187,7 @@
                 </button>
             </div>
 
+            <!-- خانات إضافية -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                 <button onclick="navigateTo('why-us')" class="glass-card hover:border-sky-500/50 p-4 rounded-2xl flex items-center gap-3 transition text-right group">
                     <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-sky-500 group-hover:text-slate-950 transition">
@@ -209,6 +210,7 @@
                 </button>
             </div>
 
+            <!-- قسم المتابعة: تابع من حيث توقفت -->
             <div class="glass-card rounded-2xl p-4 mb-6">
                 <div class="flex items-center gap-2 mb-3 text-xs font-bold text-slate-300">
                     <i class="fa-solid fa-clock-rotate-left text-sky-400"></i>
@@ -220,7 +222,7 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 2: الرحلات ================= -->
+        <!-- ================= PAGE 2: محرك البحث عن الرحلات (Flights) ================= -->
         <div id="page-flights" class="page-view">
             <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
@@ -233,7 +235,7 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 3: الفنادق ================= -->
+        <!-- ================= PAGE 3: محرك بحث أماكن الإقامة والفنادق (Hotels - ZenHotels Widget) ================= -->
         <div id="page-hotels" class="page-view">
             <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
@@ -247,7 +249,7 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 4: السيارات ================= -->
+        <!-- ================= PAGE 4: محرك بحث السيارات (Cars) ================= -->
         <div id="page-cars" class="page-view">
             <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
@@ -256,12 +258,17 @@
             </div>
             <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl">
                 <div class="w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
-                    <iframe src="https://www.economybookings.com/?marker=758619" class="w-full h-[600px] border-0 rounded-2xl" title="تأجير السيارات" loading="lazy"></iframe>
+                    <iframe 
+                        src="https://www.economybookings.com/?marker=758619" 
+                        class="w-full h-[600px] border-0 rounded-2xl" 
+                        title="تأجير السيارات"
+                        loading="lazy">
+                    </iframe>
                 </div>
             </div>
         </div>
 
-        <!-- ================= PAGE 5: لماذا نحن ================= -->
+        <!-- ================= PAGE 5: لماذا ALHAYAT TRAVEL (Why Us) ================= -->
         <div id="page-why-us" class="page-view">
             <div class="glass-card rounded-3xl p-6 md:p-8">
                 <div class="text-center mb-6">
@@ -278,14 +285,25 @@
                             <i class="fa-solid fa-hand-holding-heart text-rose-500"></i> لفته خاصة لك من القلب
                         </h4>
                         <p class="text-slate-400">
-                            نحن لا نبيع تذاكر طيران أو حجوزات فحسب، بل نضع بين يديك مفتاح العالم. في <strong>ALHAYAT TRAVEL</strong>، ندرك تماماً أن كل رحلة تحمل قصة جديدة، ذكريات عائلية دافئة، أو فرصة عمل مصيرية.
+                            نحن لا نبيع تذاكر طيران أو حجوزات فحسب، بل نضع بين يديك مفتاح العالم. في <strong>ALHAYAT TRAVEL</strong>، ندرك تماماً أن كل رحلة تحمل قصة جديدة، ذكريات عائلية دافئة، أو فرصة عمل مصيرية. لذلك صممنا لك هذه المنصة لتكون رفيقك الأمين الذي يختصر لك المسافات، يوفر أموالك، ويمنحك راحة البال من أول كليك وحتى عودتك بسلامة الله إلى منزلك.
                         </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                            <h5 class="font-bold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-emerald-400"></i> شفافية كاملة</h5>
+                            <p class="text-[11px] text-slate-400">بدون أي رسوم خفية أو زيادات مفاجئة على الأسعار النهائية.</p>
+                        </div>
+                        <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                            <h5 class="font-bold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> سرعة ومقارنة ذكية</h5>
+                            <p class="text-[11px] text-slate-400">نقارن مئات شركات الطيران والفنادق في ثانية واحدة لنعطيك الأرخص.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= PAGE 6: الوجهات ================= -->
+        <!-- ================= PAGE 6: استكشف جميع الوجهات (Destinations) ================= -->
         <div id="page-destinations" class="page-view">
             <div class="glass-card rounded-3xl p-6">
                 <div class="text-center mb-6">
@@ -293,143 +311,349 @@
                         <i class="fa-solid fa-earth-americas"></i>
                     </div>
                     <h3 class="text-xl font-black text-white">استكشف جميع الوجهات الأكثر شعبية</h3>
+                    <p class="text-xs text-slate-400 mt-1">الوجهات الأكثر طلباً وبحثاً من المسافرين حول العالم</p>
                 </div>
+
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
                         <i class="fa-solid fa-city text-2xl text-sky-400 mb-2"></i>
                         <h4 class="text-sm font-bold text-white">دبي - DXB</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">فنادق وعروض فاخرة</p>
                     </div>
                     <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
                         <i class="fa-solid fa-monument text-2xl text-amber-400 mb-2"></i>
                         <h4 class="text-sm font-bold text-white">القاهرة - CAI</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">عروض مميزة</p>
+                    </div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
+                        <i class="fa-solid fa-mosque text-2xl text-emerald-400 mb-2"></i>
+                        <h4 class="text-sm font-bold text-white">إسطنبول - IST</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">رحلات عائلية</p>
+                    </div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
+                        <i class="fa-solid fa-plane-up text-2xl text-purple-400 mb-2"></i>
+                        <h4 class="text-sm font-bold text-white">لندن - LON</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">حجوزات عالمية</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= PAGE 7: المحفوظات ================= -->
+        <!-- ================= PAGE 7: المحفوظات (Favorites) ================= -->
         <div id="page-favorites" class="page-view">
             <div class="glass-card rounded-3xl p-6">
                 <div class="text-center mb-4">
                     <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-500 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
                         <i class="fa-solid fa-heart"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">المحفوظات</h3>
+                    <h3 class="text-lg font-bold text-white mb-2">المحفوظات (الرحلات والفنادق والسيارات)</h3>
+                    <p class="text-xs text-slate-400">أي رحلة أو حجز يتم حفظه يظهر هنا مباشرة</p>
                 </div>
-                <div id="favoritesContentArea" class="mt-4 space-y-2"></div>
+                
+                <div id="favoritesContentArea" class="mt-4 space-y-2">
+                    <!-- يتم تعبئتها ديناميكياً من الـ localStorage -->
+                </div>
             </div>
         </div>
 
-        <!-- ================= PAGE 8: Drops ================= -->
+        <!-- ================= PAGE 8: Drops (العروض والتخفيضات) ================= -->
         <div id="page-drops" class="page-view">
             <div class="glass-card rounded-3xl p-6 text-center">
                 <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
                     <i class="fa-solid fa-arrow-down-long"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-2">Drops - العروض والتخفيضات الحصرية</h3>
-                <button onclick="navigateTo('home')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-4 py-2 rounded-xl text-xs transition">العودة للرئيسية</button>
+                <p class="text-xs text-slate-400 max-w-md mx-auto mb-6">
+                    هذه الخاصية قيد التجهيز حالياً لتزويدك بأقوى عروض وتخفيضات السفر الفورية فور إطلاقها!
+                </p>
+                <button onclick="navigateTo('home')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-4 py-2 rounded-xl text-xs transition">
+                    العودة للرئيسية
+                </button>
             </div>
         </div>
 
-        <!-- ================= PAGE 9: الحساب الشخصي ================= -->
+        <!-- ================= PAGE 9: حسابي والأقسام الفرعية (Account) ================= -->
         <div id="page-account-main" class="page-view">
             <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
                 <div class="text-center mb-6">
-                    <div id="accountCircleBadge" class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 text-slate-950 font-black text-2xl flex items-center justify-center mx-auto mb-3 shadow-xl">AH</div>
+                    <div id="accountCircleBadge" class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 text-slate-950 font-black text-2xl flex items-center justify-center mx-auto mb-3 shadow-xl">
+                        AH
+                    </div>
                     <h3 id="accountProfileName" class="text-lg font-bold text-white">حساب المستخدم</h3>
                     <p id="accountProfileEmail" class="text-xs text-slate-400 mt-0.5">user@example.com</p>
                 </div>
+
                 <div class="grid grid-cols-2 gap-3">
-                    <button onclick="navigateTo('account-data')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition">
+                    <button onclick="navigateTo('account-data')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group">
+                        <div class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-2 group-hover:bg-sky-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
                         <h4 class="text-sm font-bold text-white">بياناتك</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">إدارة بيانات التسجيل وملفك</p>
                     </button>
-                    <button onclick="navigateTo('account-settings')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition">
+
+                    <button onclick="navigateTo('account-settings')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group">
+                        <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2 group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
                         <h4 class="text-sm font-bold text-white">الإعدادات</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">العملة، البلد، والخصوصية</p>
+                    </button>
+
+                    <button onclick="navigateTo('account-trips')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group">
+                        <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-2 group-hover:bg-emerald-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-earth-americas text-xs"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">رحلاتك</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">تخطيط وتنبيهات الأسعار</p>
+                    </button>
+
+                    <button onclick="navigateTo('account-support')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group">
+                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-2 group-hover:bg-purple-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">الدعم</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5">الإجابات والملاحظات والسياسات</p>
                     </button>
                 </div>
             </div>
         </div>
 
+        <!-- 9.2 فرع بياناتك -->
         <div id="page-account-data" class="page-view">
             <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
-                <h3 class="text-base font-bold text-white mb-4">بياناتك الشخصية</h3>
-                <button onclick="handleSignOut()" class="bg-rose-500/20 text-rose-400 font-bold px-4 py-2 rounded-xl">تسجيل خروج</button>
+                <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-file-lines text-sky-400"></i> بياناتك الشخصية
+                </h3>
+                <div class="space-y-3 text-xs">
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-slate-200 font-bold text-sm">بيانات تسجيل الدخول</span>
+                            <button onclick="toggleSection('loginDetailsView')" class="text-sky-400 underline font-bold">عرض البيانات</button>
+                        </div>
+                        <div id="loginDetailsView" class="hidden mt-3 pt-3 border-t border-slate-800 space-y-2 text-slate-300">
+                            <p><strong>البريد الإلكتروني:</strong> <span id="displayLoginEmail">-</span></p>
+                            <p><strong>اسم المستخدم:</strong> <span id="displayLoginName">-</span></p>
+                            <p><strong>تاريخ الميلاد المسجل:</strong> <span id="displayLoginDob">-</span></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-slate-200 font-bold text-sm">إدارة الحساب والملف</span>
+                            <button onclick="toggleSection('editProfileSection')" class="text-sky-400 underline font-bold">تعديل البيانات</button>
+                        </div>
+                        <div id="editProfileSection" class="hidden mt-3 pt-3 border-t border-slate-800 space-y-3">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">الاسم</label>
+                                <input type="text" id="editProfileName" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">تاريخ الميلاد</label>
+                                <input type="date" id="editProfileDob" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">رقم الجوال</label>
+                                <input type="tel" id="editProfilePhone" placeholder="+966..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">البريد الإلكتروني (غير قابل للتعديل)</label>
+                                <input type="email" id="editProfileEmail" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-500 cursor-not-allowed">
+                            </div>
+                            <button onclick="saveProfileEdits()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2 rounded-xl transition">حفظ التعديلات</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
+                        <span class="text-rose-400 font-bold text-sm">تسجيل خروج</span>
+                        <button onclick="handleSignOut()" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 font-bold px-4 py-2 rounded-xl transition">خروج فوراً</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="page-account-settings" class="page-view">
+        <!-- 9.3 فرع رحلاتك -->
+        <div id="page-account-trips" class="page-view">
             <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
-                <h3 class="text-base font-bold text-white mb-4">الإعدادات</h3>
+                <h3 class="text-base font-bold text-white mb-2">رحلاتك وتنبيه الأسعار</h3>
+                <p class="text-xs text-slate-400 mb-4">تنبيه الأسعار فعال وجاهز لإضافة رابطك المخصص في المستقبل.</p>
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-3 text-xs">
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-200 font-bold">تنبيه الاسعار (نشط)</span>
+                        <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-bold">مفعل</span>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">رابط تنبيه الأسعار (مستقبلي)</label>
+                        <input type="text" id="futurePriceAlertLink" placeholder="https://your-custom-link.com" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs mb-2">
+                        <button onclick="savePriceAlertLink()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2 rounded-xl transition">حفظ الرابط</button>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div id="page-account-support" class="page-view"></div>
-        <div id="page-account-trips" class="page-view"></div>
+
+        <!-- 9.4 فرع الإعدادات -->
+        <div id="page-account-settings" class="page-view">
+            <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-gear text-amber-400"></i> إعدادات الحساب والتطبيق
+                </h3>
+                
+                <div class="space-y-4 text-xs text-slate-300">
+                    <div>
+                        <label class="block font-bold text-white mb-1">العملة</label>
+                        <select id="settingsCurrency" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500">
+                            <option value="USD">دولار أمريكي (USD)</option>
+                            <option value="EUR">يورو (EUR)</option>
+                            <option value="SAR">ريال سعودي (SAR)</option>
+                            <option value="AED">درهم إماراتي (AED)</option>
+                            <option value="EGP">جنيه مصري (EGP)</option>
+                            <option value="KWD">دينار كويتي (KWD)</option>
+                            <option value="QAR">ريال قطري (QAR)</option>
+                            <option value="BHD">دينار بحريني (BHD)</option>
+                            <option value="OMR">ريال عماني (OMR)</option>
+                            <option value="JOD">دينار أردني (JOD)</option>
+                            <option value="GBP">جنيه إسترليني (GBP)</option>
+                            <option value="CAD">دولار كندي (CAD)</option>
+                            <option value="AUD">دولار أسترالي (AUD)</option>
+                            <option value="JPY">ين ياباني (JPY)</option>
+                            <option value="CHF">فرنك سويسري (CHF)</option>
+                            <option value="TRY">ليرة تركية (TRY)</option>
+                            <option value="INR">روبية هندية (INR)</option>
+                            <option value="CNY">يوان صيني (CNY)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-white mb-1">اختيار البلد أو المنطقة</label>
+                        <select id="settingsCountry" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500">
+                            <option value="AE">الإمارات العربية المتحدة</option>
+                            <option value="SA">المملكة العربية السعودية</option>
+                            <option value="EG">جمهورية مصر العربية</option>
+                            <option value="KW">الكويت</option>
+                            <option value="QA">قطر</option>
+                            <option value="BH">البحرين</option>
+                            <option value="OM">عمان</option>
+                            <option value="JO">الأردن</option>
+                            <option value="LB">لبنان</option>
+                            <option value="MA">المغرب</option>
+                            <option value="DZ">الجزائر</option>
+                            <option value="TN">تونس</option>
+                            <option value="US">الولايات المتحدة الأمريكية</option>
+                            <option value="GB">المملكة المتحدة</option>
+                            <option value="CA">كندا</option>
+                            <option value="DE">ألمانيا</option>
+                            <option value="FR">فرنسا</option>
+                            <option value="TR">تركيا</option>
+                            <option value="IN">الهند</option>
+                            <option value="JP">اليابان</option>
+                            <option value="CN">الصين</option>
+                            <option value="ALL">اختر أي دولة أخرى حول العالم...</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <strong class="text-white block mb-0.5">خيار التسويق</strong>
+                            <p class="text-[11px] text-slate-400">احصل على العروض ونصائح وأفكار مهمه</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="marketingSwitch" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-500"></div>
+                        </label>
+                    </div>
+
+                    <button onclick="saveAllSettings()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 rounded-xl transition shadow-lg text-sm">
+                        حفظ الإعدادات
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9.5 فرع الدعم -->
+        <div id="page-account-support" class="page-view">
+            <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-book text-purple-400"></i> الدعم والمساعدة والسياسات
+                </h3>
+                <div class="space-y-2 text-xs text-slate-300">
+                    <button onclick="alert('خدمة الدعم المباشر متوفرة دائماً لخدمتك')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الإجابات والملاحظات</button>
+                    <button onclick="alert('تواصل معنا عبر البريد المخصص للدعم')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الحصول على المساعدة</button>
+                    <button onclick="alert('شكراً لتقييمك المنصة!')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">تقييم التطبيق ⭐⭐⭐⭐⭐</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- الشريط السفلي الثابت -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[#070D1E]/95 backdrop-blur-md border-t border-slate-800 z-40 py-2 px-4">
         <div class="max-w-md mx-auto flex items-center justify-around text-slate-400 text-xs font-bold relative">
+            
             <div id="bottomNavIndicator" class="absolute top-0 h-1 bg-sky-500 rounded-full transition-all duration-300" style="width: 25%; left: 75%;"></div>
-            <button onclick="navigateTo('home'); updateBottomIndicator(0);" id="navBtn-home" class="flex flex-col items-center gap-1 text-sky-400 py-1 flex-1"><i class="fa-solid fa-house text-lg"></i><span>الرئيسية</span></button>
-            <button onclick="navigateTo('favorites'); updateBottomIndicator(1);" id="navBtn-favorites" class="flex flex-col items-center gap-1 py-1 flex-1"><i class="fa-solid fa-heart text-lg"></i><span>المحفوظات</span></button>
-            <button onclick="navigateTo('drops'); updateBottomIndicator(2);" id="navBtn-drops" class="flex flex-col items-center gap-1 py-1 flex-1"><i class="fa-solid fa-arrow-down text-lg"></i><span>Drops</span></button>
-            <button onclick="handleAccountNavClick(); updateBottomIndicator(3);" id="navBtn-account" class="flex flex-col items-center gap-1 py-1 flex-1"><div id="navUserInitialsBadge" class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 font-extrabold flex items-center justify-center text-[10px]">AH</div><span>حسابي</span></button>
+
+            <button onclick="navigateTo('home'); updateBottomIndicator(0);" id="navBtn-home" class="flex flex-col items-center gap-1 hover:text-sky-400 transition text-sky-400 py-1 flex-1">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span>الرئيسية</span>
+            </button>
+
+            <button onclick="navigateTo('favorites'); updateBottomIndicator(1);" id="navBtn-favorites" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <i class="fa-solid fa-heart text-lg"></i>
+                <span>المحفوظات</span>
+            </button>
+
+            <button onclick="navigateTo('drops'); updateBottomIndicator(2);" id="navBtn-drops" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <i class="fa-solid fa-arrow-down text-lg"></i>
+                <span>Drops</span>
+            </button>
+
+            <button onclick="handleAccountNavClick(); updateBottomIndicator(3);" id="navBtn-account" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <div id="navUserInitialsBadge" class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 font-extrabold flex items-center justify-center text-[10px] border border-sky-500/40">
+                    AH
+                </div>
+                <span>حسابي</span>
+            </button>
+
         </div>
     </nav>
 
-    <!-- Modal تسجيل الدخول (مع دعم Firebase الكامل) -->
+    <!-- Modal تسجيل الدخول -->
     <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal('loginModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <button onclick="closeModal('loginModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
             <h3 class="text-xl font-bold text-sky-400 mb-1 text-center">ALHAYAT TRAVEL</h3>
-            <p id="cardSubtitle" class="text-xs text-slate-400 mb-4 text-center">تسجيل الدخول إلى حسابك بأمان</p>
+            <p id="cardSubtitle" class="text-xs text-slate-400 mb-4 text-center">تسجيل الدخول إلى حسابك</p>
 
-            <!-- زر Google الحقيقي عبر Firebase -->
-            <button id="googleBtn" onclick="handleFirebaseGoogleSignIn()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 mb-3 transition shadow-md">
+            <button id="googleBtn" onclick="handleGoogleSignIn()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 mb-3 transition shadow-md">
                 <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.8 7.3l3.7 2.9C6.4 7.2 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#FBBC05" d="M5.5 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.8 7.3C.7 9.5 0 10.7 0 12s.7 2.5 1.8 4.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.6-2.2-6.5-5.2L1.8 16C3.7 19.7 7.5 23 12 23z"/></svg>
-                <span>المتابعة باستخدام Google (آمن)</span>
+                <span>المتابعة باستخدام Firebase Google</span>
             </button>
 
-            <div id="authDivider" class="divider"><span>أو التسجيل اليدوي الآمن</span></div>
+            <div id="authDivider" class="divider"><span>أو</span></div>
 
-            <form id="authForm" onsubmit="event.preventDefault(); submitFirebaseAuth();">
+            <form id="authForm" onsubmit="event.preventDefault(); submitAuth();">
               <div id="signUpFields" style="display: none;">
                 <div class="grid grid-cols-2 gap-2 mb-3">
                   <div>
                     <label class="block text-[11px] text-slate-400 mb-1">الاسم الأول</label>
-                    <input type="text" id="firstName" placeholder="علي" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                    <input type="text" id="firstName" placeholder="علي" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
                   </div>
                   <div>
                     <label class="block text-[11px] text-slate-400 mb-1">اسم العائلة</label>
-                    <input type="text" id="lastName" placeholder="أحمد" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-2 mb-3">
-                  <div>
-                    <label class="block text-[11px] text-slate-400 mb-1">تاريخ الميلاد</label>
-                    <input type="date" id="regDob" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
-                  </div>
-                  <div>
-                    <label class="block text-[11px] text-slate-400 mb-1">رقم الجوال</label>
-                    <input type="tel" id="regPhone" placeholder="+966..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                    <input type="text" id="lastName" placeholder="أحمد" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
                   </div>
                 </div>
               </div>
 
               <div class="mb-3">
                 <label class="block text-[11px] text-slate-400 mb-1">البريد الإلكتروني</label>
-                <input type="email" id="email" placeholder="name@example.com" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                <input type="email" id="email" placeholder="name@example.com" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
               </div>
 
-              <div class="mb-3">
+              <div class="mb-4">
                 <label class="block text-[11px] text-slate-400 mb-1">كلمة المرور</label>
-                <input type="password" id="password" placeholder="••••••••" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
-              </div>
-
-              <div id="confirmPasswordSection" class="mb-4" style="display: none;">
-                <label class="block text-[11px] text-slate-400 mb-1">إعادة إدخال كلمة المرور</label>
-                <input type="password" id="confirmPassword" placeholder="••••••••" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                <input type="password" id="password" placeholder="••••••••" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
               </div>
 
               <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition" id="submitBtn">تسجيل الدخول</button>
@@ -438,15 +662,27 @@
             <div id="errorMsg" class="text-rose-500 text-xs mt-3 text-center font-medium"></div>
 
             <div class="text-center mt-4 text-xs text-slate-400" id="toggleArea">
-              ليس لديك حساب؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>
+              ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
+    <!-- Firebase SDK Scripts (دمج الإعدادات بدقة) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { 
+            getAuth, 
+            signInWithPopup, 
+            GoogleAuthProvider, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged,
+            setPersistence,
+            browserLocalPersistence 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyCoKoDJjLqUgFW30FPeGft9yt95AOCUPsY",
@@ -459,91 +695,116 @@
         };
 
         const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
         const auth = getAuth(app);
-        const googleProvider = new GoogleAuthProvider();
+        const db = getFirestore(app);
 
-        window.handleFirebaseGoogleSignIn = async function() {
+        setPersistence(auth, browserLocalPersistence);
+
+        window.handleGoogleSignIn = async function() {
+            const provider = new GoogleAuthProvider();
             try {
-                const result = await signInWithPopup(auth, googleProvider);
-                handleAuthSuccess(result.user);
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const userData = {
+                    email: user.email,
+                    name: user.displayName || user.email.split('@')[0],
+                    dob: '',
+                    phone: user.phoneNumber || ''
+                };
+                await setDoc(doc(db, "users", user.uid), userData, { merge: true });
+                loginUserSuccess(userData);
             } catch (error) {
-                document.getElementById('errorMsg').innerText = "خطأ في تسجيل جوجل: " + error.message;
+                document.getElementById('errorMsg').innerText = error.message;
             }
         };
 
-        window.submitFirebaseAuth = async function() {
+        window.submitAuth = async function() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const errorMsg = document.getElementById('errorMsg');
             errorMsg.innerText = '';
 
+            if(!email || !password) {
+                errorMsg.innerText = 'يرجى إدخال البريد الإلكتروني وكلمة المرور';
+                return;
+            }
+
             try {
-                if (window.isSignUpModeGlobal) {
-                    const confirmPass = document.getElementById('confirmPassword').value;
-                    if(password !== confirmPass) {
-                        errorMsg.innerText = 'كلمات المرور غير متطابقة!';
-                        return;
-                    }
-                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                    await sendEmailVerification(userCredential.user);
-                    alert("تم إنشاء الحساب بنجاح! تم إرسال رسالة تحقق إلى بريدك الإلكتروني.");
-                    handleAuthSuccess(userCredential.user);
+                if (isSignUpMode) {
+                    const fName = document.getElementById('firstName').value;
+                    const lName = document.getElementById('lastName').value;
+                    const fullName = fName ? (fName + (lName ? ' ' + lName : '')) : email.split('@')[0];
+
+                    const userCred = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCred.user;
+                    const userData = { email: user.email, name: fullName, dob: '', phone: '' };
+                    await setDoc(doc(db, "users", user.uid), userData);
+                    loginUserSuccess(userData);
                 } else {
-                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                    handleAuthSuccess(userCredential.user);
+                    const userCred = await signInWithEmailAndPassword(auth, email, password);
+                    const user = userCred.user;
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    let userData = { email: user.email, name: user.displayName || user.email.split('@')[0], dob: '', phone: '' };
+                    if (userDoc.exists()) {
+                        userData = userDoc.data();
+                    }
+                    loginUserSuccess(userData);
                 }
             } catch (error) {
-                errorMsg.innerText = "خطأ: " + error.message;
+                errorMsg.innerText = error.message;
             }
         };
 
         window.handleSignOut = async function() {
-            await signOut(auth);
-            localStorage.removeItem('alh_user_profile');
-            document.getElementById('loggedInMenu').classList.add('hidden');
-            document.getElementById('loggedOutBtn').classList.remove('hidden');
-            navigateTo('home');
-            alert('تم تسجيل الخروج بنجاح.');
+            try {
+                await signOut(auth);
+                currentUserGlobal = null;
+                localStorage.removeItem('alh_user_profile');
+                
+                document.getElementById('loggedInMenu').classList.add('hidden');
+                document.getElementById('loggedOutBtn').classList.remove('hidden');
+                
+                navigateTo('home');
+                alert('تم تسجيل الخروج بنجاح.');
+            } catch (error) {
+                console.error(error);
+            }
         };
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
-                handleAuthSuccess(user);
+                try {
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    let userData = { email: user.email, name: user.displayName || user.email.split('@')[0], dob: '', phone: '' };
+                    if (userDoc.exists()) {
+                        userData = userDoc.data();
+                    }
+                    loginUserSuccess(userData);
+                } catch(e) {}
             }
         });
-
-        function handleAuthSuccess(user) {
-            const userData = {
-                email: user.email,
-                name: user.displayName || user.email.split('@')[0],
-                phone: user.phoneNumber || '',
-                uid: user.uid
-            };
-            localStorage.setItem('alh_user_profile', JSON.stringify(userData));
-            
-            document.getElementById('loggedOutBtn').classList.add('hidden');
-            document.getElementById('loggedInMenu').classList.remove('hidden');
-            
-            const initials = userData.name.substring(0, 2).toUpperCase();
-            document.getElementById('userAvatar').innerText = initials;
-            document.getElementById('navUserInitialsBadge').innerText = initials;
-            document.getElementById('accountCircleBadge').innerText = initials;
-            document.getElementById('accountProfileName').innerText = userData.name;
-            document.getElementById('accountProfileEmail').innerText = userData.email;
-
-            closeModal('loginModal');
-        }
     </script>
 
-    <!-- General Navigation Scripts -->
+    <!-- JavaScript Scripts -->
     <script>
         let historyStack = ['home'];
-        window.isSignUpModeGlobal = false;
+        let isSignUpMode = false;
+        let currentUserGlobal = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkStoredUser();
+        });
 
         function navigateTo(pageId, addToHistory = true) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            
             const target = document.getElementById(`page-${pageId}`);
-            if (target) target.classList.add('active-page');
+            if (target) {
+                target.classList.add('active-page');
+            }
 
             if (addToHistory && historyStack[historyStack.length - 1] !== pageId) {
                 historyStack.push(pageId);
@@ -556,26 +817,43 @@
                 if (brandLogoContainer) brandLogoContainer.style.display = 'flex';
                 if (backButtonContainer) backButtonContainer.classList.add('hidden');
                 updateBottomIndicator(0);
+            } else if (pageId === 'favorites') {
+                if (brandLogoContainer) brandLogoContainer.style.display = 'none';
+                if (backButtonContainer) backButtonContainer.classList.remove('hidden');
+                updateBottomIndicator(1);
+                renderFavorites();
+            } else if (pageId === 'drops') {
+                if (brandLogoContainer) brandLogoContainer.style.display = 'none';
+                if (backButtonContainer) backButtonContainer.classList.remove('hidden');
+                updateBottomIndicator(2);
+            } else if (pageId.startsWith('account')) {
+                if (brandLogoContainer) brandLogoContainer.style.display = 'none';
+                if (backButtonContainer) backButtonContainer.classList.remove('hidden');
+                updateBottomIndicator(3);
             } else {
                 if (brandLogoContainer) brandLogoContainer.style.display = 'none';
                 if (backButtonContainer) backButtonContainer.classList.remove('hidden');
             }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function goBack() {
             if (historyStack.length > 1) {
                 historyStack.pop();
-                navigateTo(historyStack[historyStack.length - 1], false);
+                const previousPage = historyStack[historyStack.length - 1];
+                navigateTo(previousPage, false);
             } else {
                 navigateTo('home', false);
             }
         }
 
         function handleAccountNavClick() {
-            const saved = localStorage.getItem('alh_user_profile');
-            if (saved) navigateTo('account-main');
-            else openModal('loginModal');
+            if (currentUserGlobal) {
+                navigateTo('account-main');
+            } else {
+                openModal('loginModal');
+            }
         }
 
         function updateBottomIndicator(index) {
@@ -584,6 +862,18 @@
                 const positions = ['75%', '50%', '25%', '0%'];
                 indicator.style.left = positions[index];
             }
+            
+            ['home', 'favorites', 'drops', 'account'].forEach((id, idx) => {
+                const btn = document.getElementById(`navBtn-${id}`);
+                if (btn) {
+                    if (idx === index) {
+                        btn.classList.add('text-sky-400');
+                    } else {
+                        btn.classList.remove('text-sky-400');
+                        btn.classList.add('text-slate-400');
+                    }
+                }
+            });
         }
 
         function navigateToTab(tabName, btnIndex) {
@@ -593,30 +883,141 @@
             }
             const activeBtn = document.getElementById(`mainTabBtn${btnIndex}`);
             if(activeBtn) activeBtn.classList.add('active');
+
             navigateTo(tabName);
         }
 
+        function renderFavorites() {
+            const area = document.getElementById('favoritesContentArea');
+            if(!area) return;
+            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
+            if(favs.length === 0) {
+                area.innerHTML = `<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 text-center"><p class="text-xs text-slate-400 mb-3">لم تقم بحفظ أي رحلات أو فنادق حتى الآن.</p></div>`;
+                return;
+            }
+            let html = '';
+            favs.forEach((f, idx) => {
+                html += `<div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+                    <div>
+                        <span class="text-amber-400 font-bold block mb-0.5">${f.type}</span>
+                        <span class="text-white font-medium">${f.title} (${f.date})</span>
+                    </div>
+                    <button onclick="removeFavorite(${idx})" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            area.innerHTML = html;
+        }
+
+        function removeFavorite(index) {
+            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
+            favs.splice(index, 1);
+            localStorage.setItem('alh_favorites', JSON.stringify(favs));
+            renderFavorites();
+        }
+
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            if(el) el.classList.toggle('hidden');
+        }
+
         function toggleMode(toSignUp) {
-            window.isSignUpModeGlobal = toSignUp;
+            isSignUpMode = toSignUp;
             const signUpFields = document.getElementById('signUpFields');
-            const confirmPasswordSection = document.getElementById('confirmPasswordSection');
             const cardSubtitle = document.getElementById('cardSubtitle');
             const submitBtn = document.getElementById('submitBtn');
             const toggleArea = document.getElementById('toggleArea');
 
             if (toSignUp) {
                 signUpFields.style.display = 'block';
-                confirmPasswordSection.style.display = 'block';
-                cardSubtitle.innerText = 'إنشاء حساب جديد عبر Firebase بأمان';
-                submitBtn.innerText = 'إنشاء الحساب وإرسال التحقق';
+                cardSubtitle.innerText = 'إنشاء حساب جديد في ALHAYAT TRAVEL';
+                submitBtn.innerText = 'إنشاء الحساب';
                 toggleArea.innerHTML = `لديك حساب بالفعل؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(false)">تسجيل الدخول</span>`;
             } else {
                 signUpFields.style.display = 'none';
-                confirmPasswordSection.style.display = 'none';
                 cardSubtitle.innerText = 'تسجيل الدخول إلى حسابك';
                 submitBtn.innerText = 'تسجيل الدخول';
-                toggleArea.innerHTML = `ليس لديك حساب؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>`;
+                toggleArea.innerHTML = `ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>`;
             }
+        }
+
+        function loginUserSuccess(userData) {
+            currentUserGlobal = userData;
+            localStorage.setItem('alh_user_profile', JSON.stringify(userData));
+            
+            document.getElementById('loggedOutBtn').classList.add('hidden');
+            document.getElementById('loggedInMenu').classList.remove('hidden');
+            
+            const initials = userData.name.substring(0, 2).toUpperCase();
+            document.getElementById('userAvatar').innerText = initials;
+            document.getElementById('navUserInitialsBadge').innerText = initials;
+
+            document.getElementById('accountCircleBadge').innerText = initials;
+            document.getElementById('accountProfileName').innerText = userData.name;
+            document.getElementById('accountProfileEmail').innerText = userData.email;
+            document.getElementById('displayLoginName').innerText = userData.name;
+            document.getElementById('displayLoginEmail').innerText = userData.email;
+            document.getElementById('displayLoginDob').innerText = userData.dob || 'غير محدد';
+            document.getElementById('editProfileName').value = userData.name;
+            document.getElementById('editProfileEmail').value = userData.email;
+
+            closeModal('loginModal');
+        }
+
+        function checkStoredUser() {
+            const saved = localStorage.getItem('alh_user_profile');
+            if(saved) {
+                try {
+                    const userData = JSON.parse(saved);
+                    if(userData && userData.email) {
+                        loginUserSuccess(userData);
+                    }
+                } catch(e) {}
+            }
+        }
+
+        function saveProfileEdits() {
+            const newName = document.getElementById('editProfileName').value;
+            const newDob = document.getElementById('editProfileDob').value;
+            const newPhone = document.getElementById('editProfilePhone').value;
+
+            if(currentUserGlobal) {
+                currentUserGlobal.name = newName || currentUserGlobal.name;
+                currentUserGlobal.dob = newDob || currentUserGlobal.dob;
+                currentUserGlobal.phone = newPhone || currentUserGlobal.phone;
+                localStorage.setItem('alh_user_profile', JSON.stringify(currentUserGlobal));
+
+                document.getElementById('displayLoginName').innerText = currentUserGlobal.name;
+                document.getElementById('displayLoginDob').innerText = currentUserGlobal.dob || 'غير محدد';
+                document.getElementById('accountProfileName').innerText = currentUserGlobal.name;
+            }
+
+            alert("تم حفظ تعديلات الحساب بنجاح!");
+            toggleSection('editProfileSection');
+        }
+
+        function savePriceAlertLink() {
+            const link = document.getElementById('futurePriceAlertLink').value;
+            localStorage.setItem('alh_price_alert_link', link);
+            alert("تم حفظ رابط تنبيه الأسعار بنجاح ليعمل في المستقبل!");
+        }
+
+        function saveAllSettings() {
+            const currency = document.getElementById('settingsCurrency').value;
+            const country = document.getElementById('settingsCountry').value;
+            const marketing = document.getElementById('marketingSwitch').checked;
+
+            localStorage.setItem('alh_settings', JSON.stringify({ currency, country, marketing }));
+            alert("تم حفظ إعدادات الحساب والتطبيق بنجاح!");
+        }
+
+        function toggleUserDropdown() {
+            const menu = document.getElementById('userDropdown');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function hideUserDropdown() {
+            const menu = document.getElementById('userDropdown');
+            if (menu) menu.classList.add('hidden');
         }
 
         function openModal(id) {
@@ -627,14 +1028,6 @@
         function closeModal(id) {
             document.getElementById(id).classList.add('hidden');
             document.body.style.overflow = '';
-        }
-
-        function toggleUserDropdown() {
-            document.getElementById('userDropdown').classList.toggle('hidden');
-        }
-
-        function hideUserDropdown() {
-            document.getElementById('userDropdown').classList.add('hidden');
         }
     </script>
 </body>
