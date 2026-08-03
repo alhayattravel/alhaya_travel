@@ -104,7 +104,7 @@
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
             
             <div id="brandLogoContainer" class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
-                <img src="logo.png" alt="ALHAYAT TRAVEL" class="h-10 md:h-12 w-auto object-contain rounded-lg">
+                <img src="logo.png" alt="ALHAYAT TRAVEL" class="h-10 md:h-12 w-auto object-contain rounded-lg" onerror="this.style.display='none'">
                 <div>
                     <h1 class="text-lg md:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 tracking-wider">
                         ALHAYAT TRAVEL
@@ -243,12 +243,10 @@
                 </h3>
             </div>
             <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl">
-                
                 <!-- كود الـ Widget الرسمي المنسوخ من حسابك -->
                 <div class="w-full text-center py-4">
                     <script src="https://cpa.zenhotels.com/static/widget/scripts/a8aeb00be396bca1bc84675bf6f7d73f.js" type="text/javascript" charset="utf-8" async></script>
                 </div>
-
             </div>
         </div>
 
@@ -429,7 +427,6 @@
                     <i class="fa-solid fa-file-lines text-sky-400"></i> بياناتك الشخصية
                 </h3>
                 <div class="space-y-3 text-xs">
-                    
                     <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-slate-200 font-bold text-sm">بيانات تسجيل الدخول</span>
@@ -472,7 +469,6 @@
                         <span class="text-rose-400 font-bold text-sm">تسجيل خروج</span>
                         <button onclick="handleSignOut()" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 font-bold px-4 py-2 rounded-xl transition">خروج فوراً</button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -504,7 +500,6 @@
                 </h3>
                 
                 <div class="space-y-4 text-xs text-slate-300">
-                    
                     <div>
                         <label class="block font-bold text-white mb-1">العملة</label>
                         <select id="settingsCurrency" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500">
@@ -571,7 +566,6 @@
                     <button onclick="saveAllSettings()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 rounded-xl transition shadow-lg text-sm">
                         حفظ الإعدادات
                     </button>
-
                 </div>
             </div>
         </div>
@@ -583,12 +577,9 @@
                     <i class="fa-solid fa-book text-purple-400"></i> الدعم والمساعدة والسياسات
                 </h3>
                 <div class="space-y-2 text-xs text-slate-300">
-                    <button onclick="openModal('supportModal')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الإجابات والملاحظات</button>
-                    <button onclick="openModal('supportModal')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الحصول على المساعدة</button>
+                    <button onclick="alert('خدمة الدعم المباشر متوفرة دائماً لخدمتك')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الإجابات والملاحظات</button>
+                    <button onclick="alert('تواصل معنا عبر البريد المخصص للدعم')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الحصول على المساعدة</button>
                     <button onclick="alert('شكراً لتقييمك المنصة!')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">تقييم التطبيق ⭐⭐⭐⭐⭐</button>
-                    <div class="border-t border-slate-800 my-2 pt-2 text-slate-400 font-bold">الشروط والسياسات:</div>
-                    <button onclick="openModal('privacyModal')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">سياسة الخصوصية</button>
-                    <button onclick="openModal('aboutModal')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">شروط الخدمة</button>
                 </div>
             </div>
         </div>
@@ -626,7 +617,7 @@
         </div>
     </nav>
 
-    <!-- Modals -->
+    <!-- Modal تسجيل الدخول -->
     <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('loginModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
@@ -642,7 +633,7 @@
 
             <div id="authDivider" class="divider"><span>أو</span></div>
 
-            <form id="authForm" onsubmit="event.preventDefault();">
+            <form id="authForm" onsubmit="event.preventDefault(); submitAuth();">
               <div id="signUpFields" style="display: none;">
                 <div class="grid grid-cols-2 gap-2 mb-3">
                   <div>
@@ -666,7 +657,7 @@
                 <input type="password" id="password" placeholder="••••••••" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
               </div>
 
-              <button class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition" id="submitBtn" onclick="submitAuth()">تسجيل الدخول</button>
+              <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition" id="submitBtn">تسجيل الدخول</button>
             </form>
 
             <div id="errorMsg" class="text-rose-500 text-xs mt-3 text-center font-medium"></div>
@@ -680,6 +671,12 @@
     <!-- JavaScript Scripts -->
     <script>
         let historyStack = ['home'];
+        let isSignUpMode = false;
+        let currentUserGlobal = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkStoredUser();
+        });
 
         function navigateTo(pageId, addToHistory = true) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
@@ -732,7 +729,7 @@
         }
 
         function handleAccountNavClick() {
-            if (window.currentUserGlobal) {
+            if (currentUserGlobal) {
                 navigateTo('account-main');
             } else {
                 openModal('loginModal');
@@ -803,20 +800,125 @@
             if(el) el.classList.toggle('hidden');
         }
 
+        function toggleMode(toSignUp) {
+            isSignUpMode = toSignUp;
+            const signUpFields = document.getElementById('signUpFields');
+            const cardSubtitle = document.getElementById('cardSubtitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleArea = document.getElementById('toggleArea');
+            const googleBtn = document.getElementById('googleBtn');
+            const authDivider = document.getElementById('authDivider');
+
+            if (toSignUp) {
+                signUpFields.style.display = 'block';
+                cardSubtitle.innerText = 'إنشاء حساب جديد في ALHAYAT TRAVEL';
+                submitBtn.innerText = 'إنشاء الحساب';
+                toggleArea.innerHTML = `لديك حساب بالفعل؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(false)">تسجيل الدخول</span>`;
+            } else {
+                signUpFields.style.display = 'none';
+                cardSubtitle.innerText = 'تسجيل الدخول إلى حسابك';
+                submitBtn.innerText = 'تسجيل الدخول';
+                toggleArea.innerHTML = `ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>`;
+            }
+        }
+
+        function submitAuth() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.innerText = '';
+
+            if(!email || !password) {
+                errorMsg.innerText = 'يرجى إدخال البريد الإلكتروني وكلمة المرور';
+                return;
+            }
+
+            let name = email.split('@')[0];
+            if (isSignUpMode) {
+                const fName = document.getElementById('firstName').value;
+                const lName = document.getElementById('lastName').value;
+                if(fName) name = fName + (lName ? ' ' + lName : '');
+            }
+
+            const userData = { email, name, dob: '', phone: '' };
+            loginUserSuccess(userData);
+        }
+
+        function handleGoogleSignIn() {
+            // محاكاة تسجيل دخول سريح وآمن عبر جوجل
+            const mockGoogleUser = {
+                email: 'user.google@gmail.com',
+                name: 'صديق المنصة (Google)',
+                dob: '1995-05-15',
+                phone: '+971500000000'
+            };
+            loginUserSuccess(mockGoogleUser);
+        }
+
+        function loginUserSuccess(userData) {
+            currentUserGlobal = userData;
+            localStorage.setItem('alh_user_profile', JSON.stringify(userData));
+            
+            // تحديث واجهة الـ Header
+            document.getElementById('loggedOutBtn').classList.add('hidden');
+            document.getElementById('loggedInMenu').classList.remove('hidden');
+            
+            const initials = userData.name.substring(0, 2).toUpperCase();
+            document.getElementById('userAvatar').innerText = initials;
+            document.getElementById('navUserInitialsBadge').innerText = initials;
+
+            // تحديث صفحة الحساب
+            document.getElementById('accountCircleBadge').innerText = initials;
+            document.getElementById('accountProfileName').innerText = userData.name;
+            document.getElementById('accountProfileEmail').innerText = userData.email;
+            document.getElementById('displayLoginName').innerText = userData.name;
+            document.getElementById('displayLoginEmail').innerText = userData.email;
+            document.getElementById('displayLoginDob').innerText = userData.dob || 'غير محدد';
+            document.getElementById('editProfileName').value = userData.name;
+            document.getElementById('editProfileEmail').value = userData.email;
+
+            closeModal('loginModal');
+            alert(`أهلاً بك يا ${userData.name}! تم تسجيل الدخول بنجاح.`);
+        }
+
+        function checkStoredUser() {
+            const saved = localStorage.getItem('alh_user_profile');
+            if(saved) {
+                try {
+                    const userData = JSON.parse(saved);
+                    if(userData && userData.email) {
+                        loginUserSuccess(userData);
+                    }
+                } catch(e) {}
+            }
+        }
+
+        function handleSignOut() {
+            currentUserGlobal = null;
+            localStorage.removeItem('alh_user_profile');
+            
+            document.getElementById('loggedInMenu').classList.add('hidden');
+            document.getElementById('loggedOutBtn').classList.remove('hidden');
+            
+            navigateTo('home');
+            alert('تم تسجيل الخروج بنجاح.');
+        }
+
         function saveProfileEdits() {
             const newName = document.getElementById('editProfileName').value;
             const newDob = document.getElementById('editProfileDob').value;
             const newPhone = document.getElementById('editProfilePhone').value;
 
-            let userProfile = JSON.parse(localStorage.getItem('alh_user_profile') || '{}');
-            userProfile.name = newName || userProfile.name;
-            userProfile.dob = newDob || userProfile.dob;
-            userProfile.phone = newPhone || userProfile.phone;
-            localStorage.setItem('alh_user_profile', JSON.stringify(userProfile));
+            if(currentUserGlobal) {
+                currentUserGlobal.name = newName || currentUserGlobal.name;
+                currentUserGlobal.dob = newDob || currentUserGlobal.dob;
+                currentUserGlobal.phone = newPhone || currentUserGlobal.phone;
+                localStorage.setItem('alh_user_profile', JSON.stringify(currentUserGlobal));
 
-            document.getElementById('displayLoginName').innerText = userProfile.name;
-            document.getElementById('displayLoginDob').innerText = userProfile.dob || 'غير محدد';
-            document.getElementById('accountProfileName').innerText = userProfile.name;
+                document.getElementById('displayLoginName').innerText = currentUserGlobal.name;
+                document.getElementById('displayLoginDob').innerText = currentUserGlobal.dob || 'غير محدد';
+                document.getElementById('accountProfileName').innerText = currentUserGlobal.name;
+            }
 
             alert("تم حفظ تعديلات الحساب بنجاح!");
             toggleSection('editProfileSection');
