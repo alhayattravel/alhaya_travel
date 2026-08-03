@@ -62,11 +62,6 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .widget-container {
-            width: 100%;
-            min-height: 250px;
-        }
-        
         .page-view {
             display: none;
         }
@@ -240,25 +235,20 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 3: محرك بحث الفنادق (Hotels) ================= -->
+        <!-- ================= PAGE 3: محرك بحث أماكن الإقامة والفنادق (Hotels - ZenHotels Widget) ================= -->
         <div id="page-hotels" class="page-view">
             <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-bed text-amber-400"></i> محرك بحث أماكن الإقامة والفنادق
+                    <i class="fa-solid fa-bed text-amber-400"></i> محرك بحث أماكن الإقامة وفنادق العالم (ZenHotels)
                 </h3>
             </div>
             <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl">
-                <div class="mb-6 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                    <h4 class="text-xs font-bold text-amber-400 mb-3">حفظ حجز فندق سريع</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 text-xs">
-                        <input type="text" id="hotelNameInput" placeholder="اسم الفندق والمدينة (مثال: فندق هيلتون دبي)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white">
-                        <input type="date" id="hotelDateInput" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white">
-                    </div>
-                    <button onclick="saveHotelItem()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">حفظ الفندق في المحفوظات</button>
+                
+                <!-- كود الـ Widget الرسمي المنسوخ من حسابك -->
+                <div class="w-full text-center py-4">
+                    <script src="https://cpa.zenhotels.com/static/widget/scripts/a8aeb00be396bca1bc84675bf6f7d73f.js" type="text/javascript" charset="utf-8" async></script>
                 </div>
-                <div id="hotels-widget-container" class="w-full">
-                    <p class="text-center text-slate-400 py-10">جاري تحميل محرك بحث الفنادق...</p>
-                </div>
+
             </div>
         </div>
 
@@ -328,22 +318,22 @@
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition">
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
                         <i class="fa-solid fa-city text-2xl text-sky-400 mb-2"></i>
                         <h4 class="text-sm font-bold text-white">دبي - DXB</h4>
-                        <p class="text-[10px] text-slate-400 mt-0.5">الأكثر طلباً</p>
+                        <p class="text-[10px] text-slate-400 mt-0.5">فنادق وعروض فاخرة</p>
                     </div>
-                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition">
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
                         <i class="fa-solid fa-monument text-2xl text-amber-400 mb-2"></i>
                         <h4 class="text-sm font-bold text-white">القاهرة - CAI</h4>
                         <p class="text-[10px] text-slate-400 mt-0.5">عروض مميزة</p>
                     </div>
-                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition">
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
                         <i class="fa-solid fa-mosque text-2xl text-emerald-400 mb-2"></i>
                         <h4 class="text-sm font-bold text-white">إسطنبول - IST</h4>
                         <p class="text-[10px] text-slate-400 mt-0.5">رحلات عائلية</p>
                     </div>
-                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition">
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')">
                         <i class="fa-solid fa-plane-up text-2xl text-purple-400 mb-2"></i>
                         <h4 class="text-sm font-bold text-white">لندن - LON</h4>
                         <p class="text-[10px] text-slate-400 mt-0.5">حجوزات عالمية</p>
@@ -578,30 +568,6 @@
                         </label>
                     </div>
 
-                    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3">
-                        <strong class="text-white block">إعدادات البيانات</strong>
-                        <p class="text-[11px] text-slate-400 leading-relaxed">
-                            نستخدم أدوات البيانات لجعل التطبيق فعالاً وتحسين الميزات وعرض المحتوى ذي الصلة. اطلع على المزيد في سياسة ملفات تعريف الارتباط السارية لدينا.
-                        </p>
-                        
-                        <div class="pt-2 border-t border-slate-800 space-y-3 text-[11px]">
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-300">ملفات تعريف الارتباط الأساسية (والتي تجعل موقعنا يعمل ولا يمكن إيقاف تشغيله.)</span>
-                                <span class="text-sky-400 font-bold">دائم (لا يمكن إيقافه)</span>
-                            </div>
-
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-300">تجربة محسنة (نستخدمها لاختبار الميزات وتحسينها وتطويرها.)</span>
-                                <input type="checkbox" id="cookieEnhanced" class="w-4 h-4 accent-sky-500 rounded" checked>
-                            </div>
-
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-300">الإعلان والتقنيات ذات الصلة (نعرض الإعلانات التي نقدمها نحن والأطراف الثالثة. إننا نقوم بجمع معلومات حول كيفية استخدامك لـ ALHAYAT TRAVEL، والتي تتضمن بيانات شخصية مثل عنوان IP الخاص بك.) يستخدم هذا لتحسين تجربتك، وتخزين المعلومات و/أو الوصول إليها على الجهاز، والإعلانات المخصصة، وقياس الإعلانات.</span>
-                                <input type="checkbox" id="cookieAds" class="w-4 h-4 accent-sky-500 rounded" checked>
-                            </div>
-                        </div>
-                    </div>
-
                     <button onclick="saveAllSettings()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 rounded-xl transition shadow-lg text-sm">
                         حفظ الإعدادات
                     </button>
@@ -623,8 +589,6 @@
                     <div class="border-t border-slate-800 my-2 pt-2 text-slate-400 font-bold">الشروط والسياسات:</div>
                     <button onclick="openModal('privacyModal')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">سياسة الخصوصية</button>
                     <button onclick="openModal('aboutModal')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">شروط الخدمة</button>
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-[11px] text-slate-400">تراخيص الطرف الثالث</div>
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-[11px] text-slate-400">بيان سهولة الوصول</div>
                 </div>
             </div>
         </div>
@@ -706,7 +670,6 @@
             </form>
 
             <div id="errorMsg" class="text-rose-500 text-xs mt-3 text-center font-medium"></div>
-            <div id="successMsg" class="text-emerald-400 text-xs mt-3 text-center font-medium"></div>
 
             <div class="text-center mt-4 text-xs text-slate-400" id="toggleArea">
               ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>
@@ -714,52 +677,9 @@
         </div>
     </div>
 
-    <div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
-        <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl">
-            <button onclick="closeModal('profileModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <h3 class="text-base font-bold text-sky-400 mb-4 text-center">تعديل الملف الشخصي</h3>
-            <form onsubmit="event.preventDefault(); closeModal('profileModal'); alert('تم التحديث بنجاح');">
-                <div class="mb-3">
-                    <label class="block text-[11px] text-slate-400 mb-1">الاسم الكامل</label>
-                    <input type="text" id="modalProfName" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
-                </div>
-                <button type="submit" class="w-full bg-sky-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs">حفظ التعديلات</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="aboutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
-        <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl text-xs leading-relaxed">
-            <button onclick="closeModal('aboutModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <h3 class="text-base font-bold text-sky-400 mb-3 text-center">شروط الخدمة</h3>
-            <p class="text-slate-300">كافة الحقوق محفوظة لـ ALHAYAT TRAVEL 2026. نسعى لتقديم أفضل تجربة بحث ومقارنة أسعار الرحلات والفنادق.</p>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
-        <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl text-xs leading-relaxed">
-            <button onclick="closeModal('privacyModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <h3 class="text-base font-bold text-sky-400 mb-3 text-center">سياسة الخصوصية</h3>
-            <p class="text-slate-300">نحن نحمي بياناتك الشخصية ونلتزم بمعايير الأمان المتقدمة لضمان خصوصية تامة لجميع مستخدمينا.</p>
-        </div>
-    </div>
-
-    <div id="supportModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
-        <div class="glass-card w-full max-w-sm rounded-3xl p-6 relative border border-slate-700 shadow-2xl text-center">
-            <button onclick="closeModal('supportModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <i class="fa-solid fa-headset text-3xl text-sky-400 mb-3"></i>
-            <h3 class="text-base font-bold text-white mb-2">الدعم الفني والملاحظات</h3>
-            <p class="text-xs text-slate-400 mb-4">فريقنا متواجد لمساعدتك طوال الوقت.</p>
-            <button onclick="closeModal('supportModal')" class="w-full bg-sky-500 text-slate-950 font-bold py-2 rounded-xl text-xs">إغلاق</button>
-        </div>
-    </div>
-
     <!-- JavaScript Scripts -->
     <script>
         let historyStack = ['home'];
-        let hotelsLoaded = false;
 
         function navigateTo(pageId, addToHistory = true) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
@@ -796,10 +716,6 @@
             } else {
                 if (brandLogoContainer) brandLogoContainer.style.display = 'none';
                 if (backButtonContainer) backButtonContainer.classList.remove('hidden');
-            }
-
-            if (pageId === 'hotels' && !hotelsLoaded) {
-                loadHotelsWidget();
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -854,26 +770,6 @@
             navigateTo(tabName);
         }
 
-        function saveHotelItem() {
-            const hotelName = document.getElementById('hotelNameInput').value || "فندق مميز";
-            const hotelDate = document.getElementById('hotelDateInput').value || "قريباً";
-            
-            const searchDesc = `بحث حجز فندق: ${hotelName} (${hotelDate})`;
-            localStorage.setItem('alh_last_search', searchDesc);
-
-            const cont = document.getElementById('continueContainer');
-            if(cont) cont.innerHTML = `<span class="text-amber-400 font-bold">${searchDesc}</span>`;
-
-            addFavoriteItem({ type: 'فندق', title: hotelName, date: hotelDate });
-            alert("تم حفظ حجز الفندق بنجاح في المحفوظات!");
-        }
-
-        function addFavoriteItem(item) {
-            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
-            favs.push(item);
-            localStorage.setItem('alh_favorites', JSON.stringify(favs));
-        }
-
         function renderFavorites() {
             const area = document.getElementById('favoritesContentArea');
             if(!area) return;
@@ -886,7 +782,7 @@
             favs.forEach((f, idx) => {
                 html += `<div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
                     <div>
-                        <span class="text-sky-400 font-bold block mb-0.5">${f.type}</span>
+                        <span class="text-amber-400 font-bold block mb-0.5">${f.type}</span>
                         <span class="text-white font-medium">${f.title} (${f.date})</span>
                     </div>
                     <button onclick="removeFavorite(${idx})" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
@@ -936,23 +832,9 @@
             const currency = document.getElementById('settingsCurrency').value;
             const country = document.getElementById('settingsCountry').value;
             const marketing = document.getElementById('marketingSwitch').checked;
-            const enhanced = document.getElementById('cookieEnhanced').checked;
-            const ads = document.getElementById('cookieAds').checked;
 
-            localStorage.setItem('alh_settings', JSON.stringify({ currency, country, marketing, enhanced, ads }));
+            localStorage.setItem('alh_settings', JSON.stringify({ currency, country, marketing }));
             alert("تم حفظ إعدادات الحساب والتطبيق بنجاح!");
-        }
-
-        function loadHotelsWidget() {
-            const container = document.getElementById('hotels-widget-container');
-            if (!container) return;
-            container.innerHTML = '';
-            const script = document.createElement('script');
-            script.src = "https://tp.media/content?currency=usd&trs=20408&shmarker=20408&show_hotels=true&powered_by=false&locale=ar&search_host=search.hotellook.com&theme=dark&primary=00b4d8&color_button=00b4d8";
-            script.async = true;
-            script.charset = "utf-8";
-            container.appendChild(script);
-            hotelsLoaded = true;
         }
 
         function toggleUserDropdown() {
@@ -974,164 +856,6 @@
             document.getElementById(id).classList.add('hidden');
             document.body.style.overflow = '';
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            let lastSearch = localStorage.getItem('alh_last_search');
-            if(lastSearch) {
-                const cont = document.getElementById('continueContainer');
-                if(cont) cont.innerHTML = `<span class="text-sky-400 font-bold">${lastSearch}</span>`;
-            }
-        });
-    </script>
-
-    <!-- Firebase SDK & Google Authentication Integration -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { 
-          getAuth, 
-          createUserWithEmailAndPassword, 
-          signInWithEmailAndPassword,
-          GoogleAuthProvider,
-          signInWithPopup,
-          onAuthStateChanged,
-          signOut,
-          setPersistence,
-          browserLocalPersistence
-        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyCoKoDJjLqUgFW30FPeGft9yt95AOCUPsY",
-          authDomain: "alhaya-travel.firebaseapp.com",
-          projectId: "alhaya-travel",
-          storageBucket: "alhaya-travel.firebasestorage.app",
-          messagingSenderId: "990194431037",
-          appId: "1:990194431037:web:843500911743f7a9f1e654",
-          measurementId: "G-3RG9Q10E83"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        setPersistence(auth, browserLocalPersistence).catch(console.error);
-        const db = getFirestore(app);
-        let isSignUpMode = false;
-
-        window.currentUserGlobal = null;
-
-        async function saveUserToFirestore(user, extraData = {}) {
-          try {
-            await setDoc(doc(db, "users", user.uid), {
-              uid: user.uid,
-              name: extraData.name || user.displayName || "مستخدم ALHAYAT",
-              email: user.email,
-              photoURL: user.photoURL || "",
-              lastLogin: serverTimestamp(),
-              ...extraData
-            }, { merge: true });
-          } catch (e) {
-            console.error("Firestore Error:", e);
-          }
-        }
-
-        window.toggleMode = (signUp) => {
-          isSignUpMode = signUp;
-          document.getElementById("signUpFields").style.display = signUp ? "block" : "none";
-          document.getElementById("cardSubtitle").innerText = signUp ? "إنشاء حساب جديد في ALHAYAT TRAVEL" : "تسجيل الدخول إلى حسابك";
-          document.getElementById("submitBtn").innerText = signUp ? "إنشاء الحساب" : "تسجيل الدخول";
-          document.getElementById("toggleArea").innerHTML = signUp 
-            ? 'لديك حساب بالفعل؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(false)">تسجيل الدخول</span>'
-            : 'ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>';
-        };
-
-        window.submitAuth = async () => {
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-          if (isSignUpMode) {
-            const firstName = document.getElementById("firstName").value;
-            const lastName = document.getElementById("lastName").value;
-            try {
-              const res = await createUserWithEmailAndPassword(auth, email, password);
-              await saveUserToFirestore(res.user, { name: `${firstName} ${lastName}` });
-              closeModal('loginModal');
-            } catch (err) {
-              document.getElementById("errorMsg").innerText = "خطأ في التسجيل: " + err.code;
-            }
-          } else {
-            try {
-              const res = await signInWithEmailAndPassword(auth, email, password);
-              await saveUserToFirestore(res.user);
-              closeModal('loginModal');
-            } catch (err) {
-              document.getElementById("errorMsg").innerText = "بيانات الدخول غير صحيحة.";
-            }
-          }
-        };
-
-        window.handleGoogleSignIn = async () => {
-          const provider = new GoogleAuthProvider();
-          try {
-            const result = await signInWithPopup(auth, provider);
-            await saveUserToFirestore(result.user);
-            closeModal('loginModal');
-          } catch (err) {
-            document.getElementById("errorMsg").innerText = "تعذر تسجيل الدخول بـ Google.";
-          }
-        };
-
-        window.handleSignOut = () => {
-          signOut(auth).then(() => {
-            alert("تم تسجيل الخروج بنجاح.");
-            navigateTo('home');
-          });
-        };
-
-        onAuthStateChanged(auth, (user) => {
-          window.currentUserGlobal = user;
-          const loggedOutBtn = document.getElementById("loggedOutBtn");
-          const loggedInMenu = document.getElementById("loggedInMenu");
-          const userAvatar = document.getElementById("userAvatar");
-          const accountProfileName = document.getElementById("accountProfileName");
-          const accountProfileEmail = document.getElementById("accountProfileEmail");
-          const accountCircleBadge = document.getElementById("accountCircleBadge");
-          const navUserInitialsBadge = document.getElementById("navUserInitialsBadge");
-
-          if (user) {
-            if (loggedOutBtn) loggedOutBtn.classList.add("hidden");
-            if (loggedInMenu) loggedInMenu.classList.remove("hidden");
-            const name = user.displayName || user.email.split('@')[0];
-            
-            let userProfile = JSON.parse(localStorage.getItem('alh_user_profile') || '{}');
-            if(!userProfile.email) {
-                userProfile.email = user.email;
-                userProfile.name = name;
-                userProfile.dob = "1995-01-01";
-                userProfile.phone = "+966000000000";
-                localStorage.setItem('alh_user_profile', JSON.stringify(userProfile));
-            }
-
-            if (userAvatar) userAvatar.innerText = name.charAt(0).toUpperCase();
-            if (accountProfileName) accountProfileName.innerText = userProfile.name;
-            if (accountProfileEmail) accountProfileEmail.innerText = user.email;
-            
-            const initials = userProfile.name.length >= 2 ? userProfile.name.substring(0, 2).toUpperCase() : userProfile.name.charAt(0).toUpperCase();
-            if (accountCircleBadge) accountCircleBadge.innerText = initials;
-            if (navUserInitialsBadge) navUserInitialsBadge.innerText = initials;
-
-            document.getElementById('displayLoginEmail').innerText = user.email;
-            document.getElementById('displayLoginName').innerText = userProfile.name;
-            document.getElementById('displayLoginDob').innerText = userProfile.dob || 'غير محدد';
-
-            document.getElementById('editProfileName').value = userProfile.name;
-            document.getElementById('editProfileDob').value = userProfile.dob || '';
-            document.getElementById('editProfilePhone').value = userProfile.phone || '';
-            document.getElementById('editProfileEmail').value = user.email;
-
-          } else {
-            if (loggedOutBtn) loggedOutBtn.classList.remove("hidden");
-            if (loggedInMenu) loggedInMenu.classList.add("hidden");
-            if (navUserInitialsBadge) navUserInitialsBadge.innerText = "AH";
-          }
-        });
     </script>
 </body>
 </html>
