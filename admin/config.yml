@@ -1,8 +1,9 @@
 backend:
-  name: git-gateway
-  branch: main # تأكد أن هذا هو اسم الفرع الأساسي عندك (غالباً main أو master)
+  name: github
+  repo: alhaya_travel/alhaya_travel
+  branch: main
 
-media_folder: "images" # المجلد الذي ستحفظ فيه الصور التي ترفعها
+media_folder: "images"
 public_folder: "/images"
 
 collections:
@@ -13,4 +14,4 @@ collections:
         label: "الصفحة الرئيسية"
         name: "home"
         fields:
-          - {label: "عنوان الموقع الرئيسي", name: "title", widget: "string"}
+          - { label: "عنوان الموقع الرئيسي", name: "title", widget: "string" }
