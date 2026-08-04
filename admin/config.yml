@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main # تأكد أن هذا هو اسم الفرع الأساسي عندك (غالباً main أو master)
+
+media_folder: "images" # المجلد الذي ستحفظ فيه الصور التي ترفعها
+public_folder: "/images"
+
+collections:
+  - name: "pages"
+    label: "صفحات الموقع"
+    files:
+      - file: "index.html"
+        label: "الصفحة الرئيسية"
+        name: "home"
+        fields:
+          - {label: "عنوان الموقع الرئيسي", name: "title", widget: "string"}
