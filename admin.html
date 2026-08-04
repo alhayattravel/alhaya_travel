@@ -10,34 +10,70 @@
         input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
         button:hover { background: #0056b3; }
+        #status { margin-top: 15px; color: green; font-weight: bold; text-align: center; }
     </style>
 </head>
 <body>
 
     <div class="admin-box">
         <h2>لوحة إدارة رحلات الحياة</h2>
-        <!-- الخطوة 3: الفورم (عنوان + تفاصيل + صورة) -->
         <div id="trip-form">
             <input type="text" id="trip-title" placeholder="عنوان الرحلة (مثال: رحلة إلى دبي)">
             <textarea id="trip-desc" placeholder="تفاصيل ووصف الرحلة..."></textarea>
             <input type="file" id="trip-image">
             <button onclick="saveTrip()">حفظ ونشر الرحلة</button>
+            <p id="status"></p>
         </div>
     </div>
 
-    <script>
-        function saveTrip() {
+    <!-- ربط فايربيس عبر الـ CDN ليعمل مباشرة داخل المتصفح -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addfDoc, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // إعدادات مشروعك
+        const firebaseConfig = {
+          apiKey: "AIzaSyCoKoDJjLqUgFW30FPeGft9yt95AOCUPsY",
+          authDomain: "alhaya-travel.firebaseapp.com",
+          projectId: "alhaya-travel",
+          storageBucket: "alhaya-travel.firebasestorage.app",
+          messagingSenderId: "990194431037",
+          appId: "1:990194431037:web:843500911743f7a9f1e654",
+          measurementId: "G-3RG9Q10E83"
+        };
+
+        // تهيئة فايربيس
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // جعل دالة الحفظ متاحة عالمياً
+        window.saveTrip = async function() {
             const title = document.getElementById('trip-title').value;
             const desc = document.getElementById('trip-desc').value;
+            const status = document.getElementById('status');
             
             if(!title || !desc) {
                 alert('الرجاء ملء الحقول المطلوبة!');
                 return;
             }
             
-            // سنقوم بربطها بقاعدة البيانات في الخطوات القادمة
-            console.log("تمت بنجاح جاهزة للإرسال:", { title, desc });
-            alert('تم حفظ البيانات مؤقتاً بانتظار ربط Firebase!');
+            try {
+                status.innerText = "جاري الحفظ...";
+                // حفظ البيانات في قاعدة البيانات Firestore ضمن جدول اسمه "trips"
+                await addDoc(collection(db, "trips"), {
+                    title: title,
+                    description: desc,
+                    createdAt: new Date()
+                });
+                
+                status.innerText = "تم حفظ ونشر الرحلة بنجاح!";
+                document.getElementById('trip-title').value = '';
+                document.getElementById('trip-desc').value = '';
+            } catch (e) {
+                console.error("خطأ أثناء الحفظ: ", e);
+                status.style.color = "red";
+                status.innerText = "حدث خطأ أثناء الحفظ!";
+            }
         }
     </script>
 
