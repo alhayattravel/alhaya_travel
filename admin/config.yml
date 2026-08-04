@@ -2,7 +2,6 @@ backend:
   name: github
   repo: alhaya_travel/alhaya_travel
   branch: main
-  site_id: alhayattravel.netlify.app
 
 media_folder: "images"
 public_folder: "/images"
