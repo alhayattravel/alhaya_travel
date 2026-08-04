@@ -567,17 +567,77 @@
             </div>
         </div>
 
-        <!-- 9.5 فرع الدعم -->
+        <!-- 9.5 فرع الدعم (تمت إضافة الأقسام المطلوبة هنا داخل نفس الصفحة) -->
         <div id="page-account-support" class="page-view">
-            <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
-                <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+            <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto space-y-4">
+                <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
                     <i class="fa-solid fa-book text-purple-400"></i> الدعم والمساعدة والسياسات
                 </h3>
+                
+                <!-- الأزرار السابقة -->
                 <div class="space-y-2 text-xs text-slate-300">
                     <button onclick="alert('خدمة الدعم المباشر متوفرة دائماً لخدمتك')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الإجابات والملاحظات</button>
                     <button onclick="alert('تواصل معنا عبر البريد المخصص للدعم')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الحصول على المساعدة</button>
                     <button onclick="alert('شكراً لتقييمك المنصة!')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">تقييم التطبيق ⭐⭐⭐⭐⭐</button>
                 </div>
+
+                <div class="border-t border-slate-800 pt-4 space-y-4">
+                    
+                    <!-- 1. قسم من نحن (About Us) -->
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-2">
+                        <h4 class="font-bold text-white text-sm flex items-center gap-2 text-sky-400">
+                            <i class="fa-solid fa-circle-info"></i> من نحن (About Us)
+                        </h4>
+                        <p class="leading-relaxed text-slate-300">
+                            مرحبًا بك في Alhayat Travel — وجهتك الذكية لاكتشاف أفضل عروض السفر حول العالم. نحن منصة متخصصة في مقارنة أسعار الرحلات الجوية والفنادق، ونسعى إلى تمكين المسافرين من اتخاذ قرارات ذكية وسريعة من خلال عرض أفضل الخيارات المتاحة في مكان واحد.
+                        </p>
+                        <p class="leading-relaxed text-slate-300">
+                            في Alhayat Travel، نؤمن أن تجربة السفر تبدأ من لحظة البحث، لذلك نعمل على توفير تجربة سهلة وسلسة تساعدك في الوصول إلى أفضل العروض دون تعقيد. نقوم بجمع البيانات من منصات وشركات سفر عالمية موثوقة، ونقدمها لك بشكل منظم وواضح لتتمكن من المقارنة واختيار ما يناسب احتياجاتك وميزانيتك بكل ثقة.
+                        </p>
+                        <p class="leading-relaxed text-slate-300">
+                            نحن لا نقوم بعمليات الحجز بشكل مباشر، بل نعمل كحلقة وصل بينك وبين مزودي خدمات السفر، مما يمنحك حرية الاختيار والوصول إلى الأسعار الحقيقية من مصادرها الأصلية. هدفنا هو توفير الشفافية الكاملة، حتى تكون على اطلاع بكل التفاصيل قبل اتخاذ قرارك.
+                        </p>
+                        <p class="leading-relaxed text-slate-300">
+                            نحرص دائمًا على تطوير منصتنا لتكون سريعة، آمنة، ومتوافقة مع جميع الأجهزة، مع اهتمام كبير بحماية خصوصية المستخدمين وتقديم تجربة موثوقة تعتمد على أحدث التقنيات والمعايير العالمية.
+                        </p>
+                        <p class="leading-relaxed text-slate-300">
+                            سواء كنت تخطط لرحلة عمل، عطلة عائلية، أو مغامرة جديدة، فإن Alhayat Travel هنا ليكون شريكك في كل خطوة، ويساعدك في العثور على أفضل الخيارات بأقل جهد وأفضل سعر.
+                        </p>
+                    </div>
+
+                    <!-- 2. قسم سياسة الخصوصية (Privacy Policy) -->
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-2">
+                        <h4 class="font-bold text-white text-sm flex items-center gap-2 text-amber-400">
+                            <i class="fa-solid fa-shield-halved"></i> سياسة الخصوصية (Privacy Policy)
+                        </h4>
+                        <ul class="list-disc list-inside space-y-1.5 text-slate-300">
+                            <li>نحن لا نخزن بيانات الدفع الخاصة بك نهائياً.</li>
+                            <li>نستخدم خدمات طرف ثالث (شركات السفر المعتمدة) لإتمام الحجوزات بأمان.</li>
+                            <li>يتم استخدام البيانات بشكل آمن لتحسين تجربة المستخدم وتسهيل عملية البحث.</li>
+                            <li>نلتزم التزاماً تاماً بحماية بيانات المستخدمين والخصوصية وفق أعلى المعايير.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. قسم اتصل بنا (Contact Us) -->
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-3">
+                        <h4 class="font-bold text-white text-sm flex items-center gap-2 text-emerald-400">
+                            <i class="fa-solid fa-headset"></i> اتصل بنا (Contact Us)
+                        </h4>
+                        <p class="text-slate-400">يسعدنا تواصلك معنا في أي وقت لأي استفسار أو دعم:</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <a href="https://wa.me/00971565710532" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-2 transition">
+                                <i class="fa-brands fa-whatsapp text-base"></i>
+                                <span>00971565710532</span>
+                            </a>
+                            <a href="mailto:alhayattravel395@gmail.com" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-2 transition border border-slate-700">
+                                <i class="fa-solid fa-envelope text-sky-400 text-base"></i>
+                                <span>alhayattravel395@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
