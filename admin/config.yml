@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: alhaya_travel/alhaya_travel
+  repo: alhayattravel/alhaya_travel
   branch: main
+
   base_url: https://decap-cms-oauth.netlify.app
 
 media_folder: "images"
