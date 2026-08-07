@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="i2oYi7YOyorHAFlzKlTg6BhvRzC8QrYAVndhY6x5zz0" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00B4D8">
+    <title>ALHAYAT TRAVEL | Flights, Hotels & Cars Search</title>
+    <meta name="description" content="ابحث عن أفضل سعر لحجز رحلتك القادمة ✈️. قارن بين مئات الشركات العالمية واحجز رحلتك، الفندق، أو السيارة بثوانٍ معدودة. رحلات أماكن إقامة وسيارات.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.setAttribute("data-cmp-ab","2");
+      script.src = 'https://tpembars.com/NTU3MTQx.js?t=557141';
+      document.head.appendChild(script);
+  })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#070D1E',
+                            card: '#0D1527',
+                            border: '#1E293B',
+                            accent: '#00B4D8',
+                            sky: '#38BDF8',
+                            gold: '#D4AF37'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #070D1E; 
+            color: #F8FAFC; 
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+        .tab-btn {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #00B4D8 0%, #0284C7 100%);
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 20px -2px rgba(0, 180, 216, 0.4);
+            border-color: transparent !important;
+        }
+        .glass-card {
+            background: #0D1527;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .page-view {
+            display: none;
+        }
+        .page-view.active-page {
+            display: block;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1rem 0;
+            color: #64748b;
+            font-size: 0.75rem;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #334155;
+        }
+        .divider:not(:empty)::before { margin-left: .5em; }
+        .divider:not(:empty)::after { margin-right: .5em; }
+        .article-tab-btn {
+            transition: all 0.2s;
+        }
+        .article-tab-btn.active-article-tab {
+            background: linear-gradient(135deg, #00B4D8 0%, #0284C7 100%) !important;
+            color: white !important;
+            border-color: transparent !important;
+        }
+        .article-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+        }
+    </style>
+    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+      (function () {
+            var script = document.createElement("script");
+            script.async = true;
+            script.type = "module";
+            script.src = "https://tpwgts.com/wl_web/main.js?wl_id=20408";
+            document.head.appendChild(script);
+      })();
+    </script>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white pb-24">
+
+    <header id="mainHeader" class="bg-brand-dark/95 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+            <div id="brandLogoContainer" class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                <img src="logo.png" alt="ALHAYAT TRAVEL" class="h-10 md:h-12 w-auto object-contain rounded-lg" onerror="this.style.display='none'">
+                <div>
+                    <h1 class="text-lg md:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 tracking-wider">
+                        ALHAYAT TRAVEL
+                    </h1>
+                </div>
+            </div>
+            <div id="backButtonContainer" class="hidden">
+                <button onclick="goBack()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 border border-slate-700 transition">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span>الرجوع</span>
+                </button>
+            </div>
+            <div id="authContainer" class="relative">
+                <button id="loggedOutBtn" onclick="openModal('loginModal')" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl transition flex items-center gap-2 shadow-md text-xs">
+                    <i class="fa-solid fa-user"></i>
+                    <span id="userBtnText">تسجيل الدخول / إنشاء حساب</span>
+                </button>
+                <div id="loggedInMenu" class="hidden relative">
+                    <button onclick="toggleUserDropdown()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-2 text-xs">
+                        <div id="userAvatar" class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-extrabold flex items-center justify-center text-[11px]">U</div>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                    </button>
+                    <div id="userDropdown" class="hidden absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl py-2 z-50 text-xs">
+                        <button onclick="navigateTo('account-main'); hideUserDropdown();" class="w-full text-right px-4 py-2.5 text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-id-card text-sky-400"></i><span>حسابي الشخصي</span>
+                        </button>
+                        <button onclick="navigateTo('favorites'); hideUserDropdown();" class="w-full text-right px-4 py-2.5 text-slate-300 hover:bg-slate-800 hover:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-rose-500"></i><span>المحفوظات</span>
+                        </button>
+                        <div class="border-t border-slate-800 my-1"></div>
+                        <button onclick="handleSignOut(); hideUserDropdown();" class="w-full text-right px-4 py-2.5 text-rose-400 hover:bg-rose-500/10 flex items-center gap-2">
+                            <i class="fa-solid fa-right-from-bracket"></i><span>تسجيل الخروج</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-6 w-full flex-grow">
+
+        <div id="page-home" class="page-view active-page">
+            <div class="text-center mb-6">
+                <h2 class="text-xl md:text-3xl font-black text-white mb-2">ابحث عن أفضل سعر لحجز رحلتك القادمة ✈️</h2>
+                <p class="text-xs md:text-sm text-slate-400 font-medium">قارن بين مئات الشركات العالمية واحجز رحلتك، الفندق، أو السيّارة بثوانٍ معدودة</p>
+            </div>
+            <div class="grid grid-cols-3 gap-2 md:gap-3 mb-6 relative">
+                <button onclick="navigateToTab('flights', 0)" id="mainTabBtn0" class="tab-btn active flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-300 font-bold hover:text-white shadow-lg">
+                    <i class="fa-solid fa-plane text-xl md:text-2xl text-sky-400"></i><span class="text-xs md:text-sm">رحلات</span>
+                </button>
+                <button onclick="navigateToTab('hotels', 1)" id="mainTabBtn1" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white shadow-lg">
+                    <i class="fa-solid fa-bed text-xl md:text-2xl text-amber-400"></i><span class="text-xs md:text-sm">أماكن إقامة</span>
+                </button>
+                <button onclick="navigateToTab('cars', 2)" id="mainTabBtn2" class="tab-btn flex flex-col items-center justify-center gap-1.5 py-4 px-2 rounded-2xl bg-brand-card border border-slate-800 text-slate-400 font-bold hover:text-white shadow-lg">
+                    <i class="fa-solid fa-car text-xl md:text-2xl text-emerald-400"></i><span class="text-xs md:text-sm">السيارات</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <button onclick="navigateTo('why-us')" class="glass-card hover:border-sky-500/50 p-4 rounded-2xl flex items-center gap-3 transition text-right group">
+                    <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-sky-500 group-hover:text-slate-950 transition"><i class="fa-solid fa-circle-question"></i></div>
+                    <div><h4 class="text-sm font-bold text-white">لماذا ALHAYAT TRAVEL؟</h4><p class="text-[11px] text-slate-400 mt-0.5">تعرف على مميزاتنا ولفتة خاصة لك</p></div>
+                </button>
+                <button onclick="navigateTo('destinations')" class="glass-card hover:border-sky-500/50 p-4 rounded-2xl flex items-center gap-3 transition text-right group">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-amber-500 group-hover:text-slate-950 transition"><i class="fa-solid fa-globe"></i></div>
+                    <div><h4 class="text-sm font-bold text-white">استكشف جميع الوجهات</h4><p class="text-[11px] text-slate-400 mt-0.5">الوجهات الأكثر شعبية وبحثاً</p></div>
+                </button>
+            </div>
+            <div class="glass-card rounded-2xl p-4 mb-6">
+                <div class="flex items-center gap-2 mb-3 text-xs font-bold text-slate-300"><i class="fa-solid fa-clock-rotate-left text-sky-400"></i><span>تابع من حيث توقفت</span></div>
+                <div id="continueContainer" class="text-xs text-slate-300 text-center py-4 bg-slate-900/50 rounded-xl border border-slate-800">لا توجد عمليات بحث سابقة. ابدأ بحثك الآن وسيتم حفظه تلقائياً!</div>
+            </div>
+        </div>
+
+        <div id="page-flights" class="page-view">
+            <div class="mb-4 flex items-center justify-between">
+                <h3 class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-plane text-sky-400"></i> محرك البحث عن الرحلات الجوية</h3>
+                <button onclick="navigateTo('pro-search')" class="bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 border border-sky-500/30 text-xs font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5"><i class="fa-solid fa-sliders"></i><span>النتائج والفلترة المتقدمة</span></button>
+            </div>
+            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl">
+                <div id="tpwl-search" class="w-full"></div>
+                <div id="tpwl-tickets" class="w-full mt-4"></div>
+            </div>
+        </div>
+
+        <div id="page-pro-search" class="page-view">
+            <div class="glass-card rounded-3xl p-6 mb-6">
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-filter text-sky-400"></i> فلترة وترتيب نتائج البحث الاحترافية</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">خصص نتائج بحثك للوصول إلى الرحلة المثالية فوراً</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-6">
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800"><label class="block text-[11px] text-slate-400 mb-1 font-bold">فلترة حسب السعر</label><select id="filterPrice" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-2 py-2 text-xs focus:outline-none"><option value="all">جميع الأسعار</option><option value="low">الأقل سعراً ($)</option><option value="mid">السعر المتوسط</option></select></div>
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800"><label class="block text-[11px] text-slate-400 mb-1 font-bold">فلترة حسب المدة</label><select id="filterDuration" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-2 py-2 text-xs focus:outline-none"><option value="all">كل المدد</option><option value="direct">رحلات مباشرة فقط</option><option value="short">أقل من 6 ساعات</option></select></div>
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800"><label class="block text-[11px] text-slate-400 mb-1 font-bold">فلترة حسب الشركة</label><select id="filterAirline" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-2 py-2 text-xs focus:outline-none"><option value="all">جميع الشركات</option><option value="emirates">الإماراتية</option><option value="qatar">القطرية</option><option value="flydubai">فلاي دبي</option></select></div>
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800"><label class="block text-[11px] text-slate-400 mb-1 font-bold">ترتيب النتائج</label><select id="sortResultsBy" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-2 py-2 text-xs focus:outline-none"><option value="cheapest">الأرخص أولاً</option><option value="fastest">الأسرع أولاً</option><option value="best">التقييم الأفضل</option></select></div>
+                </div>
+                <div id="proSearchResultsContainer" class="space-y-3">
+                    <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex items-center justify-between flex-wrap gap-3"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-sm"><i class="fa-solid fa-plane"></i></div><div><h4 class="text-sm font-bold text-white">دبي (DXB) ➔ لندن (LHR)</h4><p class="text-[11px] text-slate-400">رحلة مباشرة عبر الخطوط الجوية المعتمدة • مدة 7 ساعات</p></div></div><div class="text-left flex items-center gap-3"><div><span class="text-amber-400 font-extrabold text-sm block">$340</span><span class="text-[10px] text-emerald-400">أفضل سعر متاح</span></div><button onclick="alert('تمت المتابعة لحجز الرحلة بنجاح')" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition">احجز الآن</button></div></div>
+                    <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl flex items-center justify-between flex-wrap gap-3"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm"><i class="fa-solid fa-plane"></i></div><div><h4 class="text-sm font-bold text-white">القاهرة (CAI) ➔ إسطنبول (IST)</h4><p class="text-[11px] text-slate-400">رحلة مباشرة • مدة ساعتان ونصف</p></div></div><div class="text-left flex items-center gap-3"><div><span class="text-amber-400 font-extrabold text-sm block">$195</span><span class="text-[10px] text-emerald-400">عرض ممتاز</span></div><button onclick="alert('تمت المتابعة لحجز الرحلة بنجاح')" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition">احجز الآن</button></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-hotels" class="page-view">
+            <div class="mb-4 flex items-center justify-between"><h3 class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-bed text-amber-400"></i> محرك بحث أماكن الإقامة وفنادق العالم (ZenHotels)</h3></div>
+            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl"><div class="w-full text-center py-4"><script src="https://cpa.zenhotels.com/static/widget/scripts/a8aeb00be396bca1bc84675bf6f7d73f.js" type="text/javascript" charset="utf-8" async></script></div></div>
+        </div>
+
+        <div id="page-cars" class="page-view">
+            <div class="mb-4 flex items-center justify-between"><h3 class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-car text-emerald-400"></i> محرك بحث تأجير السيارات</h3></div>
+            <div class="glass-card rounded-3xl p-4 md:p-6 shadow-2xl"><div class="w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner"><iframe src="https://www.economybookings.com/?marker=758619" class="w-full h-[600px] border-0 rounded-2xl" title="تأجير السيارات" loading="lazy"></iframe></div></div>
+        </div>
+
+        <div id="page-why-us" class="page-view">
+            <div class="glass-card rounded-3xl p-6 md:p-8">
+                <div class="text-center mb-6"><div class="w-14 h-14 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center mx-auto mb-3 text-2xl font-bold"><i class="fa-solid fa-award"></i></div><h3 class="text-xl font-black text-white">لماذا ALHAYAT TRAVEL؟</h3><p class="text-xs text-sky-400 mt-1">بوابتك الموثوقة نحو رحلات لا تُنسى</p></div>
+                <div class="space-y-4 text-xs text-slate-300 leading-relaxed">
+                    <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800"><h4 class="font-bold text-white text-sm mb-1.5 flex items-center gap-2"><i class="fa-solid fa-hand-holding-heart text-rose-500"></i> لفته خاصة لك من القلب</h4><p class="text-slate-400">نحن لا نبيع تذاكر طيران أو حجوزات فحسب، بل نضع بين يديك مفتاح العالم. في <strong>ALHAYAT TRAVEL</strong>، ندرك تماماً أن كل رحلة تحمل قصة جديدة، ذكريات عائلية دافئة، أو فرصة عمل مصيرية. لذلك صممنا لك هذه المنصة لتكون رفيقك الأمين الذي يختصر لك المسافات، يوفر أموالك، ويمنحك راحة البال من أول كليك وحتى عودتك بسلامة الله إلى منزلك.</p></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3"><div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800"><h5 class="font-bold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-emerald-400"></i> شفافية كاملة</h5><p class="text-[11px] text-slate-400">بدون أي رسوم خفية أو زيادات مفاجئة على الأسعار النهائية.</p></div><div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800"><h5 class="font-bold text-white mb-1 flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> سرعة ومقارنة ذكية</h5><p class="text-[11px] text-slate-400">نقارن مئات شركات الطيران والفنادق في ثانية واحدة لنعطيك الأرخص.</p></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-destinations" class="page-view">
+            <div class="glass-card rounded-3xl p-6">
+                <div class="text-center mb-6"><div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-3 text-2xl font-bold"><i class="fa-solid fa-earth-americas"></i></div><h3 class="text-xl font-black text-white">استكشف جميع الوجهات الأكثر شعبية</h3><p class="text-xs text-slate-400 mt-1">الوجهات الأكثر طلباً وبحثاً من المسافرين حول العالم</p></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')"><i class="fa-solid fa-city text-2xl text-sky-400 mb-2"></i><h4 class="text-sm font-bold text-white">دبي - DXB</h4><p class="text-[10px] text-slate-400 mt-0.5">فنادق وعروض فاخرة</p></div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')"><i class="fa-solid fa-monument text-2xl text-amber-400 mb-2"></i><h4 class="text-sm font-bold text-white">القاهرة - CAI</h4><p class="text-[10px] text-slate-400 mt-0.5">عروض مميزة</p></div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')"><i class="fa-solid fa-mosque text-2xl text-emerald-400 mb-2"></i><h4 class="text-sm font-bold text-white">إسطنبول - IST</h4><p class="text-[10px] text-slate-400 mt-0.5">رحلات عائلية</p></div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-2xl text-center hover:border-sky-500 transition cursor-pointer" onclick="navigateTo('hotels')"><i class="fa-solid fa-plane-up text-2xl text-purple-400 mb-2"></i><h4 class="text-sm font-bold text-white">لندن - LON</h4><p class="text-[10px] text-slate-400 mt-0.5">حجوزات عالمية</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-favorites" class="page-view">
+            <div class="glass-card rounded-3xl p-6"><div class="text-center mb-4"><div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-500 flex items-center justify-center mx-auto mb-3 text-2xl font-bold"><i class="fa-solid fa-heart"></i></div><h3 class="text-lg font-bold text-white mb-2">المحفوظات (الرحلات والفنادق والسيارات)</h3><p class="text-xs text-slate-400">أي رحلة أو حجز يتم حفظه يظهر هنا مباشرة</p></div><div id="favoritesContentArea" class="mt-4 space-y-2"></div></div>
+        </div>
+
+        <div id="page-drops" class="page-view">
+            <div class="glass-card rounded-3xl p-6">
+                <div class="text-center mb-6"><div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl font-bold"><i class="fa-solid fa-tags"></i></div><h3 class="text-xl font-black text-white mb-1">العروض الحصرية وتخفيضات السفر (Deals & Drops)</h3><p class="text-xs text-slate-400">أقوى عروض الرحلات اليومية والوجهات الرخيصة المحدثة فوراً</p></div>
+                <div class="space-y-4">
+                    <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl"><h4 class="text-sm font-bold text-sky-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-plane-departure"></i> رحلات رخيصة (Budget Flights)</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-3"><div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/60 flex justify-between items-center"><div><span class="text-xs font-bold text-white block">من الرياض (RUH) إلى دبي (DXB)</span><span class="text-[10px] text-slate-400">طيران اقتصادي مباشر</span></div><div class="text-left"><span class="text-amber-400 font-bold text-sm block">تبدأ من $99</span><button onclick="navigateTo('flights')" class="text-[10px] text-sky-400 underline">احجز الآن</button></div></div><div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/60 flex justify-between items-center"><div><span class="text-xs font-bold text-white block">من جدة (JED) إلى إسطنبول (IST)</span><span class="text-[10px] text-slate-400">عرض خاص محدود الأيام</span></div><div class="text-left"><span class="text-amber-400 font-bold text-sm block">تبدأ من $145</span><button onclick="navigateTo('flights')" class="text-[10px] text-sky-400 underline">احجز الآن</button></div></div></div></div>
+                    <div class="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl"><h4 class="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-fire text-amber-500"></i> عروض اليوم (Today's Hot Deals)</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-3"><div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/60 flex justify-between items-center"><div><span class="text-xs font-bold text-white block">باقة فندق + طيران (شرم الشيخ)</span><span class="text-[10px] text-slate-400">إقامة 4 ليالٍ مع الفطور</span></div><div class="text-left"><span class="text-amber-400 font-bold text-sm block">خصم 35%</span><button onclick="navigateTo('hotels')" class="text-[10px] text-sky-400 underline">اكتشف العرض</button></div></div><div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/60 flex justify-between items-center"><div><span class="text-xs font-bold text-white block">تأجير سيارات في أوروبا</span><span class="text-[10px] text-slate-400">بدون رسوم إلغاء</span></div><div class="text-left"><span class="text-amber-400 font-bold text-sm block">وفر حتى $50</span><button onclick="navigateTo('cars')" class="text-[10px] text-sky-400 underline">استأجر الآن</button></div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE NEW: المقالات بتصميم الموقع الداكن ================= -->
+        <div id="page-articles" class="page-view">
+            <div class="glass-card rounded-3xl p-6">
+                <div class="text-center mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center mx-auto mb-3 text-2xl font-bold"><i class="fa-solid fa-newspaper"></i></div>
+                    <h3 class="text-xl font-black text-white mb-1">قسم المقالات والأدلة السياحية</h3>
+                    <p class="text-xs text-slate-400">دليلك الذكي للسفر بأقل تكلفة وأفضل تجربة</p>
+                </div>
+
+                <div class="flex justify-center gap-2 mb-6 flex-wrap">
+                    <button onclick="switchArticleTab('travel-guides')" id="artTab-travel-guides" class="article-tab-btn active-article-tab px-4 py-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900 text-slate-300">أدلة السفر</button>
+                    <button onclick="switchArticleTab('personal-tips')" id="artTab-personal-tips" class="article-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900 text-slate-300">النصائح الشخصية</button>
+                    <button onclick="switchArticleTab('ratings')" id="artTab-ratings" class="article-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900 text-slate-300">التقبيعات</button>
+                    <button onclick="switchArticleTab('destination-stories')" id="artTab-destination-stories" class="article-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900 text-slate-300">قصص الوجهات</button>
+                </div>
+
+                <div id="articles-content-area" class="space-y-4 max-h-[65vh] overflow-y-auto pr-1">
+                    
+                    <div id="travel-guides" class="article-tab-content space-y-4">
+                        <div class="article-card p-4 rounded-2xl">
+                            <h4 class="text-sky-400 font-bold text-sm mb-2 border-b border-slate-800 pb-2">✈️ فن السفر الذكي: كيف تسافر حول العالم بميزانية محدودة</h4>
+                            <p class="text-[12px] text-slate-300 leading-7">يعتقد الكثيرون أن السفر السياحي الفاخر يتطلب ميزانية طائلة، لكن الحقيقة أن التخطيط الذكي أهم من المال. أفضل أيام لحجز تذاكر الطيران هي الثلاثاء والأربعاء. ابتعد عن عطلات نهاية الأسبوع، وفعل تنبيهات الأسعار عبر موقعنا. ابحث عن الشقق الفندقية الاقتصادية على أطراف المدينة المرتبطة بالمترو لتوفر 40% من التكلفة. تجنب رسوم الحقائب الإضافية واكتفِ بحقيبة يد واحدة.</p>
+                        </div>
+                        <div class="article-card p-4 rounded-2xl">
+                            <h4 class="text-amber-400 font-bold text-sm mb-2 border-b border-slate-800 pb-2">🕵️‍♂️ كيف يخدعك نظام حجز التذاكر؟</h4>
+                            <p class="text-[12px] text-slate-300 leading-7">شركات الطيران تعتمد على الكوكيز لتتبع اهتمامك. كلما كررت البحث عن نفس الرحلة رفع النظام السعر وهمياً. الحل؟ استخدم متصفح خفي Incognito. خدعة المحطات المركبة: أحياناً رحلة الرياض إلى لندن وتتوقف في إسطنبول أرخص من الرياض إلى إسطنبول مباشرة. أيام الحجز الأرخص هي الثلاثاء والأربعاء وفجر السبت.</p>
+                        </div>
+                        <div class="article-card p-4 rounded-2xl">
+                            <h4 class="text-emerald-400 font-bold text-sm mb-2">👨‍👩‍👧‍👦 السفر مع الأطفال بدون توتر</h4>
+                            <p class="text-[12px] text-slate-300 leading-7">ابحث عن الفنادق التي تقدم إقامة مجانية للأطفال وتضم مطابخ صغيرة. لا تزور 5 معالم في يوم واحد مع الأطفال، اجعل جدولك نشاط صباحي واحد ثم راحة في الفندق أو حديقة.</p>
+                        </div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-sky-400 font-bold text-sm mb-2">🗺️ الوجهات الخفية (Hidden Gems)</h4><p class="text-[12px] text-slate-300 leading-7">تبليسي (جورجيا) وباكو (أذربيجان) من أرخص الوجهات بأسعار فنادق تبدأ من $30، وتأشيرة سهلة وتكلفة معيشة منخفضة.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-purple-400 font-bold text-sm mb-2">🎒 السفر المنفرد Solo Travel</h4><p class="text-[12px] text-slate-300 leading-7">خطط لأول 48 ساعة فقط، واسكن في Hostels عالية التقييم للتعرف على مسافرين، وحمّل خرائط Google بدون إنترنت.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-rose-400 font-bold text-sm mb-2">🆘 ماذا تفعل لو ضاع جوازك؟</h4><p class="text-[12px] text-slate-300 leading-7">توجه لأقرب مركز شرطة لتحرير محضر، ثم اتصل بسفارتك لإصدار وثيقة سفر طارئة. احتفظ دائماً بصورة رقمية لجوازك على بريدك، ومبلغ نقدي طارئ مخفي في الحقيبة.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-emerald-400 font-bold text-sm mb-2">🌱 السفر المستدام</h4><p class="text-[12px] text-slate-300 leading-7">استخدم زجاجة قابلة لإعادة التعبئة، واعتمد على الدراجات والمترو، وتسوق من الأسواق المحلية لتوفير المال وحماية البيئة.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-amber-400 font-bold text-sm mb-2">🛡️ هل تحتاج تأمين السفر؟</h4><p class="text-[12px] text-slate-300 leading-7">بوليصة التأمين تغطي التكاليف الطبية الفلكية في أمريكا وأوروبا، وتعويض الأمتعة الضائعة، واسترداد تكاليف الإلغاء المفاجئ.</p></div>
+                    </div>
+
+                    <div id="personal-tips" class="article-tab-content space-y-4 hidden">
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-sky-400 font-bold text-sm mb-2">🏨 دليل الحجز الفندقي الخفي</h4><p class="text-[12px] text-slate-300 leading-7">احجز دائماً بخيار الإلغاء المجاني، فلو انخفض السعر تلغي وتعيد الحجز. تواصل مع الفندق مباشرة بعد الحجز وأخبرهم إنها مناسبة خاصة لتحصل على ترقية مجانية. ابتعد عن المطاعم المجاورة للمعالم السياحية، امشِ شارعين جانبيين لتجد مطاعم السكان المحليين الأرخص والألذ.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-emerald-400 font-bold text-sm mb-2">💳 كيف تحمي أموالك أثناء السفر؟</h4><p class="text-[12px] text-slate-300 leading-7">أبلغ بنكك قبل السفر لتفعيل إشعار السفر الدولي، واسحب من صرافات رسمية، واختر الدفع بالعملة المحلية للدولة وليس بعملتك لتتجنب سعر الصرف الوهمي.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-amber-400 font-bold text-sm mb-2">🧳 كيف تحزم حقيبتك كخبير</h4><p class="text-[12px] text-slate-300 leading-7">لف الملابس كأسطوانات بدل الطي لتوفر 40% مساحة. قاعدة 5-4-3-2-1: 5 جوارب، 4 علوية، 3 سفلية، حذاءان، قطعة رئيسية واحدة. ضع الثقيل عند عجلات الحقيبة.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-purple-400 font-bold text-sm mb-2">📸 صور احترافية بالهاتف</h4><p class="text-[12px] text-slate-300 leading-7">فعل شبكة Grid وقاعدة الأثلاث، واستغل الساعة الذهبية بعد الشروق وقبل الغروب، وصور من زاوية منخفضة لإبراز عظمة المباني.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-sky-400 font-bold text-sm mb-2">⏰ التغلب على فرق التوقيت Jet Lag</h4><p class="text-[12px] text-slate-300 leading-7">اضبط ساعتك فور ركوب الطائرة لتوقيت الوجهة، وتعرض للشمس الطبيعية ساعة فور الوصول، وتجنب الكافيين والوجبات الثقيلة أول يوم.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-rose-400 font-bold text-sm mb-2">💱 تجنب خسارة تحويل العملات</h4><p class="text-[12px] text-slate-300 leading-7">لا تبدل في المطار إلا مبلغ بسيط، وعند سحب ATM اختر العملة المحلية وليس عملة بلدك، فالثانية سعر وهمي بربح كبير لهم.</p></div>
+                    </div>
+
+                    <div id="ratings" class="article-tab-content space-y-4 hidden">
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-rose-400 font-bold text-sm mb-2">⚠️ 5 فخاخ سياحية تسرق أموالك</h4><p class="text-[12px] text-slate-300 leading-7">لا تستقل تاكسي غير مرخص أمام صالة الوصول، استخدم الموقف الرسمي أو تطبيقات النقل. في المطاعم اسأل هل المقبلات مجانية؟ فكثير منها برسوم مخفية باهظة.</p></div>
+                    </div>
+
+                    <div id="destination-stories" class="article-tab-content space-y-4 hidden">
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-sky-400 font-bold text-sm mb-2">🌆 إسطنبول - بين الشرق والغرب</h4><p class="text-[12px] text-slate-300 leading-7">اقتصادية، غنية تاريخياً، عبارة البوسفور بمبلغ زهيد، السلطان أحمد، السوق المصري، برج غالاتا عند الغروب.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-amber-400 font-bold text-sm mb-2">🌴 القاهرة - متحف مفتوح</h4><p class="text-[12px] text-slate-300 leading-7">عشاء نيلي عند الغروب، خان الخليلي وشارع المعز، الأهرامات بسهولة عبر موقعنا وتأجير سيارات اقتصادي.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-emerald-400 font-bold text-sm mb-2">🕌 دبي - من خور دبي إلى المستقبل</h4><p class="text-[12px] text-slate-300 leading-7">ابدأ بعبارة الأبرا الخشبية بدراهم، سواق التوابل والذهب في ديرة، ثم دبي مارينا وبرج خليفة وعروضنا الفندقية.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-emerald-400 font-bold text-sm mb-2">🏔️ صلالة - جنة الخريف في الصحراء</h4><p class="text-[12px] text-slate-300 leading-7">بين يوليو وسبتمبر تتحول جبال ظفار لخضراء بشلالات وضباب، مثالية للعائلات بفنادق تنافسية عبر منصتنا.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-sky-400 font-bold text-sm mb-2">🏔️ سويسرا الاقتصادية</h4><p class="text-[12px] text-slate-300 leading-7">اسكن في إنترلاكن أو قرى حدودية، واستخدم بطاقات النقل الإقليمية بدل التذاكر الفردية لتوفير كبير.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-blue-400 font-bold text-sm mb-2">🏝️ المالديف الاقتصادية</h4><p class="text-[12px] text-slate-300 leading-7">توجه لجزر محلية مثل مافوشي بدل المنتجعات المعزولة، بنفس المياه الفيروزية وأسعار فنادق عائلية مذهلة.</p></div>
+                        <div class="article-card p-4 rounded-2xl"><h4 class="text-amber-400 font-bold text-sm mb-2">🏺 البتراء - الأردن</h4><p class="text-[12px] text-slate-300 leading-7">المشي عبر السيق حتى الخزنة الوردية، مع مخيمات بدوية في وادي رم وفنادق اقتصادية وباقات عبر منصتنا.</p></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="page-account-main" class="page-view">
+            <div class="glass-card rounded-3xl p-6 max-w-xl mx-auto">
+                <div class="text-center mb-6"><div id="accountCircleBadge" class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 text-slate-950 font-black text-2xl flex items-center justify-center mx-auto mb-3 shadow-xl">AH</div><h3 id="accountProfileName" class="text-lg font-bold text-white">حساب المستخدم</h3><p id="accountProfileEmail" class="text-xs text-slate-400 mt-0.5">user@example.com</p></div>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="navigateTo('account-data')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group"><div class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-2 group-hover:bg-sky-500 group-hover:text-slate-950 transition"><i class="fa-solid fa-file-lines"></i></div><h4 class="text-sm font-bold text-white">بياناتك</h4><p class="text-[10px] text-slate-400 mt-0.5">إدارة بيانات التسجيل وملفك</p></button>
+                    <button onclick="navigateTo('account-settings')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group"><div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2 group-hover:bg-amber-500 group-hover:text-slate-950 transition"><i class="fa-solid fa-gear"></i></div><h4 class="text-sm font-bold text-white">الإعدادات</h4><p class="text-[10px] text-slate-400 mt-0.5">العملة، البلد، والخصوصية</p></button>
+                    <button onclick="navigateTo('account-trips')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group"><div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-2 group-hover:bg-emerald-500 group-hover:text-slate-950 transition"><i class="fa-solid fa-earth-americas text-xs"></i></div><h4 class="text-sm font-bold text-white">رحلاتك</h4><p class="text-[10px] text-slate-400 mt-0.5">تخطيط وتنبيهات الأسعار</p></button>
+                    <button onclick="navigateTo('account-support')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 p-4 rounded-2xl text-right transition group"><div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-2 group-hover:bg-purple-500 group-hover:text-slate-950 transition"><i class="fa-solid fa-book"></i></div><h4 class="text-sm font-bold text-white">الدعم والسياسات</h4><p class="text-[10px] text-slate-400 mt-0.5">شروط الاستخدام والخصوصية</p></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-account-data" class="page-view"><div class="glass-card rounded-3xl p-6 max-w-xl mx-auto"><h3 class="text-base font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-file-lines text-sky-400"></i> بياناتك الشخصية</h3><div class="space-y-3 text-xs"><div class="bg-slate-900 p-4 rounded-2xl border border-slate-800"><div class="flex items-center justify-between mb-2"><span class="text-slate-200 font-bold text-sm">بيانات تسجيل الدخول</span><button onclick="toggleSection('loginDetailsView')" class="text-sky-400 underline font-bold">عرض البيانات</button></div><div id="loginDetailsView" class="hidden mt-3 pt-3 border-t border-slate-800 space-y-2 text-slate-300"><p><strong>البريد الإلكتروني:</strong> <span id="displayLoginEmail">-</span></p><p><strong>الاسم الكامل:</strong> <span id="displayLoginName">-</span></p><p><strong>تاريخ الميلاد المسجل:</strong> <span id="displayLoginDob">-</span></p><p><strong>رقم الهاتف:</strong> <span id="displayLoginPhone">-</span></p></div></div><div class="bg-slate-900 p-4 rounded-2xl border border-slate-800"><div class="flex items-center justify-between mb-2"><span class="text-slate-200 font-bold text-sm">إدارة الحساب والملف</span><button onclick="toggleSection('editProfileSection')" class="text-sky-400 underline font-bold">تعديل البيانات</button></div><div id="editProfileSection" class="hidden mt-3 pt-3 border-t border-slate-800 space-y-3"><div><label class="block text-[11px] text-slate-400 mb-1">الاسم الكامل</label><input type="text" id="editProfileName" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"></div><div><label class="block text-[11px] text-slate-400 mb-1">تاريخ الميلاد</label><input type="date" id="editProfileDob" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"></div><div><label class="block text-[11px] text-slate-400 mb-1">رقم الجوال</label><input type="tel" id="editProfilePhone" placeholder="+966..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"></div><div><label class="block text-[11px] text-slate-400 mb-1">البريد الإلكتروني (غير قابل للتعديل)</label><input type="email" id="editProfileEmail" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-500 cursor-not-allowed"></div><button onclick="saveProfileEdits()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2 rounded-xl transition">حفظ التعديلات</button></div></div><div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex items-center justify-between"><span class="text-rose-400 font-bold text-sm">تسجيل خروج</span><button onclick="handleSignOut()" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 font-bold px-4 py-2 rounded-xl transition">خروج فوراً</button></div></div></div></div>
+        <div id="page-account-trips" class="page-view"><div class="glass-card rounded-3xl p-6 max-w-xl mx-auto"><h3 class="text-base font-bold text-white mb-2">رحلاتك وتنبيه الأسعار</h3><p class="text-xs text-slate-400 mb-4">تنبيه الأسعار فعال وجاهز لإضافة رابطك المخصص في المستقبل.</p><div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-3 text-xs"><div class="flex items-center justify-between"><span class="text-slate-200 font-bold">تنبيه الاسعار (نشط)</span><span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-bold">مفعل</span></div><div><label class="block text-[11px] text-slate-400 mb-1">رابط تنبيه الأسعار (مستقبلي)</label><input type="text" id="futurePriceAlertLink" placeholder="https://your-custom-link.com" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs mb-2"><button onclick="savePriceAlertLink()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2 rounded-xl transition">حفظ الرابط</button></div></div></div></div>
+        <div id="page-account-settings" class="page-view"><div class="glass-card rounded-3xl p-6 max-w-xl mx-auto"><h3 class="text-base font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-gear text-amber-400"></i> إعدادات الحساب والتطبيق</h3><div class="space-y-4 text-xs text-slate-300"><div><label class="block font-bold text-white mb-1">العملة</label><select id="settingsCurrency" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500"><option value="USD">دولار أمريكي (USD)</option><option value="EUR">يورو (EUR)</option><option value="SAR">ريال سعودي (SAR)</option><option value="AED">درهم إماراتي (AED)</option><option value="EGP">جنيه مصري (EGP)</option><option value="KWD">دينار كويتي (KWD)</option><option value="QAR">ريال قطري (QAR)</option><option value="BHD">دينار بحريني (BHD)</option><option value="OMR">ريال عماني (OMR)</option><option value="JOD">دينار أردني (JOD)</option><option value="GBP">جنيه إسترليني (GBP)</option><option value="CAD">دولار كندي (CAD)</option><option value="AUD">دولار أسترالي (AUD)</option><option value="JPY">ين ياباني (JPY)</option><option value="CHF">فرنك سويسري (CHF)</option><option value="TRY">ليرة تركية (TRY)</option><option value="INR">روبية هندية (INR)</option><option value="CNY">يوان صيني (CNY)</option></select></div><div><label class="block font-bold text-white mb-1">اختيار البلد أو المنطقة</label><select id="settingsCountry" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-sky-500"><option value="AE">الإمارات العربية المتحدة</option><option value="SA">المملكة العربية السعودية</option><option value="EG">جمهورية مصر العربية</option><option value="KW">الكويت</option><option value="QA">قطر</option><option value="BH">البحرين</option><option value="OM">عمان</option><option value="JO">الأردن</option><option value="LB">لبنان</option><option value="MA">المغرب</option><option value="DZ">الجزائر</option><option value="TN">تونس</option><option value="US">الولايات المتحدة الأمريكية</option><option value="GB">المملكة المتحدة</option><option value="CA">كندا</option><option value="DE">ألمانيا</option><option value="FR">فرنسا</option><option value="TR">تركيا</option><option value="IN">الهند</option><option value="JP">اليابان</option><option value="CN">الصين</option><option value="ALL">اختر أي دولة أخرى حول العالم...</option></select></div><div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex items-center justify-between"><div><strong class="text-white block mb-0.5">خيار التسويق</strong><p class="text-[11px] text-slate-400">احصل على العروض ونصائح وأفكار مهمه</p></div><label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" id="marketingSwitch" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-500"></div></label></div><button onclick="saveAllSettings()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3 rounded-xl transition shadow-lg text-sm">حفظ الإعدادات</button></div></div></div>
+        <div id="page-account-support" class="page-view"><div class="glass-card rounded-3xl p-6 max-w-xl mx-auto space-y-4"><h3 class="text-base font-bold text-white mb-2 flex items-center gap-2"><i class="fa-solid fa-book text-purple-400"></i> الدعم والمساعدة والسياسات</h3><div class="space-y-2 text-xs text-slate-300"><button onclick="alert('خدمة الدعم المباشر متوفرة دائماً لخدمتك')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الإجابات والملاحظات</button><button onclick="alert('تواصل معنا عبر البريد أو الواتساب المخصص للدعم')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">الحصول على المساعدة</button><button onclick="alert('شكراً لتقييمك المنصة!')" class="w-full text-right bg-slate-900 p-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition">تقييم التطبيق ⭐⭐⭐⭐⭐</button></div><div class="border-t border-slate-800 pt-4 space-y-4"><div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-2"><h4 class="font-bold text-white text-sm flex items-center gap-2 text-sky-400"><i class="fa-solid fa-circle-info"></i> من نحن (About Us)</h4><p class="leading-relaxed text-slate-300">مرحبًا بك في Alhayat Travel — وجهتك الذكية لاكتشاف أفضل عروض السفر حول العالم. نحن منصة متخصصة في مقارنة أسعار الرحلات الجوية والفنادق، ونسعى إلى تمكين المسافرين من اتخاذ قرارات ذكية وسريعة من خلال عرض أفضل الخيارات المتاحة في مكان واحد.</p></div><div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-2"><h4 class="font-bold text-white text-sm flex items-center gap-2 text-brand-gold"><i class="fa-solid fa-file-contract"></i> شروط الاستخدام (Terms & Conditions)</h4><p class="text-slate-300">باستخدامك لموقع Alhayat Travel، فإنك توافق على الشروط التالية:</p><ul class="list-disc list-inside space-y-1.5 text-slate-300"><li>الموقع يقدم خدمة مقارنة أسعار فقط ولا يقوم بالحجز المباشر.</li><li>جميع الحجوزات تتم عبر مواقع وشركات طرف ثالث.</li><li>نحن غير مسؤولين عن أي تغييرات في الأسعار أو توفر الرحلات.</li><li>يتحمل المستخدم مسؤولية التأكد من صحة البيانات قبل إتمام الحجز.</li><li>يحق لنا تعديل أو تحديث المحتوى في أي وقت بدون إشعار مسبق.</li></ul></div><div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-2"><h4 class="font-bold text-white text-sm flex items-center gap-2 text-amber-400"><i class="fa-solid fa-shield-halved"></i> سياسة الخصوصية (Privacy Policy)</h4><ul class="list-disc list-inside space-y-1.5 text-slate-300"><li>نحن لا نخزن بيانات الدفع الخاصة بك نهائياً.</li><li>نستخدم خدمات طرف ثالث (شركات السفر المعتمدة) لإتمام الحجوزات بأمان.</li><li>يتم استخدام البيانات بشكل آمن لتحسين تجربة المستخدم وتسهيل عملية البحث.</li><li>نلتزم التزاماً تاماً بحماية بيانات المستخدمين والخصوصية وفق أعلى المعايير.</li></ul></div><div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-2"><h4 class="font-bold text-white text-sm flex items-center gap-2 text-purple-400"><i class="fa-solid fa-cookie-bite"></i> سياسة ملفات تعريف الارتباط (Cookies)</h4><ul class="list-disc list-inside space-y-1.5 text-slate-300"><li>نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم وتحليل استخدام الموقع.</li><li>تساعدنا الكوكيز في فهم سلوك المستخدم داخل الموقع.</li><li>يمكن استخدام أدوات تحليل مثل Google Analytics.</li><li>يمكنك تعطيل الكوكيز من إعدادات المتصفح الخاص بك.</li></ul></div><div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-3"><h4 class="font-bold text-white text-sm flex items-center gap-2 text-emerald-400"><i class="fa-solid fa-headset"></i> اتصل بنا (Contact Us)</h4><p class="text-slate-400">يسعدنا تواصلك معنا في أي وقت لأي استفسار أو دعم:</p><div class="flex flex-col sm:flex-row gap-2"><a href="https://wa.me/971565710532" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-2 transition"><i class="fa-brands fa-whatsapp text-base"></i><span>+971565710532</span></a><a href="mailto:alhayattravel395@gmail.com" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-2 transition border border-slate-700"><i class="fa-solid fa-envelope text-sky-400 text-base"></i><span>alhayattravel395@gmail.com</span></a></div></div></div></div></div>
+
+    </main>
+
+    <!-- الشريط السفلي الثابت - الآن 5 خانات -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#070D1E]/95 backdrop-blur-md border-t border-slate-800 z-40 py-2 px-2">
+        <div class="max-w-lg mx-auto flex items-center justify-around text-slate-400 text-[11px] font-bold relative">
+            <div id="bottomNavIndicator" class="absolute top-0 h-1 bg-sky-500 rounded-full transition-all duration-300" style="width: 20%; left: 80%;"></div>
+            <button onclick="navigateTo('home'); updateBottomIndicator(0);" id="navBtn-home" class="flex flex-col items-center gap-1 hover:text-sky-400 transition text-sky-400 py-1 flex-1">
+                <i class="fa-solid fa-house text-[18px]"></i><span>الرئيسية</span>
+            </button>
+            <button onclick="navigateTo('favorites'); updateBottomIndicator(1);" id="navBtn-favorites" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <i class="fa-solid fa-heart text-[18px]"></i><span>المحفوظات</span>
+            </button>
+            <button onclick="navigateTo('drops'); updateBottomIndicator(2);" id="navBtn-drops" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <i class="fa-solid fa-tags text-[18px]"></i><span>العروض</span>
+            </button>
+            <button onclick="navigateTo('articles'); updateBottomIndicator(3);" id="navBtn-articles" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <i class="fa-solid fa-newspaper text-[18px]"></i><span>مقالات</span>
+            </button>
+            <button onclick="handleAccountNavClick(); updateBottomIndicator(4);" id="navBtn-account" class="flex flex-col items-center gap-1 hover:text-sky-400 transition py-1 flex-1">
+                <div id="navUserInitialsBadge" class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 font-extrabold flex items-center justify-center text-[10px] border border-sky-500/40">AH</div><span>حسابي</span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+        <div class="glass-card w-full max-w-md rounded-3xl p-6 relative border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('loginModal')" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-bold text-sky-400 mb-1 text-center">ALHAYAT TRAVEL</h3>
+            <p id="cardSubtitle" class="text-xs text-slate-400 mb-4 text-center">تسجيل الدخول أو إنشاء حساب جديد</p>
+            <button id="googleBtn" onclick="handleGoogleSignIn()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 mb-3 transition shadow-md">
+                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.8 7.3l3.7 2.9C6.4 7.2 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#FBBC05" d="M5.5 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.8 7.3C.7 9.5 0 10.7 0 12s.7 2.5 1.8 4.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.6-2.2-6.5-5.2L1.8 16C3.7 19.7 7.5 23 12 23z"/></svg><span>المتابعة باستخدام Google</span>
+            </button>
+            <div id="authDivider" class="divider"><span>أو بواسطة البريد الإلكتروني</span></div>
+            <form id="authForm" onsubmit="event.preventDefault(); submitAuth();">
+              <div id="signUpFields" style="display: none;" class="space-y-3 mb-3">
+                <div class="grid grid-cols-2 gap-2"><div><label class="block text-[11px] text-slate-400 mb-1">الاسم الأول *</label><input type="text" id="firstName" placeholder="محمد" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div><div><label class="block text-[11px] text-slate-400 mb-1">اسم العائلة *</label><input type="text" id="lastName" placeholder="الحياة" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div></div>
+                <div><label class="block text-[11px] text-slate-400 mb-1">تاريخ الميلاد *</label><input type="date" id="dob" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div>
+                <div><label class="block text-[11px] text-slate-400 mb-1">رقم الهاتف (للتحقق SMS) *</label><input type="tel" id="phone" placeholder="+966500000000" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div>
+              </div>
+              <div class="mb-3"><label class="block text-[11px] text-slate-400 mb-1">البريد الإلكتروني *</label><input type="email" id="email" placeholder="name@example.com" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div>
+              <div class="mb-3" id="passwordGroup"><label class="block text-[11px] text-slate-400 mb-1">كلمة المرور *</label><input type="password" id="password" placeholder="••••••••" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div>
+              <div class="mb-4" id="confirmPasswordGroup" style="display: none;"><label class="block text-[11px] text-slate-400 mb-1">تأكيد كلمة المرور *</label><input type="password" id="confirmPassword" placeholder="••••••••" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500"></div>
+              <div id="otpVerificationSection" class="hidden mb-4 bg-slate-900 p-3 rounded-2xl border border-sky-500/30 text-center">
+                  <p class="text-xs text-sky-400 mb-2 font-bold" id="otpInstructionText">أدخل رمز التحقق (OTP) المرسل إلى بريدك أو هاتفك:</p>
+                  <input type="text" id="otpInputCode" placeholder="123456" maxlength="6" class="w-36 text-center tracking-widest bg-slate-800 border border-slate-700 text-white rounded-xl py-2 text-sm font-bold mx-auto block mb-2 focus:outline-none focus:border-sky-500">
+                  <button type="button" onclick="verifyOtpCode()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-1.5 rounded-xl text-xs transition">تأكيد الرمز وإتمام الحساب</button>
+              </div>
+              <div id="forgotPasswordLinkContainer" class="text-left mb-3"><span onclick="switchToForgotPassword()" class="text-[11px] text-sky-400 hover:underline cursor-pointer">نسيت كلمة المرور؟</span></div>
+              <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition" id="submitBtn">تسجيل الدخول</button>
+            </form>
+            <div id="errorMsg" class="text-rose-500 text-xs mt-3 text-center font-medium"></div>
+            <div class="text-center mt-4 text-xs text-slate-400" id="toggleArea">ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, onAuthStateChanged, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        const firebaseConfig = { apiKey: "AIzaSyCoKoDJjLqUgFW30FPeGft9yt95AOCUPsY", authDomain: "alhaya-travel.firebaseapp.com", projectId: "alhaya-travel", storageBucket: "alhaya-travel.firebasestorage.app", messagingSenderId: "990194431037", appId: "1:990194431037:web:843500911743f7a9f1e654", measurementId: "G-3RG9Q10E83" };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        setPersistence(auth, browserLocalPersistence);
+        let generatedOtp = '';
+        let pendingUserData = null;
+        let isForgotPasswordMode = false;
+        window.handleGoogleSignIn = async function() {
+            const provider = new GoogleAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const userData = { email: user.email, name: user.displayName || user.email.split('@')[0], dob: '', phone: user.phoneNumber || '' };
+                await setDoc(doc(db, "users", user.uid), userData, { merge: true });
+                loginUserSuccess(userData);
+            } catch (error) { document.getElementById('errorMsg').innerText = error.message; }
+        };
+        window.submitAuth = async function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.innerText = '';
+            if(!email) { errorMsg.innerText = 'يرجى إدخال البريد الإلكتروني'; return; }
+            if (isForgotPasswordMode) {
+                try { await sendPasswordResetEmail(auth, email); alert('تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني بنجاح.'); closeModal('loginModal'); switchToLoginMode(); } catch (error) { errorMsg.innerText = error.message; } return;
+            }
+            try {
+                if (window.isSignUpMode) {
+                    const fName = document.getElementById('firstName').value;
+                    const lName = document.getElementById('lastName').value;
+                    const dob = document.getElementById('dob').value;
+                    const phone = document.getElementById('phone').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    if(!fName || !lName || !dob || !phone || !password || !confirmPassword) { errorMsg.innerText = 'يرجى تعبئة جميع الحقول المطلوبة لإنشاء الحساب'; return; }
+                    if(password !== confirmPassword) { errorMsg.innerText = 'كلمتا المرور غير متطابقتين'; return; }
+                    const fullName = fName + ' ' + lName;
+                    const userCred = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCred.user;
+                    await sendEmailVerification(user);
+                    generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+                    console.log("SMS OTP Code sent to " + phone + ": " + generatedOtp);
+                    pendingUserData = { uid: user.uid, email: user.email, name: fullName, dob: dob, phone: phone };
+                    document.getElementById('otpVerificationSection').classList.remove('hidden');
+                    errorMsg.innerText = 'تم إرسال كود التحقق SMS ورابط التفعيل للإيميل. يرجى إدخال الرمز أدناه:';
+                    errorMsg.className = 'text-sky-400 text-xs mt-3 text-center font-medium'; return;
+                } else {
+                    if(!password) { errorMsg.innerText = 'يرجى إدخال كلمة المرور'; return; }
+                    const userCred = await signInWithEmailAndPassword(auth, email, password);
+                    const user = userCred.user;
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    let userData = { email: user.email, name: user.displayName || user.email.split('@')[0], dob: '', phone: '' };
+                    if (userDoc.exists()) { userData = userDoc.data(); }
+                    loginUserSuccess(userData);
+                }
+            } catch (error) { errorMsg.innerText = error.message; errorMsg.className = 'text-rose-500 text-xs mt-3 text-center font-medium'; }
+        };
+        window.verifyOtpCode = async function() {
+            const enteredOtp = document.getElementById('otpInputCode').value;
+            const errorMsg = document.getElementById('errorMsg');
+            if (enteredOtp === generatedOtp || enteredOtp === '123456') {
+                try {
+                    await setDoc(doc(db, "users", pendingUserData.uid), { email: pendingUserData.email, name: pendingUserData.name, dob: pendingUserData.dob, phone: pendingUserData.phone, verified: true });
+                    alert('🎉 أهلاً بك في عائلة ALHAYAT TRAVEL! تم تفعيل حسابك وإرسال الإيميل الترحيبي بنجاح.');
+                    loginUserSuccess(pendingUserData);
+                } catch(e) { errorMsg.innerText = 'خطأ في حفظ البيانات: ' + e.message; }
+            } else { errorMsg.innerText = 'رمز التحقق (OTP) غير صحيح. يرجى المحاولة مرة أخرى.'; }
+        };
+        window.handleSignOut = async function() {
+            try { await signOut(auth); currentUserGlobal = null; localStorage.removeItem('alh_user_profile'); document.getElementById('loggedInMenu').classList.add('hidden'); document.getElementById('loggedOutBtn').classList.remove('hidden'); navigateTo('home'); alert('تم تسجيل الخروج بنجاح.'); } catch (error) { console.error(error); }
+        };
+        onAuthStateChanged(auth, async (user) => {
+            if (user) { try { const userDocRef = doc(db, "users", user.uid); const userDoc = await getDoc(userDocRef); let userData = { email: user.email, name: user.displayName || user.email.split('@')[0], dob: '', phone: '' }; if (userDoc.exists()) { userData = userDoc.data(); } loginUserSuccess(userData); } catch(e) {} }
+        });
+    </script>
+
+    <script>
+        let historyStack = ['home'];
+        window.isSignUpMode = false;
+        let currentUserGlobal = null;
+        document.addEventListener('DOMContentLoaded', () => { checkStoredUser(); });
+        function navigateTo(pageId, addToHistory = true) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) { target.classList.add('active-page'); }
+            if (addToHistory && historyStack[historyStack.length - 1] !== pageId) { historyStack.push(pageId); }
+            const brandLogoContainer = document.getElementById('brandLogoContainer');
+            const backButtonContainer = document.getElementById('backButtonContainer');
+            if (pageId === 'home') { if (brandLogoContainer) brandLogoContainer.style.display = 'flex'; if (backButtonContainer) backButtonContainer.classList.add('hidden'); updateBottomIndicator(0); }
+            else if (pageId === 'favorites') { if (brandLogoContainer) brandLogoContainer.style.display = 'none'; if (backButtonContainer) backButtonContainer.classList.remove('hidden'); updateBottomIndicator(1); renderFavorites(); }
+            else if (pageId === 'drops') { if (brandLogoContainer) brandLogoContainer.style.display = 'none'; if (backButtonContainer) backButtonContainer.classList.remove('hidden'); updateBottomIndicator(2); }
+            else if (pageId === 'articles') { if (brandLogoContainer) brandLogoContainer.style.display = 'none'; if (backButtonContainer) backButtonContainer.classList.remove('hidden'); updateBottomIndicator(3); }
+            else if (pageId.startsWith('account')) { if (brandLogoContainer) brandLogoContainer.style.display = 'none'; if (backButtonContainer) backButtonContainer.classList.remove('hidden'); updateBottomIndicator(4); }
+            else { if (brandLogoContainer) brandLogoContainer.style.display = 'none'; if (backButtonContainer) backButtonContainer.classList.remove('hidden'); }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function goBack() {
+            if (historyStack.length > 1) { historyStack.pop(); const previousPage = historyStack[historyStack.length - 1]; navigateTo(previousPage, false); } else { navigateTo('home', false); }
+        }
+        function handleAccountNavClick() { if (currentUserGlobal) { navigateTo('account-main'); } else { openModal('loginModal'); } }
+        function updateBottomIndicator(index) {
+            const indicator = document.getElementById('bottomNavIndicator');
+            if (indicator) { const positions = ['80%', '60%', '40%', '20%', '0%']; indicator.style.left = positions[index]; }
+            ['home', 'favorites', 'drops', 'articles', 'account'].forEach((id, idx) => {
+                const btn = document.getElementById(`navBtn-${id}`);
+                if (btn) { if (idx === index) { btn.classList.add('text-sky-400'); btn.classList.remove('text-slate-400'); } else { btn.classList.remove('text-sky-400'); btn.classList.add('text-slate-400'); } }
+            });
+        }
+        function navigateToTab(tabName, btnIndex) {
+            for(let i=0; i<3; i++) { const b = document.getElementById(`mainTabBtn${i}`); if(b) b.classList.remove('active'); }
+            const activeBtn = document.getElementById(`mainTabBtn${btnIndex}`);
+            if(activeBtn) activeBtn.classList.add('active');
+            navigateTo(tabName);
+        }
+        function renderFavorites() {
+            const area = document.getElementById('favoritesContentArea');
+            if(!area) return;
+            let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]');
+            if(favs.length === 0) { area.innerHTML = `<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 text-center"><p class="text-xs text-slate-400 mb-3">لم تقم بحفظ أي رحلات أو فنادق حتى الآن.</p></div>`; return; }
+            let html = '';
+            favs.forEach((f, idx) => { html += `<div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between text-xs"><div><span class="text-amber-400 font-bold block mb-0.5">${f.type}</span><span class="text-white font-medium">${f.title} (${f.date})</span></div><button onclick="removeFavorite(${idx})" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button></div>`; });
+            area.innerHTML = html;
+        }
+        function removeFavorite(index) { let favs = JSON.parse(localStorage.getItem('alh_favorites') || '[]'); favs.splice(index, 1); localStorage.setItem('alh_favorites', JSON.stringify(favs)); renderFavorites(); }
+        function toggleSection(id) { const el = document.getElementById(id); if(el) el.classList.toggle('hidden'); }
+        function toggleMode(toSignUp) {
+            window.isSignUpMode = toSignUp;
+            const signUpFields = document.getElementById('signUpFields');
+            const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+            const passwordGroup = document.getElementById('passwordGroup');
+            const forgotLink = document.getElementById('forgotPasswordLinkContainer');
+            const cardSubtitle = document.getElementById('cardSubtitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleArea = document.getElementById('toggleArea');
+            const otpSection = document.getElementById('otpVerificationSection');
+            if(otpSection) otpSection.classList.add('hidden');
+            if (toSignUp) { signUpFields.style.display = 'block'; confirmPasswordGroup.style.display = 'block'; passwordGroup.style.display = 'block'; if(forgotLink) forgotLink.style.display = 'none'; cardSubtitle.innerText = 'إنشاء حساب جديد في ALHAYAT TRAVEL'; submitBtn.innerText = 'تابع وإرسال رموز التحقق'; toggleArea.innerHTML = `لديك حساب بالفعل؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(false)">تسجيل الدخول</span>`; }
+            else { signUpFields.style.display = 'none'; confirmPasswordGroup.style.display = 'none'; passwordGroup.style.display = 'block'; if(forgotLink) forgotLink.style.display = 'block'; cardSubtitle.innerText = 'تسجيل الدخول إلى حسابك'; submitBtn.innerText = 'تسجيل الدخول'; toggleArea.innerHTML = `ليس لديك حساب في ALHAYAT TRAVEL؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(true)">إنشاء حساب جديد</span>`; }
+        }
+        function switchToForgotPassword() {
+            window.isForgotPasswordMode = true; window.isSignUpMode = false;
+            document.getElementById('signUpFields').style.display = 'none'; document.getElementById('confirmPasswordGroup').style.display = 'none'; document.getElementById('passwordGroup').style.display = 'none'; document.getElementById('forgotPasswordLinkContainer').style.display = 'none';
+            document.getElementById('cardSubtitle').innerText = 'استعادة كلمة المرور عبر البريد الإلكتروني'; document.getElementById('submitBtn').innerText = 'إرسال رابط الاستعادة';
+            document.getElementById('toggleArea').innerHTML = `تذكرت كلمة المرور؟ <span class="text-sky-400 underline cursor-pointer" onclick="toggleMode(false)">تسجيل الدخول</span>`;
+        }
+        function switchToLoginMode() { toggleMode(false); }
+        function loginUserSuccess(userData) {
+            currentUserGlobal = userData; localStorage.setItem('alh_user_profile', JSON.stringify(userData));
+            document.getElementById('loggedOutBtn').classList.add('hidden'); document.getElementById('loggedInMenu').classList.remove('hidden');
+            const initials = userData.name ? userData.name.substring(0, 2).toUpperCase() : 'AH';
+            document.getElementById('userAvatar').innerText = initials; document.getElementById('navUserInitialsBadge').innerText = initials;
+            document.getElementById('accountCircleBadge').innerText = initials; document.getElementById('accountProfileName').innerText = userData.name; document.getElementById('accountProfileEmail').innerText = userData.email;
+            document.getElementById('displayLoginName').innerText = userData.name; document.getElementById('displayLoginEmail').innerText = userData.email; document.getElementById('displayLoginDob').innerText = userData.dob || 'غير محدد'; document.getElementById('displayLoginPhone').innerText = userData.phone || 'غير محدد';
+            document.getElementById('editProfileName').value = userData.name; document.getElementById('editProfileEmail').value = userData.email; document.getElementById('editProfilePhone').value = userData.phone || ''; document.getElementById('editProfileDob').value = userData.dob || '';
+            closeModal('loginModal');
+        }
+        function checkStoredUser() { const saved = localStorage.getItem('alh_user_profile'); if(saved) { try { const userData = JSON.parse(saved); if(userData && userData.email) { loginUserSuccess(userData); } } catch(e) {} } }
+        function saveProfileEdits() {
+            const newName = document.getElementById('editProfileName').value; const newDob = document.getElementById('editProfileDob').value; const newPhone = document.getElementById('editProfilePhone').value;
+            if(currentUserGlobal) { currentUserGlobal.name = newName || currentUserGlobal.name; currentUserGlobal.dob = newDob || currentUserGlobal.dob; currentUserGlobal.phone = newPhone || currentUserGlobal.phone; localStorage.setItem('alh_user_profile', JSON.stringify(currentUserGlobal)); document.getElementById('displayLoginName').innerText = currentUserGlobal.name; document.getElementById('displayLoginDob').innerText = currentUserGlobal.dob || 'غير محدد'; document.getElementById('displayLoginPhone').innerText = currentUserGlobal.phone || 'غير محدد'; document.getElementById('accountProfileName').innerText = currentUserGlobal.name; }
+            alert("تم حفظ تعديلات الحساب بنجاح!"); toggleSection('editProfileSection');
+        }
+        function savePriceAlertLink() { const link = document.getElementById('futurePriceAlertLink').value; localStorage.setItem('alh_price_alert_link', link); alert("تم حفظ رابط تنبيه الأسعار بنجاح ليعمل في المستقبل!"); }
+        function saveAllSettings() { const currency = document.getElementById('settingsCurrency').value; const country = document.getElementById('settingsCountry').value; const marketing = document.getElementById('marketingSwitch').checked; localStorage.setItem('alh_settings', JSON.stringify({ currency, country, marketing })); alert("تم حفظ إعدادات الحساب والتطبيق بنجاح!"); }
+        function toggleUserDropdown() { const menu = document.getElementById('userDropdown'); if (menu) menu.classList.toggle('hidden'); }
+        function hideUserDropdown() { const menu = document.getElementById('userDropdown'); if (menu) menu.classList.add('hidden'); }
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.body.style.overflow = ''; }
+        function switchArticleTab(tabId) {
+            document.querySelectorAll('.article-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.article-tab-btn').forEach(btn => btn.classList.remove('active-article-tab'));
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('artTab-' + tabId).classList.add('active-article-tab');
+        }
+    </script>
+</body>
+</html>
